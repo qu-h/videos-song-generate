@@ -1,0 +1,446 @@
+[
+  {
+    "id": "song-002",
+    "slug": "dem-thanh-pho-mua",
+    "title": "Đêm Thành Phố Mưa",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Vietnamese lofi chillhop, smooth female vocal, jazzy electric piano, vinyl crackle, mellow bassline, rainy night atmosphere, 82 bpm",
+      "lyricsPrompt": "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+      "videoId": "kJQP7kiw5Fk",
+      "title": "Đêm Thành Phố Mưa | Lofi Chill Nhẹ Nhàng Thư Giãn Đọc Sách | Suno AI",
+      "publishedAt": "2026-10-20T21:30:00Z",
+      "status": "public",
+      "views": 3500,
+      "thumbnailUrl": "https://img.youtube.com/vi/kJQP7kiw5Fk/hqdefault.jpg",
+      "description": "Giai điệu Lofi Chillhop êm dịu cho một đêm mưa tĩnh lặng. Thích hợp nghe khi học bài, làm việc và thư giãn.",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\n(Tiếng đĩa than rè nhẹ, tiếng mưa gõ tí tách trên mái tôn, nốt Rhodes jazz êm đềm)\n\n[Verse 1]\nPhố đã lên đèn từ lúc nào chẳng hay\nGiọt cà phê nguội dần trên đôi ngón tay\nĐèn đường vàng hắt hiu qua làn sương mờ\nThành phố này dường như cũng đang ngủ mơ.\n\n[Verse 2]\nTừng dòng xe vội vã lướt qua hiên nhà\nGác lại sau lưng bao bộn bề xa lạ\nTa ngồi đây cùng điệu nhạc ngân nga\nThả hồn trôi theo ngàn hạt mưa bay xa.\n\n[Chorus]\nMưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên.\n(Lofi chill... đêm nay chỉ có ta và mưa)\n\n[Bridge]\n(Đoạn saxophone jazz luyến láy chậm rãi hòa cùng tiếng mưa rơi)\nKhông cần vội vã, chẳng cần đợi chờ\nThời gian ngưng đọng trong từng nốt nhạc bơ vơ...\n\n[Chorus]\nMưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên.\n\n[Outro]\nNgủ ngoan nhé đêm ơi...\nNgày mai rồi sẽ khác thôi...\n(Tiếng mưa nhỏ dần, tiếng đĩa than xì xào rồi tắt hẳn)\n[Fade Out]\n[End]",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "(Tiếng đĩa than rè nhẹ, tiếng mưa gõ tí tách trên mái tôn, nốt Rhodes jazz êm đềm)"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Phố đã lên đèn từ lúc nào chẳng hay\nGiọt cà phê nguội dần trên đôi ngón tay\nĐèn đường vàng hắt hiu qua làn sương mờ\nThành phố này dường như cũng đang ngủ mơ."
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Từng dòng xe vội vã lướt qua hiên nhà\nGác lại sau lưng bao bộn bề xa lạ\nTa ngồi đây cùng điệu nhạc ngân nga\nThả hồn trôi theo ngàn hạt mưa bay xa."
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Mưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên.\n(Lofi chill... đêm nay chỉ có ta và mưa)"
+      },
+      {
+        "tag": "[Bridge]",
+        "content": "(Đoạn saxophone jazz luyến láy chậm rãi hòa cùng tiếng mưa rơi)\nKhông cần vội vã, chẳng cần đợi chờ\nThời gian ngưng đọng trong từng nốt nhạc bơ vơ..."
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Mưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên."
+      },
+      {
+        "tag": "[Outro]",
+        "content": "Ngủ ngoan nhé đêm ơi...\nNgày mai rồi sẽ khác thôi...\n(Tiếng mưa nhỏ dần, tiếng đĩa than xì xào rồi tắt hẳn)"
+      },
+      {
+        "tag": "[Fade Out]",
+        "content": ""
+      },
+      {
+        "tag": "[End]",
+        "content": ""
+      }
+    ],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/dem-thanh-pho-mua.md"
+  },
+  {
+    "id": "song-003",
+    "slug": "giac-mo-dong-bang",
+    "title": "Giấc Mơ Đồng Bằng",
+    "artist": "Quân & Suno AI",
+    "genre": "Epic Folk Rock",
+    "tags": [
+      "#folk-rock",
+      "#epic",
+      "#dong-bang",
+      "#que-huong",
+      "#vietnamese"
+    ],
+    "status": "mp3_ready",
+    "createdAt": "2026-10-21",
+    "updatedAt": "2026-10-23",
+    "suno": {
+      "model": "v4",
+      "stylePrompt": "Vietnamese epic folk rock, powerful male vocal, bamboo flute intro, heavy distortion electric guitars, heroic orchestral strings, thunderous drums, patriotic passion, 95 bpm",
+      "lyricsPrompt": "Lời bài hát hào hùng ca ngợi sức sống mãnh liệt của người dân vùng đồng bằng sông nước Cửu Long, vượt qua bão lũ giữ vững xóm làng",
+      "clipId": "c3d4e5f6-7890-12cd-ef01-3456789012cd",
+      "songUrl": "https://suno.com/song/c3d4e5f6-7890-12cd-ef01-3456789012cd",
+      "taskStatus": "completed",
+      "tempo": "95 bpm",
+      "vocalType": "male"
+    },
+    "audio": {
+      "fileName": "giac-mo-dong-bang.mp3",
+      "filePath": "public/audio/giac-mo-dong-bang.mp3",
+      "audioUrl": "https://cdn1.suno.ai/c3d4e5f6-7890-12cd-ef01-3456789012cd.mp3",
+      "duration": "04:08",
+      "durationSeconds": 248,
+      "bitrate": "320kbps",
+      "takeVersion": "Take 3 (Epic Master)"
+    },
+    "youtube": {
+      "title": "Giấc Mơ Đồng Bằng | Epic Vietnamese Folk Rock Video",
+      "status": "draft",
+      "description": "Bản hùng ca về đất phù sa và ý chí con người phương Nam. Sắp phát hành trên kênh YouTube chính thức.",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\n(Tiếng sáo trúc vi vút mở màn trên nền gió lộng, bất ngờ bùng nổ cùng dàn trống trận sấm sét và guitar điện rock)\n\n[Verse 1]\nTừ nghìn năm trước đất mẹ sinh ra\nPhù sa đỏ quạch nuôi lớn dáng cha\nSóng nước Tiền Giang cuộn trào ngàn dặm\nNgười đi mở cõi lưng trần chân lấm.\n\n[Verse 2]\nRừng tràm bạt ngàn đón ngọn gió đông\nMồ hôi mặn chát tưới mát cánh đồng\nDù cho bão nổi, dù cho hạn khô\nTấc đất ngọn rau giữ trọn câu thề!\n\n[Chorus]\nĐây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!\n(Ơi dòng sông... chảy mãi ngàn năm!)\n\n[Bridge]\n(Nhịp điệu dồn dập, tiếng sáo trúc đối đáp cùng guitar solo gầm rú)\nQua gian lao ta càng thêm vững bước\nNối vòng tay giữ lấy quê hương\nDẫu phong ba bão táp dặm trường!\n\n[Chorus]\nĐây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!\n\n[Heavy Guitar Solo & Orchestral Climax]\n(Dàn nhạc giao hưởng hòa cùng guitar điện đỉnh điểm)\n\n[Outro]\nVang mãi... ngàn đời phù sa...\nĐồng bằng ơi... bất tử bài ca!\n[Big Finish]\n[End]",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "(Tiếng sáo trúc vi vút mở màn trên nền gió lộng, bất ngờ bùng nổ cùng dàn trống trận sấm sét và guitar điện rock)"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Từ nghìn năm trước đất mẹ sinh ra\nPhù sa đỏ quạch nuôi lớn dáng cha\nSóng nước Tiền Giang cuộn trào ngàn dặm\nNgười đi mở cõi lưng trần chân lấm."
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Rừng tràm bạt ngàn đón ngọn gió đông\nMồ hôi mặn chát tưới mát cánh đồng\nDù cho bão nổi, dù cho hạn khô\nTấc đất ngọn rau giữ trọn câu thề!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Đây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!\n(Ơi dòng sông... chảy mãi ngàn năm!)"
+      },
+      {
+        "tag": "[Bridge]",
+        "content": "(Nhịp điệu dồn dập, tiếng sáo trúc đối đáp cùng guitar solo gầm rú)\nQua gian lao ta càng thêm vững bước\nNối vòng tay giữ lấy quê hương\nDẫu phong ba bão táp dặm trường!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Đây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!"
+      },
+      {
+        "tag": "[Heavy Guitar Solo & Orchestral Climax]",
+        "content": "(Dàn nhạc giao hưởng hòa cùng guitar điện đỉnh điểm)"
+      },
+      {
+        "tag": "[Outro]",
+        "content": "Vang mãi... ngàn đời phù sa...\nĐồng bằng ơi... bất tử bài ca!"
+      },
+      {
+        "tag": "[Big Finish]",
+        "content": ""
+      },
+      {
+        "tag": "[End]",
+        "content": ""
+      }
+    ],
+    "productionNotes": "- Sử dụng mô hình Suno v4 cho âm thanh dải cao rất nét, tiếng sáo trúc lồng ghép mượt mà.\n- File MP3 đã master xong ở chất lượng 320kbps.\n- Đang lên kịch bản Remotion ghép cảnh đồng bằng sông Cửu Long và drone cảnh đẹp.",
+    "filePath": "data/songs/giac-mo-dong-bang.md"
+  },
+  {
+    "id": "song-005",
+    "slug": "giot-ca-phe-chieu",
+    "title": "Giọt Cà Phê Chiều",
+    "artist": "Quân & Suno AI",
+    "genre": "Acoustic Bossa Nova",
+    "tags": [
+      "#bossa-nova",
+      "#coffee",
+      "#acoustic",
+      "#relax",
+      "#afternoon"
+    ],
+    "status": "suno_generated",
+    "createdAt": "2026-10-23",
+    "updatedAt": "2026-10-23",
+    "suno": {
+      "model": "v4",
+      "stylePrompt": "Vietnamese mellow bossa nova, warm nylon acoustic guitar, soft muted saxophone, brushed snare jazz drums, cozy afternoon cafe vibe, gentle intimate male vocal, 84 bpm",
+      "lyricsPrompt": "Lời bài hát Bossa Nova phong cách nhẹ nhàng, ngắm nhìn giọt cà phê phin rơi từng giọt chậm rãi giữa buổi chiều thu Hà Nội",
+      "clipId": "e5f6a7b8-9012-34ef-0123-5678901234ef",
+      "songUrl": "https://suno.com/song/e5f6a7b8-9012-34ef-0123-5678901234ef",
+      "taskStatus": "completed",
+      "tempo": "84 bpm",
+      "vocalType": "male"
+    },
+    "audio": {
+      "fileName": "giot-ca-phe-chieu.mp3",
+      "audioUrl": "https://cdn1.suno.ai/e5f6a7b8-9012-34ef-0123-5678901234ef.mp3",
+      "duration": "03:22",
+      "durationSeconds": 202,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Acoustic Warm)"
+    },
+    "youtube": {
+      "title": "Giọt Cà Phê Chiều | Nhạc Acoustic Bossa Nova Thư Giãn Cuối Tuần",
+      "status": "draft",
+      "description": "Thưởng thức tách cà phê chiều cùng giai điệu Bossa Nova mộc mạc.",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\n(Tiếng gảy guitar nylon nhịp bossa nova bập bùng, tiếng chổi quét mặt trống jazz xào xạc)\n\n[Verse 1]\nGóc quán quen nhìn ra con phố nhỏ\nChiều buông lơi trên từng nhành cây xanh\nGiọt cà phê từng giọt rơi chậm rãi\nĐếm thời gian trôi qua kẽ tay mềm.\n\n[Verse 2]\nCuốn sách cũ lật từng trang thương nhớ\nTiếng nhạc êm ru lòng người bâng khuâng\nNgoài hiên vắng hoàng hôn vừa đổ bóng\nChút gió thu man mác đưa hương trà.\n\n[Chorus]\nTừng giọt đắng... hòa tan cùng giọt ngọt\nNhư cuộc đời có buồn và có vui\nNhấp một ngụm thấy lòng mình tĩnh lặng\nQuên hết đi những vất vả bon chen.\n(La la la... chiều êm đềm trôi...)\n\n[Bridge]\n(Đoạn solo kèn saxophone dịu ngọt hòa quyện cùng piano jazz)\nChẳng mong ước chi những điều to tát\nChỉ mong một buổi chiều thảnh thơi...\n\n[Chorus]\nTừng giọt đắng... hòa tan cùng giọt ngọt\nNhư cuộc đời có buồn và có vui\nNhấp một ngụm thấy lòng mình tĩnh lặng\nQuên hết đi những vất vả bon chen.\n\n[Outro]\nTách cà phê đã cạn...\nNắng chiều cũng phai dần...\nHẹn lại ngày mai nhé quán nhỏ thân quen.\n(Tiếng guitar bossa nova rải nốt chậm dần rồi khép lại)\n[End]",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "(Tiếng gảy guitar nylon nhịp bossa nova bập bùng, tiếng chổi quét mặt trống jazz xào xạc)"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Góc quán quen nhìn ra con phố nhỏ\nChiều buông lơi trên từng nhành cây xanh\nGiọt cà phê từng giọt rơi chậm rãi\nĐếm thời gian trôi qua kẽ tay mềm."
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Cuốn sách cũ lật từng trang thương nhớ\nTiếng nhạc êm ru lòng người bâng khuâng\nNgoài hiên vắng hoàng hôn vừa đổ bóng\nChút gió thu man mác đưa hương trà."
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Từng giọt đắng... hòa tan cùng giọt ngọt\nNhư cuộc đời có buồn và có vui\nNhấp một ngụm thấy lòng mình tĩnh lặng\nQuên hết đi những vất vả bon chen.\n(La la la... chiều êm đềm trôi...)"
+      },
+      {
+        "tag": "[Bridge]",
+        "content": "(Đoạn solo kèn saxophone dịu ngọt hòa quyện cùng piano jazz)\nChẳng mong ước chi những điều to tát\nChỉ mong một buổi chiều thảnh thơi..."
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Từng giọt đắng... hòa tan cùng giọt ngọt\nNhư cuộc đời có buồn và có vui\nNhấp một ngụm thấy lòng mình tĩnh lặng\nQuên hết đi những vất vả bon chen."
+      },
+      {
+        "tag": "[Outro]",
+        "content": "Tách cà phê đã cạn...\nNắng chiều cũng phai dần...\nHẹn lại ngày mai nhé quán nhỏ thân quen.\n(Tiếng guitar bossa nova rải nốt chậm dần rồi khép lại)"
+      },
+      {
+        "tag": "[End]",
+        "content": ""
+      }
+    ],
+    "productionNotes": "- Vừa tạo xong trên Suno v4, âm thanh guitar nylon rất thật và nảy.\n- Kế hoạch: Thu thêm voice giới thiệu đầu bài, chuẩn bị xuất video YouTube dạng lofi/chillout.",
+    "filePath": "data/songs/giot-ca-phe-chieu.md"
+  },
+  {
+    "id": "song-001",
+    "slug": "ngay-mai-nang-len",
+    "title": "Ngày Mai Nắng Lên",
+    "artist": "Quân & Suno AI",
+    "genre": "Acoustic Pop Ballad",
+    "tags": [
+      "#acoustic",
+      "#ballad",
+      "#vietnamese",
+      "#healing",
+      "#hope"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-15",
+    "updatedAt": "2026-10-22",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Vietnamese acoustic ballad, warm male vocal, gentle acoustic guitar, emotional piano, optimistic, healing vibe, 76 bpm",
+      "lyricsPrompt": "Viết lời bài hát ballad Việt Nam về niềm tin ngày mai nắng lên xua tan giông bão tuổi trẻ",
+      "clipId": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+      "songUrl": "https://suno.com/song/a1b2c3d4-5678-90ab-cdef-1234567890ab",
+      "taskStatus": "completed",
+      "tempo": "76 bpm",
+      "vocalType": "male"
+    },
+    "audio": {
+      "fileName": "ngay-mai-nang-len.mp3",
+      "filePath": "public/audio/ngay-mai-nang-len.mp3",
+      "audioUrl": "https://cdn1.suno.ai/a1b2c3d4-5678-90ab-cdef-1234567890ab.mp3",
+      "duration": "03:32",
+      "durationSeconds": 212,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 2 (Best Warm Vocal)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "videoId": "dQw4w9WgXcQ",
+      "title": "Ngày Mai Nắng Lên | Official Audio Lyric Video | Suno AI Music",
+      "publishedAt": "2026-10-18T20:00:00Z",
+      "status": "public",
+      "views": 1240,
+      "thumbnailUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+      "description": "Bài hát Ngày Mai Nắng Lên do Suno AI sáng tác. Lời bài hát chữa lành tâm hồn cho những ngày mệt mỏi...",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\n(Tiếng guitar mộc nhẹ nhàng rải nốt, tiếng mưa nhỏ dần rồi tắt hẳn)\n\n[Verse 1]\nBước qua những ngày giông bão ngập tràn lối đi\nĐôi vai gầy mang theo bao âu lo hoài nghi\nTừng hạt mưa rơi buốt lạnh đôi bàn tay\nTự hỏi bao giờ ánh nắng sẽ về nơi đây?\n\n[Pre-Chorus]\nNhưng em ơi đừng vội buông xuôi\nĐằng sau màn đêm là bình minh hé môi cười\nDù con đường dài và muôn ngàn gian khó\nChỉ cần trong tim vẫn cháy ngọn lửa nhỏ.\n\n[Chorus]\nNgày mai nắng sẽ lên, xua tan đi màn mây tối\nNụ cười sẽ lại nở trên môi người tôi yêu\nBao nhiêu đớn đau xưa chỉ là một khúc dạo đầu\nĐể ta thêm trân quý những ngày bình yên sau giông bão.\n(Nắng ấm chan hòa, rực rỡ chân trời)\n\n[Verse 2]\nNhững vết thương rồi cũng sẽ lành theo tháng năm\nNhững giọt nước mắt hóa thành đóa hoa âm thầm\nGió sẽ mang đi những muộn phiền cay đắng\nĐể lòng ta nhẹ như mây trời thênh thang.\n\n[Bridge]\n(Nhịp trống chậm rãi dồn dập, tiếng violin ngân vang)\nCó những ngày tưởng chừng ngã gục\nLại là ngày ta tìm thấy chính mình\nVượt qua đêm đen là ánh bình minh!\n\n[Chorus]\nNgày mai nắng sẽ lên, xua tan đi màn mây tối\nNụ cười sẽ lại nở trên môi người tôi yêu\nBao nhiêu đớn đau xưa chỉ là một khúc dạo đầu\nĐể ta thêm trân quý những ngày bình yên sau giông bão.\n\n[Guitar Solo]\n(Đoạn solo acoustic guitar da diết, vút cao rồi lắng lại)\n\n[Outro]\nNgày mai nắng lên...\nBình yên sẽ về...\n(Tiếng guitar rải nốt cuối cùng tan dần)\n[Fade Out]\n[End]",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "(Tiếng guitar mộc nhẹ nhàng rải nốt, tiếng mưa nhỏ dần rồi tắt hẳn)"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Bước qua những ngày giông bão ngập tràn lối đi\nĐôi vai gầy mang theo bao âu lo hoài nghi\nTừng hạt mưa rơi buốt lạnh đôi bàn tay\nTự hỏi bao giờ ánh nắng sẽ về nơi đây?"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Nhưng em ơi đừng vội buông xuôi\nĐằng sau màn đêm là bình minh hé môi cười\nDù con đường dài và muôn ngàn gian khó\nChỉ cần trong tim vẫn cháy ngọn lửa nhỏ."
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Ngày mai nắng sẽ lên, xua tan đi màn mây tối\nNụ cười sẽ lại nở trên môi người tôi yêu\nBao nhiêu đớn đau xưa chỉ là một khúc dạo đầu\nĐể ta thêm trân quý những ngày bình yên sau giông bão.\n(Nắng ấm chan hòa, rực rỡ chân trời)"
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Những vết thương rồi cũng sẽ lành theo tháng năm\nNhững giọt nước mắt hóa thành đóa hoa âm thầm\nGió sẽ mang đi những muộn phiền cay đắng\nĐể lòng ta nhẹ như mây trời thênh thang."
+      },
+      {
+        "tag": "[Bridge]",
+        "content": "(Nhịp trống chậm rãi dồn dập, tiếng violin ngân vang)\nCó những ngày tưởng chừng ngã gục\nLại là ngày ta tìm thấy chính mình\nVượt qua đêm đen là ánh bình minh!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Ngày mai nắng sẽ lên, xua tan đi màn mây tối\nNụ cười sẽ lại nở trên môi người tôi yêu\nBao nhiêu đớn đau xưa chỉ là một khúc dạo đầu\nĐể ta thêm trân quý những ngày bình yên sau giông bão."
+      },
+      {
+        "tag": "[Guitar Solo]",
+        "content": "(Đoạn solo acoustic guitar da diết, vút cao rồi lắng lại)"
+      },
+      {
+        "tag": "[Outro]",
+        "content": "Ngày mai nắng lên...\nBình yên sẽ về...\n(Tiếng guitar rải nốt cuối cùng tan dần)"
+      },
+      {
+        "tag": "[Fade Out]",
+        "content": ""
+      },
+      {
+        "tag": "[End]",
+        "content": ""
+      }
+    ],
+    "productionNotes": "- Bản Suno gen lần 2 (Take 2) vocal ấm và khớp nhịp nhất.\n- Video lyric tạo bằng Remotion/CapCut 1080p 60fps.\n- Đã publish YouTube vào lúc 20:00 tối thứ 7.",
+    "filePath": "data/songs/ngay-mai-nang-len.md"
+  },
+  {
+    "id": "song-004",
+    "slug": "thanh-xuan-ruc-ro",
+    "title": "Thanh Xuân Rực Rỡ",
+    "artist": "Quân & Suno AI",
+    "genre": "V-Pop Dance",
+    "tags": [
+      "#vpop",
+      "#dance",
+      "#summer",
+      "#youth",
+      "#energy"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-10",
+    "updatedAt": "2026-10-17",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Modern Vietnamese pop dance, energetic synthesizer drop, catchy hook, bright cheerful female vocal, youth festival atmosphere, summer beach party vibe, 126 bpm",
+      "lyricsPrompt": "Lời bài hát V-Pop sôi động về chuyến đi phượt mùa hè của nhóm bạn trẻ, tràn ngập năng lượng và nụ cười",
+      "clipId": "d4e5f6a7-8901-23de-f012-4567890123de",
+      "songUrl": "https://suno.com/song/d4e5f6a7-8901-23de-f012-4567890123de",
+      "taskStatus": "completed",
+      "tempo": "126 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "thanh-xuan-ruc-ro.mp3",
+      "filePath": "public/audio/thanh-xuan-ruc-ro.mp3",
+      "audioUrl": "https://cdn1.suno.ai/d4e5f6a7-8901-23de-f012-4567890123de.mp3",
+      "duration": "02:58",
+      "durationSeconds": 178,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 4 (Catchy Club Edit)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
+      "videoId": "3JZ_D3ELwOQ",
+      "title": "Thanh Xuân Rực Rỡ | V-Pop Mùa Hè Sôi Động Bùng Cháy | Suno AI Music",
+      "publishedAt": "2026-10-14T19:00:00Z",
+      "status": "public",
+      "views": 8900,
+      "thumbnailUrl": "https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg",
+      "description": "Cùng quẩy hết mình với Thanh Xuân Rực Rỡ. Đừng để tuổi trẻ trôi qua trong tiếc nuối!",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\n(Synthesizer plucks nảy bật, tiếng đếm nhịp 1 2 3 go! và bassline bắt đầu tăng tốc)\n\n[Verse 1]\nXách vali lên và đi thôi nào\nBỏ lại sau lưng thành phố ồn ào\nGió biển mơn man thổi tung mái tóc\nNắng hè rực rỡ lấp lánh nụ cười xinh.\n\n[Pre-Chorus]\nNào ta cùng bước, tay trong tay\nBầu trời xanh ngắt rộng mở chân mây\nĐời có bao lâu mà cứ đắn đo\nHãy cháy hết mình cho tuổi đôi mươi!\n\n[Chorus]\nThanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!\n(Hey! Ho! Quẩy lên nào!)\n[Dance Drop with Funky Bass & Brass Synth]\n\n[Verse 2]\nĐốt lửa trại bập bùng trong đêm tối\nKể nhau nghe những ước mơ đầu đời\nDẫu mai này mỗi người một lối rẽ\nKỷ niệm này sẽ sống mãi trong tim.\n\n[Bridge]\n(Nhịp vỗ tay dồn dập build-up)\n1, 2, 3... Hãy hét thật to!\n1, 2, 3... Hãy bay thật cao!\nTuổi trẻ ơi... ta không bao giờ hối tiếc!\n\n[Chorus]\nThanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!\n[Catchy Synth Drop]\n\n[Outro]\nThanh xuân rực rỡ...\nMãi mãi bên nhau nhé bạn ơi!\n[Fade Out]",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "(Synthesizer plucks nảy bật, tiếng đếm nhịp 1 2 3 go! và bassline bắt đầu tăng tốc)"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Xách vali lên và đi thôi nào\nBỏ lại sau lưng thành phố ồn ào\nGió biển mơn man thổi tung mái tóc\nNắng hè rực rỡ lấp lánh nụ cười xinh."
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Nào ta cùng bước, tay trong tay\nBầu trời xanh ngắt rộng mở chân mây\nĐời có bao lâu mà cứ đắn đo\nHãy cháy hết mình cho tuổi đôi mươi!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Thanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!\n(Hey! Ho! Quẩy lên nào!)"
+      },
+      {
+        "tag": "[Dance Drop with Funky Bass & Brass Synth]",
+        "content": ""
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Đốt lửa trại bập bùng trong đêm tối\nKể nhau nghe những ước mơ đầu đời\nDẫu mai này mỗi người một lối rẽ\nKỷ niệm này sẽ sống mãi trong tim."
+      },
+      {
+        "tag": "[Bridge]",
+        "content": "(Nhịp vỗ tay dồn dập build-up)\n1, 2, 3... Hãy hét thật to!\n1, 2, 3... Hãy bay thật cao!\nTuổi trẻ ơi... ta không bao giờ hối tiếc!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Thanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!"
+      },
+      {
+        "tag": "[Catchy Synth Drop]",
+        "content": ""
+      },
+      {
+        "tag": "[Outro]",
+        "content": "Thanh xuân rực rỡ...\nMãi mãi bên nhau nhé bạn ơi!"
+      },
+      {
+        "tag": "[Fade Out]",
+        "content": ""
+      }
+    ],
+    "filePath": "data/songs/thanh-xuan-ruc-ro.md"
+  }
+]
