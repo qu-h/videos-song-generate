@@ -55,6 +55,9 @@
     "build": "node scripts/build-songs-data.mjs && tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@quan/theme-glassmorphism": "file:../theme-glassmorphism"
+  },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"

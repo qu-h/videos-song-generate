@@ -15,6 +15,8 @@ export interface SongManagerProps {
   title?: string;
   description?: string;
   className?: string;
+  glassPreset?: 'aurora' | 'frost';
+  glassScenery?: 'northwest' | 'ha-long' | 'tuan-chau' | 'phu-quoc' | 'hai-van';
 }
 
 export const SongManager: React.FC<SongManagerProps> = ({
@@ -22,6 +24,8 @@ export const SongManager: React.FC<SongManagerProps> = ({
   title = 'Quản lý Bài hát Suno AI & YouTube',
   description = 'Quản lý tập trung Prompt Suno, File MP3 âm thanh, Link YouTube đã publish và lời bài hát dạng Markdown trên source code.',
   className = '',
+  glassPreset = 'aurora',
+  glassScenery = 'northwest',
 }) => {
   const [songs] = useState<SongItem[]>(initialSongs);
   const [search, setSearch] = useState('');
@@ -82,7 +86,7 @@ export const SongManager: React.FC<SongManagerProps> = ({
   };
 
   return (
-    <div className={`vsg-container ${className}`}>
+    <div className={`vsg-container theme-glassmorphism ${className}`} data-glass-preset={glassPreset} data-glass-scenery={glassScenery}>
       {/* Top Banner Header */}
       <header className="vsg-header">
         <div className="vsg-header-left">
