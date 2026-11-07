@@ -7,3 +7,4 @@ export * from './PromptBox';
 export * from './LyricsViewer';
 export * from './SongStatsOverview';
 
+export * from './TextToJsonConverter';

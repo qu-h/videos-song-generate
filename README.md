@@ -212,3 +212,15 @@ export default async function ServerPage() {
 }
 ```
 
+
+
+## Chuyển văn bản nhiều dòng sang JSON
+
+Trong `SongManager`, mở menu **Văn bản → JSON**, dán văn bản rồi chọn **Sao chép chuỗi JSON**.
+Kết quả gồm cả dấu nháy kép ngoài cùng; dán trực tiếp vào giá trị của trường JSON.
+Có thể nhập tên trường (mặc định `lyrics`) và sao chép object JSON hoàn chỉnh.
+Công cụ giữ nguyên nội dung, escape xuống dòng, dấu nháy và dấu gạch chéo ngược;
+không tự sửa file bài hát hoặc bundle dữ liệu.
+
+Dùng độc lập: import `TextToJsonConverter` từ `@quan/videos-song-generate/react` và stylesheet của package.
+API `textToJsonString(text)` / `textToJsonObject(text, propertyName)` nằm trong `@quan/videos-song-generate/core`.

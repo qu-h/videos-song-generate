@@ -1535,3 +1535,28 @@
   }
 }
 
+
+
+/* Text to JSON utility */
+.vsg-tool-panel[hidden] { display: none !important; }
+.vsg-tools-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.vsg-tools-nav button { border: 1px solid var(--tg-border,var(--vsg-border)); padding: 10px 16px; border-radius: 10px; color: var(--tg-text,var(--vsg-text)); background: var(--tg-surface,var(--vsg-surface)); font-size: 14px; cursor: pointer; }
+.vsg-tools-nav button[aria-pressed="true"] { background: var(--vsg-primary); border-color: var(--vsg-primary); color: #fff; }
+.vsg-json-tool { color: var(--tg-text,var(--vsg-text,#f8fafc)); }
+.vsg-json-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: start; gap: 16px; margin-bottom: 24px; }
+.vsg-json-heading h2 { font-size: 24px; margin: 0 0 8px; font-weight: 700; }
+.vsg-json-heading p { max-width: 720px; color: var(--tg-muted,var(--vsg-text-muted)); line-height: 1.7; margin: 0; }
+.vsg-json-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.vsg-json-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+.vsg-json-panel { min-width: 0; padding: 20px; border: 1px solid var(--tg-border,var(--vsg-border)); border-radius: 14px; background: var(--tg-surface,var(--vsg-surface)); backdrop-filter: blur(24px); }
+.vsg-json-panel label { display: block; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+.vsg-json-label-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.vsg-json-label-row label { margin: 0; }
+.vsg-json-textarea { display: block; box-sizing: border-box; width: 100%; min-width: 0; padding: 14px; border: 1px solid var(--tg-border,var(--vsg-border)); border-radius: 8px; background: #0f172acc; color: #f8fafc; font: 14px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace; resize: vertical; overflow-wrap: anywhere; }
+.vsg-json-textarea:focus, .vsg-json-panel input:focus { outline: 2px solid var(--vsg-primary); outline-offset: 2px; }
+.vsg-json-object { margin-top: 20px; }
+.vsg-json-object > input { width: 100%; max-width: 340px; padding: 10px 12px; border: 1px solid var(--tg-border,var(--vsg-border)); border-radius: 8px; background: #0f172acc; }
+.vsg-json-panel .vsg-json-object-label { margin-top: 16px; }
+.vsg-json-help { color: var(--tg-muted,var(--vsg-text-muted)); font-size: 13px; line-height: 1.7; margin: 12px 0 0; }
+.vsg-json-status { min-height: 24px; color: var(--tg-text,var(--vsg-text)); font-size: 14px; margin: 16px 0 0; }
+@media(max-width:768px) { .vsg-json-grid { grid-template-columns: minmax(0,1fr); } .vsg-json-panel { padding: 14px; } }

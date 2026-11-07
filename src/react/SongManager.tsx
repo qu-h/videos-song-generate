@@ -9,6 +9,7 @@ import { SongStatsOverview } from './SongStatsOverview';
 import { SongCard } from './SongCard';
 import { SongDetailModal } from './SongDetailModal';
 import { AudioPlayer } from './AudioPlayer';
+import { TextToJsonConverter } from './TextToJsonConverter';
 
 export interface SongManagerProps {
   initialSongs?: SongItem[];
@@ -29,6 +30,7 @@ export const SongManager: React.FC<SongManagerProps> = ({
 }) => {
   const [songs] = useState<SongItem[]>(initialSongs);
   const [search, setSearch] = useState('');
+  const [activeTool, setActiveTool] = useState<'songs' | 'json'>('songs');
   const [selectedStatus, setSelectedStatus] = useState<SongStatus | 'all'>('all');
   const [selectedGenre, setSelectedGenre] = useState<string>('all');
   const [filterMp3Only, setFilterMp3Only] = useState<boolean>(false);
@@ -111,6 +113,12 @@ export const SongManager: React.FC<SongManagerProps> = ({
         </div>
       </header>
 
+      <nav className="vsg-tools-nav" aria-label="Công cụ bài hát">
+        <button type="button" aria-pressed={activeTool === 'songs'} onClick={() => setActiveTool('songs')}>Thư viện bài hát</button>
+        <button type="button" aria-pressed={activeTool === 'json'} onClick={() => {setActiveTool('json'); setIsModalOpen(false); setPlayingSong(null);}}>Văn bản → JSON</button>
+      </nav>
+      <div className="vsg-tool-panel" hidden={activeTool !== 'json'}><TextToJsonConverter /></div>
+      <div className="vsg-tool-panel" hidden={activeTool !== 'songs'}>
       {/* Stats Bar */}
       <SongStatsOverview stats={stats} />
 
@@ -280,6 +288,7 @@ export const SongManager: React.FC<SongManagerProps> = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,61 @@
 [
   {
+    "id": "be-chay-ra-vuon",
+    "slug": "dem-thanh-pho-mua",
+    "title": "Bé chạy ra vườn 🌿",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Vietnamese lofi chillhop, smooth female vocal, jazzy electric piano, vinyl crackle, mellow bassline, rainy night atmosphere, 82 bpm",
+      "lyricsPrompt": "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=Dwj1Ip-1nV4",
+      "videoId": "Dwj1Ip-1nV4",
+      "title": "Bé chạy ra vườn 🌿",
+      "publishedAt": "2026-10-20T21:30:00Z",
+      "status": "public",
+      "views": 44,
+      "thumbnailUrl": "https://img.youtube.com/vi/Dwj1Ip-1nV4/hqdefault.jpg",
+      "description": "",
+      "isShort": false
+    },
+    "lyrics": "*(Verse 1)*\nSáng sớm nắng lên, chim hót líu lo\nBé con thức dậy, mắt tròn xinh xô\nLon ton bước nhỏ, chạy ra ngoài hiên\nÔ kìa vườn xanh, gọi bé thật êm\n\n*(Chorus)*\nLa la la, bé cười vang\nChạy ra vườn, nắng dịu dàng\nHoa rung rinh, bướm bay gần\nÔm cả trời xanh trong vòng tay bé\n\n*(Verse 2)*\nKìa bông hoa đỏ, kìa lá xanh non\nChim bay ngang đầu, hót véo von\nBé đưa tay nhỏ, bắt nắng lung linh\nCả khu vườn nhỏ, hóa thành chuyện xinh\n\n*(Chorus)*\nLa la la, bé cười vang\nChạy ra vườn, nắng dịu dàng\nÔng bà nhìn theo, tim rộn ràng\nYêu từng bước chân bé ngoan\n\n*(Bridge)*\nGió khe khẽ hát, ru cành cây\nBé xoay vòng tròn, cười mê say\nNhặt chiếc lá nhỏ, giơ lên cao\n“Vườn của con đó!” – bé thì thào\n\n*(Outro)*\nLa la la, ngày thật vui\nBé yêu vườn, bé yêu đời\nMai lại chạy ra, nắng đợi rồi\nKhu vườn nhỏ – cả thế giới của bé 🌼",
+    "lyricsSections": [
+      {
+        "tag": "[Full Lyrics]",
+        "content": "*(Verse 1)*\nSáng sớm nắng lên, chim hót líu lo\nBé con thức dậy, mắt tròn xinh xô\nLon ton bước nhỏ, chạy ra ngoài hiên\nÔ kìa vườn xanh, gọi bé thật êm\n\n*(Chorus)*\nLa la la, bé cười vang\nChạy ra vườn, nắng dịu dàng\nHoa rung rinh, bướm bay gần\nÔm cả trời xanh trong vòng tay bé\n\n*(Verse 2)*\nKìa bông hoa đỏ, kìa lá xanh non\nChim bay ngang đầu, hót véo von\nBé đưa tay nhỏ, bắt nắng lung linh\nCả khu vườn nhỏ, hóa thành chuyện xinh\n\n*(Chorus)*\nLa la la, bé cười vang\nChạy ra vườn, nắng dịu dàng\nÔng bà nhìn theo, tim rộn ràng\nYêu từng bước chân bé ngoan\n\n*(Bridge)*\nGió khe khẽ hát, ru cành cây\nBé xoay vòng tròn, cười mê say\nNhặt chiếc lá nhỏ, giơ lên cao\n“Vườn của con đó!” – bé thì thào\n\n*(Outro)*\nLa la la, ngày thật vui\nBé yêu vườn, bé yêu đời\nMai lại chạy ra, nắng đợi rồi\nKhu vườn nhỏ – cả thế giới của bé 🌼"
+      }
+    ],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/be-chay-ra-vuon.md"
+  },
+  {
     "id": "song-002",
     "slug": "dem-thanh-pho-mua",
     "title": "Đêm Thành Phố Mưa",
@@ -347,6 +403,90 @@
     ],
     "productionNotes": "- Bản Suno gen lần 2 (Take 2) vocal ấm và khớp nhịp nhất.\n- Video lyric tạo bằng Remotion/CapCut 1080p 60fps.\n- Đã publish YouTube vào lúc 20:00 tối thứ 7.",
     "filePath": "data/songs/ngay-mai-nang-len.md"
+  },
+  {
+    "id": "nhim-va-gio-san-truong",
+    "slug": "nhim-va-gio-san-truong",
+    "title": "NHÍM VÀ GIÓ SÂN TRƯỜNG 🎵",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Vietnamese lofi chillhop, smooth female vocal, jazzy electric piano, vinyl crackle, mellow bassline, rainy night atmosphere, 82 bpm",
+      "lyricsPrompt": "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=tqV2vYxFJs4",
+      "videoId": "tqV2vYxFJs4",
+      "title": "Nhím và gió sân trường 🎵 ",
+      "publishedAt": "2026-03-29T21:30:00Z",
+      "status": "public",
+      "views": 115,
+      "thumbnailUrl": "https://img.youtube.com/vi/tqV2vYxFJs4/hqdefault.jpg",
+      "description": "#cutebaby #gio #santruong.",
+      "isShort": false
+    },
+    "lyrics": "**🎵 BÀI HÁT: NHÍM VÀ GIÓ SÂN TRƯỜNG (≈ 2:19) 🎵**\n\n**[Intro – nhẹ, 6s]**\nLa la la… gió bay nhẹ… Nhím cười vui…\n\n**[Verse 1 – 25s]**\nNhím tung tăng ra sân trường\nNắng vàng vương trên con đường\nBước chân nhỏ xinh xinh quá\nChạy vòng quanh đầy yêu thương\n\nGió khẽ lay hàng lá xanh\nKhẽ gọi tên em rất nhanh\nTóc bay bay như mây trắng\nTheo tiếng cười trong veo lành\n\n**[Pre-Chorus – 15s]**\nÔ kìa gió đang đuổi theo\nNhím chạy nhanh qua góc sân\nBạn bè cười vang ríu rít\nMột ngày vui thật trong ngần\n\n**[Chorus – 35s]**\nNhím ơi, chạy nhanh nào!\nGió theo em lao xao\nTóc bay như cánh diều nhỏ\nBay lên trời cao cao\n\nNhím ơi, cười vang nhé!\nNắng hong đôi má hồng\nSân trường đầy bao tiếng hát\nTuổi thơ vui mênh mông\n\n**[Verse 2 – 25s]**\nNhím xoay vòng như cánh hoa\nGiữa trời xanh bao la\nChiếc váy xinh bay theo gió\nNhư đang hát khúc ca\n\nTiếng chim reo trên hàng cây\nGọi niềm vui về đây\nNhím cùng bạn chơi trốn tìm\nCả sân trường mê say\n\n**[Bridge – 18s]**\nGió ơi đừng bay xa nhé\nỞ lại chơi cùng Nhím thôi\nCho tóc em bay mãi mãi\nTrong nắng vàng tuyệt vời\n\n**[Final Chorus – 30s]**\nNhím ơi, chạy nhanh nào!\nGió theo em lao xao\nMang theo bao điều mơ ước\nBay lên trời cao cao\n\nNhím ơi, cười vang nhé!\nGiữ tuổi thơ trong tim\nSân trường và cơn gió nhỏ\nSẽ theo em lặng im\n\n**[Outro – 5s]**\nLa la la… Nhím và gió… mãi vui…",
+    "lyricsSections": [
+      {
+        "tag": "[Intro – nhẹ, 6s]",
+        "content": "**\nLa la la… gió bay nhẹ… Nhím cười vui…\n\n**"
+      },
+      {
+        "tag": "[Verse 1 – 25s]",
+        "content": "**\nNhím tung tăng ra sân trường\nNắng vàng vương trên con đường\nBước chân nhỏ xinh xinh quá\nChạy vòng quanh đầy yêu thương\n\nGió khẽ lay hàng lá xanh\nKhẽ gọi tên em rất nhanh\nTóc bay bay như mây trắng\nTheo tiếng cười trong veo lành\n\n**"
+      },
+      {
+        "tag": "[Pre-Chorus – 15s]",
+        "content": "**\nÔ kìa gió đang đuổi theo\nNhím chạy nhanh qua góc sân\nBạn bè cười vang ríu rít\nMột ngày vui thật trong ngần\n\n**"
+      },
+      {
+        "tag": "[Chorus – 35s]",
+        "content": "**\nNhím ơi, chạy nhanh nào!\nGió theo em lao xao\nTóc bay như cánh diều nhỏ\nBay lên trời cao cao\n\nNhím ơi, cười vang nhé!\nNắng hong đôi má hồng\nSân trường đầy bao tiếng hát\nTuổi thơ vui mênh mông\n\n**"
+      },
+      {
+        "tag": "[Verse 2 – 25s]",
+        "content": "**\nNhím xoay vòng như cánh hoa\nGiữa trời xanh bao la\nChiếc váy xinh bay theo gió\nNhư đang hát khúc ca\n\nTiếng chim reo trên hàng cây\nGọi niềm vui về đây\nNhím cùng bạn chơi trốn tìm\nCả sân trường mê say\n\n**"
+      },
+      {
+        "tag": "[Bridge – 18s]",
+        "content": "**\nGió ơi đừng bay xa nhé\nỞ lại chơi cùng Nhím thôi\nCho tóc em bay mãi mãi\nTrong nắng vàng tuyệt vời\n\n**"
+      },
+      {
+        "tag": "[Final Chorus – 30s]",
+        "content": "**\nNhím ơi, chạy nhanh nào!\nGió theo em lao xao\nMang theo bao điều mơ ước\nBay lên trời cao cao\n\nNhím ơi, cười vang nhé!\nGiữ tuổi thơ trong tim\nSân trường và cơn gió nhỏ\nSẽ theo em lặng im\n\n**"
+      },
+      {
+        "tag": "[Outro – 5s]",
+        "content": "**\nLa la la… Nhím và gió… mãi vui…"
+      }
+    ],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/nhim-va-gio-san-truong.md"
   },
   {
     "id": "song-004",
