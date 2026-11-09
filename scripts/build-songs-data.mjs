@@ -105,6 +105,16 @@ function parseYamlFrontmatter(frontmatterText) {
   return result;
 }
 
+function toSlug(value) {
+  return String(value)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đĐ]/g, 'd')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 function extractYouTubeId(urlOrId) {
   if (!urlOrId) return undefined;
   const trimmed = urlOrId.trim();
@@ -163,12 +173,12 @@ function parseSongFile(filePath) {
     title = h1Match[1].trim();
   }
 
-  const h2Regex = /^##\s+(.+)$/gm;
-  const h2Matches = [...bodyText.matchAll(h2Regex)];
-  for (let i = 0; i < h2Matches.length; i++) {
-    const heading = h2Matches[i][1].trim().toLowerCase();
-    const startIndex = h2Matches[i].index + h2Matches[i][0].length;
-    const nextIndex = i + 1 < h2Matches.length ? h2Matches[i + 1].index : bodyText.length;
+  const sectionHeadingRegex = /^#{1,2}\s+(.+)$/gm;
+  const sectionHeadings = [...bodyText.matchAll(sectionHeadingRegex)];
+  for (let i = 0; i < sectionHeadings.length; i++) {
+    const heading = sectionHeadings[i][1].trim().toLowerCase();
+    const startIndex = sectionHeadings[i].index + sectionHeadings[i][0].length;
+    const nextIndex = i + 1 < sectionHeadings.length ? sectionHeadings[i + 1].index : bodyText.length;
     const sectionContent = bodyText.slice(startIndex, nextIndex).trim();
 
     if (heading.includes('lời') || heading.includes('lyrics')) {
@@ -179,17 +189,16 @@ function parseSongFile(filePath) {
   }
 
   const fallbackSlug = path.basename(filePath, '.md');
-  const slug = (data.slug || fallbackSlug).toString().trim();
-  const id = (data.id || `song-${slug}`).toString().trim();
+  const slug = toSlug(title || fallbackSlug);
+  const id = `song-${slug}`;
 
   const rawSuno = data.suno || {};
   const rawAudio = data.audio || {};
   const rawYoutube = data.youtube || {};
 
-  const ytPublishedUrl = rawYoutube.publishedUrl || rawYoutube.url;
-  const ytVideoId = rawYoutube.videoId || extractYouTubeId(ytPublishedUrl);
-  const ytThumbnail =
-    rawYoutube.thumbnailUrl || (ytVideoId ? `https://img.youtube.com/vi/${ytVideoId}/hqdefault.jpg` : undefined);
+  const ytVideoId = extractYouTubeId(rawYoutube.videoId || rawYoutube.publishedUrl || rawYoutube.url);
+  const ytPublishedUrl = ytVideoId ? `https://www.youtube.com/watch?v=${ytVideoId}` : undefined;
+  const ytThumbnail = ytVideoId ? `https://img.youtube.com/vi/${ytVideoId}/hqdefault.jpg` : undefined;
 
   let status = data.status || 'draft';
   if (!data.status) {
@@ -204,7 +213,7 @@ function parseSongFile(filePath) {
     ? data.tags.split(',').map((t) => t.trim())
     : [];
 
-  const relativePath = path.relative(rootDir, filePath).replace(/\\/g, '/');
+  const relativePath = `data/songs/${slug}.md`;
 
   return {
     id,
@@ -265,11 +274,22 @@ if (!fs.existsSync(songsDir)) {
 
 const files = fs.readdirSync(songsDir).filter((f) => f.endsWith('.md'));
 const songs = [];
+const usedSlugs = new Set();
 
 for (const file of files) {
   const fullPath = path.join(songsDir, file);
   try {
     const song = parseSongFile(fullPath);
+    if (usedSlugs.has(song.slug)) {
+      const fileSlug = toSlug(path.basename(file, '.md'));
+      song.slug = `${song.slug}-${fileSlug}`;
+      song.id = `song-${song.slug}`;
+      song.filePath = `data/songs/${song.slug}.md`;
+      if (song.audio.fileName === `${toSlug(song.title)}.mp3`) {
+        song.audio.fileName = `${song.slug}.mp3`;
+      }
+    }
+    usedSlugs.add(song.slug);
     songs.push(song);
     console.log(`  ✓ Loaded: [${song.status}] ${song.title} (${file})`);
   } catch (err) {

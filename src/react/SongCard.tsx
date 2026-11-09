@@ -8,6 +8,7 @@ export interface SongCardProps {
   isPlaying?: boolean;
   onPlayToggle?: (song: SongItem) => void;
   onSelect: (song: SongItem) => void;
+  onSelectTag?: (tag: string) => void;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export const SongCard: React.FC<SongCardProps> = ({
   isPlaying = false,
   onPlayToggle,
   onSelect,
+  onSelectTag,
   className = '',
 }) => {
   const hasAudio = Boolean(song.audio.audioUrl || song.audio.filePath);
@@ -111,9 +113,9 @@ export const SongCard: React.FC<SongCardProps> = ({
         {song.tags && song.tags.length > 0 && (
           <div className="vsg-card-tags">
             {song.tags.slice(0, 3).map((tag, idx) => (
-              <span key={idx} className="vsg-tag-chip">
+              <button key={idx} type="button" className="vsg-tag-chip" onClick={(event) => { event.stopPropagation(); onSelectTag?.(tag); }}>
                 {tag.startsWith('#') ? tag : `#${tag}`}
-              </span>
+              </button>
             ))}
             {song.tags.length > 3 && (
               <span className="vsg-tag-more">+{song.tags.length - 3}</span>

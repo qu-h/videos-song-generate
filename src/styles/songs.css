@@ -485,6 +485,13 @@
   color: var(--vsg-text-muted);
   padding: 2px 8px;
   border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+.vsg-tag-chip:hover, .vsg-tag-badge:hover {
+  color: #c4b5fd;
+  border-color: #8b5cf6;
 }
 
 .vsg-tag-more {
@@ -680,12 +687,65 @@
 
 /* Audio Player */
 .vsg-audio-player {
-  background-color: var(--vsg-surface-alt);
+  background: linear-gradient(145deg, #111827 0%, #151b2b 60%, #17132a 100%);
   border: 1px solid var(--vsg-border);
   border-radius: var(--vsg-radius);
-  padding: 14px 18px;
+  padding: 16px 20px;
   margin-bottom: 16px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
 }
+
+.vsg-audio-visualizer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: -2px -4px 16px;
+  padding: 9px 10px 6px;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 52% 115%, rgba(124,58,237,.2), transparent 63%), rgba(2,6,23,.3);
+  overflow: hidden;
+}
+
+.vsg-audio-artwork {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #d8b4fe;
+  background: radial-gradient(circle at 28% 22%, #a855f7, #6d28d9 68%, #3b0764);
+  box-shadow: 0 8px 24px rgba(124,58,237,.24);
+}
+
+.vsg-audio-artwork svg { width: 28px; height: 28px; }
+.vsg-audio-visualizer-content { min-width: 0; flex: 1; }
+.vsg-audio-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--vsg-text-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.vsg-audio-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #64748b;
+}
+.is-playing .vsg-audio-live-dot {
+  background: #a78bfa;
+  box-shadow: 0 0 10px #a78bfa;
+}
+.vsg-audio-analyzer-label { margin-left: auto; color: #7c6b9b; }
+.vsg-audio-waveform { display: block; width: 100%; height: 82px; margin-top: 3px; cursor: crosshair; filter: drop-shadow(0 0 5px rgba(168,85,247,.35)); }
+.vsg-audio-insights { display: flex; flex-wrap: wrap; gap: 7px; padding-top: 1px; }
+.vsg-audio-insight { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 8px; background: rgba(15,23,42,.72); color: #94a3b8; font-size: 9px; line-height: 1.3; }
+.vsg-audio-insight i { width: 6px; height: 6px; border-radius: 50%; background: #64748b; }
+.vsg-insight-climax i { background: #d8b4fe; box-shadow: 0 0 7px #a855f7; }
+.vsg-insight-quiet i { background: #64748b; }
 
 .vsg-audio-main-row {
   display: flex;
@@ -724,6 +784,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .vsg-audio-track-name {
@@ -1298,6 +1359,8 @@
   font-size: 11px;
   padding: 3px 8px;
   border-radius: 4px;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .vsg-notes-box {
@@ -1322,10 +1385,11 @@
 }
 
 .vsg-audio-specs-card {
-  background: var(--vsg-surface-alt);
+  background: linear-gradient(145deg, var(--vsg-surface-alt), rgba(15,23,42,.92));
   border: 1px solid var(--vsg-border);
   border-radius: var(--vsg-radius);
-  padding: 16px;
+  padding: 20px;
+  margin-top: 18px;
 }
 
 .vsg-specs-title {
@@ -1337,12 +1401,22 @@
 
 .vsg-specs-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .vsg-spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   font-size: 13px;
+  min-width: 0;
+  line-height: 1.5;
+  padding: 10px 12px;
+  border: 1px solid rgba(148,163,184,.12);
+  border-radius: 10px;
+  background: rgba(15,23,42,.34);
 }
 
 .vsg-spec-item.full {
@@ -1351,17 +1425,38 @@
 
 .vsg-spec-key {
   color: var(--vsg-text-dim);
-  margin-right: 6px;
+  font-size: 11px;
+  letter-spacing: .02em;
 }
 
 .vsg-spec-val {
   color: var(--vsg-text);
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .vsg-spec-link {
   color: #38bdf8;
-  word-break: break-all;
+  overflow-wrap: anywhere;
+  line-height: 1.55;
+}
+
+.vsg-spec-cdn {
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .vsg-audio-specs-card { padding: 14px; }
+  .vsg-specs-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .vsg-spec-item { padding: 9px 10px; }
+  .vsg-spec-cdn { grid-column: 1 / -1; }
+}
+
+@media (max-width: 420px) {
+  .vsg-specs-list { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Raw Markdown Tab */

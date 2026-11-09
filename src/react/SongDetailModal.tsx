@@ -12,6 +12,7 @@ export interface SongDetailModalProps {
   song: SongItem | null;
   isOpen: boolean;
   onClose: () => void;
+  onSelectTag?: (tag: string) => void;
   className?: string;
 }
 
@@ -21,6 +22,7 @@ export const SongDetailModal: React.FC<SongDetailModalProps> = ({
   song,
   isOpen,
   onClose,
+  onSelectTag,
   className = '',
 }) => {
   const [activeTab, setActiveTab] = useState<ModalTab>('suno');
@@ -208,9 +210,9 @@ export const SongDetailModal: React.FC<SongDetailModalProps> = ({
                   <span className="vsg-tags-title">Tags bài hát:</span>
                   <div className="vsg-tags-list">
                     {song.tags.map((t, idx) => (
-                      <span key={idx} className="vsg-tag-badge">
+                      <button key={idx} type="button" className="vsg-tag-badge" onClick={() => onSelectTag?.(t)}>
                         {t}
-                      </span>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -248,11 +250,11 @@ export const SongDetailModal: React.FC<SongDetailModalProps> = ({
                     <span className="vsg-spec-key">Tên file lưu:</span>
                     <span className="vsg-spec-val">{song.audio.fileName || `${song.slug}.mp3`}</span>
                   </div>
-                  <div className="vsg-spec-item">
+                  <div className="vsg-spec-item vsg-spec-path">
                     <span className="vsg-spec-key">Đường dẫn nội bộ:</span>
                     <span className="vsg-spec-val">{song.audio.filePath || 'Chưa lưu local'}</span>
                   </div>
-                  <div className="vsg-spec-item">
+                  <div className="vsg-spec-item vsg-spec-version">
                     <span className="vsg-spec-key">Thời lượng:</span>
                     <span className="vsg-spec-val">{song.audio.duration || 'N/A'}</span>
                   </div>
@@ -265,8 +267,8 @@ export const SongDetailModal: React.FC<SongDetailModalProps> = ({
                     <span className="vsg-spec-val">{song.audio.takeVersion || 'Bản chính thức'}</span>
                   </div>
                   {song.audio.audioUrl && (
-                    <div className="vsg-spec-item full">
-                      <span className="vsg-spec-key">Suno Audio CDN Link:</span>
+                    <div className="vsg-spec-item full vsg-spec-cdn">
+                      <span className="vsg-spec-key">Suno Audio CDN Link</span>
                       <a
                         href={song.audio.audioUrl}
                         target="_blank"

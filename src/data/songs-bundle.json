@@ -1,7 +1,95 @@
 [
   {
-    "id": "be-chay-ra-vuon",
-    "slug": "dem-thanh-pho-mua",
+    "id": "song-bay-cung-co-lau",
+    "slug": "bay-cung-co-lau",
+    "title": "Bay cùng cỏ lau",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "EDM dance vui nhộn, tempo nhanh (120–130 BPM), giai điệu tươi sáng, synth pop, bass rõ, có build-up và drop sôi động. Giọng hát trẻ em hoặc giọng nữ trong trẻo, năng lượng cao, cảm giác lễ hội ngoài trời. Không khí vui tươi, nghịch ngợm, tràn đầy năng lượng.",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "bay-cung-co-lau.mp3",
+      "filePath": "audio/Bay Cùng Cỏ Lau.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": 16,
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=vAfVHFyI3Lg",
+      "videoId": "vAfVHFyI3Lg",
+      "title": "Bay cùng cỏ lau",
+      "publishedAt": "2026-05-09",
+      "status": "public",
+      "views": 122,
+      "thumbnailUrl": "https://img.youtube.com/vi/vAfVHFyI3Lg/hqdefault.jpg",
+      "description": "#hoacolau #baycungcolau #minh",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\nHey hey hey!\nMinh đâu rồi?\nChạy ra đồng thôi!\n\n[Verse 1]\nMinh tung tăng giữa cánh đồng\nGió đùa vui, tóc bay bồng bềnh\nÁnh nắng nhảy trên đôi vai\nCười vang lên, ngày thật dài\n\n[Build-up]\nCầm bông lau trên tay\n3… 2… 1… thổi bay!\nƯớc mơ theo làn mây\nBay lên cao từng ngày\n\n[DROP / Chorus]\nMinh bay bay bay theo gió\nCỏ lau tung trời trắng xóa\nNhảy lên đi nào, không lo\nCả thế giới đang reo hò\n\nMinh vui vui vui không nghỉ\nChạy theo nắng vàng lấp lánh\nCười vang lên giữa trời xanh\nTuổi thơ đẹp như giấc mơ!\n\n[Verse 2]\nMinh chơi bên con đường quê\nChim gọi nhau vang trời hè\nBước chân nhanh không dừng lại\nCả bầu trời đang mở ra\n\n[Build-up 2]\nGió mang theo tiếng cười\nBay khắp nơi muôn nơi\nMinh giơ tay lên cao\nCùng đếm nhé nào!\n\n[DROP / Chorus]\nMinh bay bay bay theo gió\nCỏ lau tung trời trắng xóa\nNhảy lên đi nào, không lo\nCả thế giới đang reo hò\n\nMinh vui vui vui không nghỉ\nChạy theo nắng vàng lấp lánh\nCười vang lên giữa trời xanh\nTuổi thơ đẹp như giấc mơ!\n\n[Break / Bridge]\nWhoa oh oh…\nBay lên cao nào Minh ơi!\nWhoa oh oh…\nGiữ lấy giấc mơ tuyệt vời!\n\n[Final DROP]\nBay! Bay! Bay!\nCỏ lau theo gió!\nHey! Hey! Hey!\nMinh cười vang đó!\n\nTuổi thơ không chờ\nNắm tay ước mơ\nCùng bay thật xaaaaa! 🎉",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "Hey hey hey!\nMinh đâu rồi?\nChạy ra đồng thôi!"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Minh tung tăng giữa cánh đồng\nGió đùa vui, tóc bay bồng bềnh\nÁnh nắng nhảy trên đôi vai\nCười vang lên, ngày thật dài"
+      },
+      {
+        "tag": "[Build-up]",
+        "content": "Cầm bông lau trên tay\n3… 2… 1… thổi bay!\nƯớc mơ theo làn mây\nBay lên cao từng ngày"
+      },
+      {
+        "tag": "[DROP / Chorus]",
+        "content": "Minh bay bay bay theo gió\nCỏ lau tung trời trắng xóa\nNhảy lên đi nào, không lo\nCả thế giới đang reo hò\n\nMinh vui vui vui không nghỉ\nChạy theo nắng vàng lấp lánh\nCười vang lên giữa trời xanh\nTuổi thơ đẹp như giấc mơ!"
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Minh chơi bên con đường quê\nChim gọi nhau vang trời hè\nBước chân nhanh không dừng lại\nCả bầu trời đang mở ra"
+      },
+      {
+        "tag": "[Build-up 2]",
+        "content": "Gió mang theo tiếng cười\nBay khắp nơi muôn nơi\nMinh giơ tay lên cao\nCùng đếm nhé nào!"
+      },
+      {
+        "tag": "[DROP / Chorus]",
+        "content": "Minh bay bay bay theo gió\nCỏ lau tung trời trắng xóa\nNhảy lên đi nào, không lo\nCả thế giới đang reo hò\n\nMinh vui vui vui không nghỉ\nChạy theo nắng vàng lấp lánh\nCười vang lên giữa trời xanh\nTuổi thơ đẹp như giấc mơ!"
+      },
+      {
+        "tag": "[Break / Bridge]",
+        "content": "Whoa oh oh…\nBay lên cao nào Minh ơi!\nWhoa oh oh…\nGiữ lấy giấc mơ tuyệt vời!"
+      },
+      {
+        "tag": "[Final DROP]",
+        "content": "Bay! Bay! Bay!\nCỏ lau theo gió!\nHey! Hey! Hey!\nMinh cười vang đó!\n\nTuổi thơ không chờ\nNắm tay ước mơ\nCùng bay thật xaaaaa! 🎉"
+      }
+    ],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/bay-cung-co-lau.md"
+  },
+  {
+    "id": "song-be-chay-ra-vuon",
+    "slug": "be-chay-ra-vuon",
     "title": "Bé chạy ra vườn 🌿",
     "artist": "Quân & Suno AI",
     "genre": "Lofi R&B Chillhop",
@@ -56,9 +144,9 @@
     "filePath": "data/songs/be-chay-ra-vuon.md"
   },
   {
-    "id": "song-002",
-    "slug": "dem-thanh-pho-mua",
-    "title": "Đêm Thành Phố Mưa",
+    "id": "song-be-gai-chay-quanh-cot-nha",
+    "slug": "be-gai-chay-quanh-cot-nha",
+    "title": "Bé Gái Chạy Quanh Cột Nhà 🎵",
     "artist": "Quân & Suno AI",
     "genre": "Lofi R&B Chillhop",
     "tags": [
@@ -91,147 +179,413 @@
       "takeVersion": "Take 1 (Smooth & Melancholic)"
     },
     "youtube": {
-      "publishedUrl": "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
-      "videoId": "kJQP7kiw5Fk",
-      "title": "Đêm Thành Phố Mưa | Lofi Chill Nhẹ Nhàng Thư Giãn Đọc Sách | Suno AI",
-      "publishedAt": "2026-10-20T21:30:00Z",
+      "publishedUrl": "https://www.youtube.com/watch?v=mizywvUW4_8",
+      "videoId": "mizywvUW4_8",
+      "title": "Cát cột nhà",
+      "publishedAt": "2026-03-01",
       "status": "public",
-      "views": 3500,
-      "thumbnailUrl": "https://img.youtube.com/vi/kJQP7kiw5Fk/hqdefault.jpg",
-      "description": "Giai điệu Lofi Chillhop êm dịu cho một đêm mưa tĩnh lặng. Thích hợp nghe khi học bài, làm việc và thư giãn.",
+      "views": 25,
+      "thumbnailUrl": "https://img.youtube.com/vi/mizywvUW4_8/hqdefault.jpg",
+      "description": "",
       "isShort": false
     },
-    "lyrics": "[Intro]\n(Tiếng đĩa than rè nhẹ, tiếng mưa gõ tí tách trên mái tôn, nốt Rhodes jazz êm đềm)\n\n[Verse 1]\nPhố đã lên đèn từ lúc nào chẳng hay\nGiọt cà phê nguội dần trên đôi ngón tay\nĐèn đường vàng hắt hiu qua làn sương mờ\nThành phố này dường như cũng đang ngủ mơ.\n\n[Verse 2]\nTừng dòng xe vội vã lướt qua hiên nhà\nGác lại sau lưng bao bộn bề xa lạ\nTa ngồi đây cùng điệu nhạc ngân nga\nThả hồn trôi theo ngàn hạt mưa bay xa.\n\n[Chorus]\nMưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên.\n(Lofi chill... đêm nay chỉ có ta và mưa)\n\n[Bridge]\n(Đoạn saxophone jazz luyến láy chậm rãi hòa cùng tiếng mưa rơi)\nKhông cần vội vã, chẳng cần đợi chờ\nThời gian ngưng đọng trong từng nốt nhạc bơ vơ...\n\n[Chorus]\nMưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên.\n\n[Outro]\nNgủ ngoan nhé đêm ơi...\nNgày mai rồi sẽ khác thôi...\n(Tiếng mưa nhỏ dần, tiếng đĩa than xì xào rồi tắt hẳn)\n[Fade Out]\n[End]",
-    "lyricsSections": [
-      {
-        "tag": "[Intro]",
-        "content": "(Tiếng đĩa than rè nhẹ, tiếng mưa gõ tí tách trên mái tôn, nốt Rhodes jazz êm đềm)"
-      },
-      {
-        "tag": "[Verse 1]",
-        "content": "Phố đã lên đèn từ lúc nào chẳng hay\nGiọt cà phê nguội dần trên đôi ngón tay\nĐèn đường vàng hắt hiu qua làn sương mờ\nThành phố này dường như cũng đang ngủ mơ."
-      },
-      {
-        "tag": "[Verse 2]",
-        "content": "Từng dòng xe vội vã lướt qua hiên nhà\nGác lại sau lưng bao bộn bề xa lạ\nTa ngồi đây cùng điệu nhạc ngân nga\nThả hồn trôi theo ngàn hạt mưa bay xa."
-      },
-      {
-        "tag": "[Chorus]",
-        "content": "Mưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên.\n(Lofi chill... đêm nay chỉ có ta và mưa)"
-      },
-      {
-        "tag": "[Bridge]",
-        "content": "(Đoạn saxophone jazz luyến láy chậm rãi hòa cùng tiếng mưa rơi)\nKhông cần vội vã, chẳng cần đợi chờ\nThời gian ngưng đọng trong từng nốt nhạc bơ vơ..."
-      },
-      {
-        "tag": "[Chorus]",
-        "content": "Mưa rơi tí tách bên thềm vắng\nRu những giấc mơ đêm dịu dàng\nBao âu lo gửi vào làn gió thoảng\nChỉ còn lại góc nhỏ bình yên."
-      },
-      {
-        "tag": "[Outro]",
-        "content": "Ngủ ngoan nhé đêm ơi...\nNgày mai rồi sẽ khác thôi...\n(Tiếng mưa nhỏ dần, tiếng đĩa than xì xào rồi tắt hẳn)"
-      },
-      {
-        "tag": "[Fade Out]",
-        "content": ""
-      },
-      {
-        "tag": "[End]",
-        "content": ""
-      }
-    ],
+    "lyrics": "",
+    "lyricsSections": [],
     "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
-    "filePath": "data/songs/dem-thanh-pho-mua.md"
+    "filePath": "data/songs/be-gai-chay-quanh-cot-nha.md"
   },
   {
-    "id": "song-003",
-    "slug": "giac-mo-dong-bang",
-    "title": "Giấc Mơ Đồng Bằng",
+    "id": "song-cay-xoai",
+    "slug": "cay-xoai",
+    "title": "Cây xoài",
     "artist": "Quân & Suno AI",
-    "genre": "Epic Folk Rock",
+    "genre": "Lofi R&B Chillhop",
     "tags": [
-      "#folk-rock",
-      "#epic",
-      "#dong-bang",
-      "#que-huong",
-      "#vietnamese"
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
     ],
-    "status": "mp3_ready",
-    "createdAt": "2026-10-21",
-    "updatedAt": "2026-10-23",
+    "status": "published",
+    "createdAt": "2026-04-30",
+    "updatedAt": "2026-04-30",
     "suno": {
-      "model": "v4",
-      "stylePrompt": "Vietnamese epic folk rock, powerful male vocal, bamboo flute intro, heavy distortion electric guitars, heroic orchestral strings, thunderous drums, patriotic passion, 95 bpm",
-      "lyricsPrompt": "Lời bài hát hào hùng ca ngợi sức sống mãnh liệt của người dân vùng đồng bằng sông nước Cửu Long, vượt qua bão lũ giữ vững xóm làng",
-      "clipId": "c3d4e5f6-7890-12cd-ef01-3456789012cd",
-      "songUrl": "https://suno.com/song/c3d4e5f6-7890-12cd-ef01-3456789012cd",
+      "model": "v3.5",
+      "stylePrompt": "Vietnamese kids pop, modern YouTube Kids style, upbeat and energetic, bright cute vocals (childlike), electronic pop + ukulele + claps, playful synths, bouncy rhythm, happy and catchy melody, urban street vibe with light ambient city sounds (traffic soft, breeze, birds), fun and wholesome storytelling, catchy repetitive chorus, \"la la la\" sections, joyful and innocent mood",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/96570652-38b8-46be-9ff3-9858dc88dfe9?sh=dngm16J7aqKvoOms",
       "taskStatus": "completed",
-      "tempo": "95 bpm",
+      "tempo": "82 bpm",
       "vocalType": "male"
     },
     "audio": {
-      "fileName": "giac-mo-dong-bang.mp3",
-      "filePath": "public/audio/giac-mo-dong-bang.mp3",
-      "audioUrl": "https://cdn1.suno.ai/c3d4e5f6-7890-12cd-ef01-3456789012cd.mp3",
-      "duration": "04:08",
-      "durationSeconds": 248,
-      "bitrate": "320kbps",
-      "takeVersion": "Take 3 (Epic Master)"
+      "fileName": "cay-xoai.mp3",
+      "filePath": "data/mp3/cây xoài.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "02:50",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
     },
     "youtube": {
-      "title": "Giấc Mơ Đồng Bằng | Epic Vietnamese Folk Rock Video",
-      "status": "draft",
-      "description": "Bản hùng ca về đất phù sa và ý chí con người phương Nam. Sắp phát hành trên kênh YouTube chính thức.",
+      "publishedUrl": "https://www.youtube.com/watch?v=NnKfaHNL-ls",
+      "videoId": "NnKfaHNL-ls",
+      "title": "Bé yêu câu xoài",
+      "publishedAt": "2026-04-30",
+      "status": "public",
+      "views": 10,
+      "thumbnailUrl": "https://img.youtube.com/vi/NnKfaHNL-ls/hqdefault.jpg",
+      "description": "",
       "isShort": false
     },
-    "lyrics": "[Intro]\n(Tiếng sáo trúc vi vút mở màn trên nền gió lộng, bất ngờ bùng nổ cùng dàn trống trận sấm sét và guitar điện rock)\n\n[Verse 1]\nTừ nghìn năm trước đất mẹ sinh ra\nPhù sa đỏ quạch nuôi lớn dáng cha\nSóng nước Tiền Giang cuộn trào ngàn dặm\nNgười đi mở cõi lưng trần chân lấm.\n\n[Verse 2]\nRừng tràm bạt ngàn đón ngọn gió đông\nMồ hôi mặn chát tưới mát cánh đồng\nDù cho bão nổi, dù cho hạn khô\nTấc đất ngọn rau giữ trọn câu thề!\n\n[Chorus]\nĐây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!\n(Ơi dòng sông... chảy mãi ngàn năm!)\n\n[Bridge]\n(Nhịp điệu dồn dập, tiếng sáo trúc đối đáp cùng guitar solo gầm rú)\nQua gian lao ta càng thêm vững bước\nNối vòng tay giữ lấy quê hương\nDẫu phong ba bão táp dặm trường!\n\n[Chorus]\nĐây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!\n\n[Heavy Guitar Solo & Orchestral Climax]\n(Dàn nhạc giao hưởng hòa cùng guitar điện đỉnh điểm)\n\n[Outro]\nVang mãi... ngàn đời phù sa...\nĐồng bằng ơi... bất tử bài ca!\n[Big Finish]\n[End]",
+    "lyrics": "[Verse 1]\nTrên vỉa hè có cây xoài xanh\nXe qua lại, phố đông thật nhanh\nBé đứng nhìn, mắt tròn long lanh\nQuả lủng lẳng đung đưa trên cành\n\nBé thì thầm: “Xoài ơi lớn nha”\nGiữa phố đông vẫn thật hiền hòa\nBao ngày qua bé luôn ghé qua\nNgắm xoài xanh mỗi chiều tan ca\n\n[Pre-Chorus]\nDòng người đi vội vàng\nRiêng bé đứng mơ màng\nNhìn xoài xanh lớn dần\nTheo nắng gió dịu dàng\n\n[Chorus]\nXoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!\n\n[Verse 2]\nMột ngày kia nắng lên lung linh\nBé reo vui: “Xoài chín đẹp xinh!”\nQuả vàng óng giữa trời phố xinh\nBé nhón chân hái đầy yêu thương\n\nÔm vào lòng, xoài thơm ngát hương\nXe vẫn chạy trên con phố quen\nMà lòng bé vui như tiếng nhạc\nRộn ràng giữa bao người\n\n[Pre-Chorus]\nGió len qua hàng cây\nNắng nhảy trên bàn tay\nXoài thơm như gọi mời\nNiềm vui bé mỗi ngày\n\n[Chorus]\nXoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!\n\n[Bridge]\nLa la la giữa phố đông\nMột cây xoài thật ấm lòng\nTuổi thơ bé thật trong\nGiữa phố dài mênh mông\n\n[Final Chorus]\nXoài xanh nay đã chín rồi\nBé nâng niu chẳng rời\nGiữa phố đông vẫn rạng ngời\nNụ cười bé sáng ngời\n\nLa la la hát vang lên\nGiữa con đường thân quen\nKỷ niệm nhỏ bé êm đềm\nTheo bé mãi không quên!",
     "lyricsSections": [
       {
-        "tag": "[Intro]",
-        "content": "(Tiếng sáo trúc vi vút mở màn trên nền gió lộng, bất ngờ bùng nổ cùng dàn trống trận sấm sét và guitar điện rock)"
+        "tag": "[Verse 1]",
+        "content": "Trên vỉa hè có cây xoài xanh\nXe qua lại, phố đông thật nhanh\nBé đứng nhìn, mắt tròn long lanh\nQuả lủng lẳng đung đưa trên cành\n\nBé thì thầm: “Xoài ơi lớn nha”\nGiữa phố đông vẫn thật hiền hòa\nBao ngày qua bé luôn ghé qua\nNgắm xoài xanh mỗi chiều tan ca"
       },
       {
-        "tag": "[Verse 1]",
-        "content": "Từ nghìn năm trước đất mẹ sinh ra\nPhù sa đỏ quạch nuôi lớn dáng cha\nSóng nước Tiền Giang cuộn trào ngàn dặm\nNgười đi mở cõi lưng trần chân lấm."
+        "tag": "[Pre-Chorus]",
+        "content": "Dòng người đi vội vàng\nRiêng bé đứng mơ màng\nNhìn xoài xanh lớn dần\nTheo nắng gió dịu dàng"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Xoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!"
       },
       {
         "tag": "[Verse 2]",
-        "content": "Rừng tràm bạt ngàn đón ngọn gió đông\nMồ hôi mặn chát tưới mát cánh đồng\nDù cho bão nổi, dù cho hạn khô\nTấc đất ngọn rau giữ trọn câu thề!"
+        "content": "Một ngày kia nắng lên lung linh\nBé reo vui: “Xoài chín đẹp xinh!”\nQuả vàng óng giữa trời phố xinh\nBé nhón chân hái đầy yêu thương\n\nÔm vào lòng, xoài thơm ngát hương\nXe vẫn chạy trên con phố quen\nMà lòng bé vui như tiếng nhạc\nRộn ràng giữa bao người"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Gió len qua hàng cây\nNắng nhảy trên bàn tay\nXoài thơm như gọi mời\nNiềm vui bé mỗi ngày"
       },
       {
         "tag": "[Chorus]",
-        "content": "Đây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!\n(Ơi dòng sông... chảy mãi ngàn năm!)"
+        "content": "Xoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!"
       },
       {
         "tag": "[Bridge]",
-        "content": "(Nhịp điệu dồn dập, tiếng sáo trúc đối đáp cùng guitar solo gầm rú)\nQua gian lao ta càng thêm vững bước\nNối vòng tay giữ lấy quê hương\nDẫu phong ba bão táp dặm trường!"
+        "content": "La la la giữa phố đông\nMột cây xoài thật ấm lòng\nTuổi thơ bé thật trong\nGiữa phố dài mênh mông"
       },
       {
-        "tag": "[Chorus]",
-        "content": "Đây đồng bằng bao la! Đây dòng sông bất khuất!\nMáu và hoa đơm bông trên từng tấc đất\nHát khúc ca ngàn đời vang dội non sông\nTrái tim son rực cháy khí phách Tiên Rồng!"
-      },
-      {
-        "tag": "[Heavy Guitar Solo & Orchestral Climax]",
-        "content": "(Dàn nhạc giao hưởng hòa cùng guitar điện đỉnh điểm)"
-      },
-      {
-        "tag": "[Outro]",
-        "content": "Vang mãi... ngàn đời phù sa...\nĐồng bằng ơi... bất tử bài ca!"
-      },
-      {
-        "tag": "[Big Finish]",
-        "content": ""
-      },
-      {
-        "tag": "[End]",
-        "content": ""
+        "tag": "[Final Chorus]",
+        "content": "Xoài xanh nay đã chín rồi\nBé nâng niu chẳng rời\nGiữa phố đông vẫn rạng ngời\nNụ cười bé sáng ngời\n\nLa la la hát vang lên\nGiữa con đường thân quen\nKỷ niệm nhỏ bé êm đềm\nTheo bé mãi không quên!"
       }
     ],
-    "productionNotes": "- Sử dụng mô hình Suno v4 cho âm thanh dải cao rất nét, tiếng sáo trúc lồng ghép mượt mà.\n- File MP3 đã master xong ở chất lượng 320kbps.\n- Đang lên kịch bản Remotion ghép cảnh đồng bằng sông Cửu Long và drone cảnh đẹp.",
-    "filePath": "data/songs/giac-mo-dong-bang.md"
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/cay-xoai.md"
   },
   {
-    "id": "song-005",
+    "id": "song-chien-si-rua-bat-oai-phong",
+    "slug": "chien-si-rua-bat-oai-phong",
+    "title": "CHIẾN SĨ RỬA BÁT OAI PHONG",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Cinematic children soundtrack, Pixar-style orchestral pop, heroic and emotional, marching rhythm, big drums, brass section, strings swell, playful woodwinds, energetic tempo 120-130 bpm, dynamic build-up, powerful chorus, warm fatherly tone, clear pronunciation, joyful and inspiring, theatrical mix, high quality studio production.",
+      "lyricsPrompt": "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=uQH9C1jav3I",
+      "videoId": "uQH9C1jav3I",
+      "title": "Cảnh sát rửa bát",
+      "publishedAt": "2026-03-01",
+      "status": "public",
+      "views": 31,
+      "thumbnailUrl": "https://img.youtube.com/vi/uQH9C1jav3I/hqdefault.jpg",
+      "description": "",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/chien-si-rua-bat-oai-phong.md"
+  },
+  {
+    "id": "song-chim-chao-mao",
+    "slug": "chim-chao-mao",
+    "title": "chim chào mào",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-04-30",
+    "updatedAt": "2026-04-30",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Upbeat Vietnamese children’s song, cheerful, playful, energetic, cute Pixar/cartoon vibe, tempo 115 BPM, ukulele + piano + bells + claps, bright melody, female child-like vocal, kids choir in chorus, super catchy, YouTube kids style, duration 3–4 minutes",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/s/qB0dmG5tWSc2dBi1",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "male"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=cKpiWKDLc7w",
+      "videoId": "cKpiWKDLc7w",
+      "title": "Bé yêu chim chào mào",
+      "publishedAt": "2026-04-30",
+      "status": "public",
+      "views": 44,
+      "thumbnailUrl": "https://img.youtube.com/vi/cKpiWKDLc7w/hqdefault.jpg",
+      "description": "",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/chim-chao-mao.md"
+  },
+  {
+    "id": "song-chu-meo-long-vang",
+    "slug": "chu-meo-long-vang",
+    "title": "Chú Mèo Lông Vàng",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Upbeat children's song, energetic, playful, cheerful, catchy melody, kindergarten style, bright instruments, xylophone, ukulele, claps, happy kids choir, Vietnamese children's music style, very catchy chorus, fun and bouncy rhythm",
+      "lyricsPrompt": "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=lizQPDJSpLY",
+      "videoId": "lizQPDJSpLY",
+      "title": "mèo lông vàng và bé",
+      "publishedAt": "2026-04-28",
+      "status": "public",
+      "views": 42,
+      "thumbnailUrl": "https://img.youtube.com/vi/lizQPDJSpLY/hqdefault.jpg",
+      "description": "#mèolôngvàng #meomeo #meomeomeo #meolongvang",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/chu-meo-long-vang.md"
+  },
+  {
+    "id": "song-chu-tac-ke-doi-mau",
+    "slug": "chu-tac-ke-doi-mau",
+    "title": "Chú Tắc Kè Đổi Màu",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Upbeat Vietnamese children's song, playful and energetic, catchy melody, kindergarten style, ukulele, xylophone, claps, cheerful kids choir, fun cartoon style, very catchy chorus, playful sound effects like \"tak ke tak ke\"",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=o8urp0GEmAM",
+      "videoId": "o8urp0GEmAM",
+      "title": "Chú Tắc Kè Đổi Màu",
+      "publishedAt": "2026-04-16T21:30:00Z",
+      "status": "public",
+      "views": 259,
+      "thumbnailUrl": "https://img.youtube.com/vi/o8urp0GEmAM/hqdefault.jpg",
+      "description": "#tacke #tắckè",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/chu-tac-ke-doi-mau.md"
+  },
+  {
+    "id": "song-con-trau-dat",
+    "slug": "con-trau-dat",
+    "title": "Con Trâu Đất",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "children’s nursery rhyme, folk-pop, playful whimsical",
+      "lyricsPrompt": "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=gnsLjy5zgc8",
+      "videoId": "gnsLjy5zgc8",
+      "title": "Bé và con trâu",
+      "publishedAt": "2026-04-26",
+      "status": "public",
+      "views": 155,
+      "thumbnailUrl": "https://img.youtube.com/vi/gnsLjy5zgc8/hqdefault.jpg",
+      "description": "#contrau #contrâu #dongvat #canhdong",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/con-trau-dat.md"
+  },
+  {
+    "id": "song-dieu-nhay-cua-dong",
+    "slug": "dieu-nhay-cua-dong",
+    "title": "Điệu Nhảy Cua Đồng",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-04-30",
+    "updatedAt": "2026-04-30",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "EDM + tropical house + cute children vibe  \\nMood: happy, innocent, lively, heartwarming  \\nTempo: upbeat (110–125 BPM)  \\nLength: over 3 minutes (include intro, 2–3 verses, chorus, drop, bridge, outro)",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/s/qB0dmG5tWSc2dBi1",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "male"
+    },
+    "audio": {
+      "fileName": "dieu-nhay-cua-dong.mp3",
+      "filePath": "audio/điệu nhảy con cua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:03",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=saL0yZ4_Bf4",
+      "videoId": "saL0yZ4_Bf4",
+      "title": "Bé và con cua đồng",
+      "publishedAt": "2026-05-03",
+      "status": "public",
+      "views": 17,
+      "thumbnailUrl": "https://img.youtube.com/vi/saL0yZ4_Bf4/hqdefault.jpg",
+      "description": "#concua #concuadong #cuađồng #cuadong #cuabòtrênsân",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/dieu-nhay-cua-dong.md"
+  },
+  {
+    "id": "song-giot-ca-phe-chieu",
     "slug": "giot-ca-phe-chieu",
     "title": "Giọt Cà Phê Chiều",
     "artist": "Quân & Suno AI",
@@ -309,7 +663,160 @@
     "filePath": "data/songs/giot-ca-phe-chieu.md"
   },
   {
-    "id": "song-001",
+    "id": "song-girl-and-water-buffalo",
+    "slug": "girl-and-water-buffalo",
+    "title": "Girl and water buffalo",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "children’s nursery rhyme, folk-pop, playful whimsical",
+      "lyricsPrompt": "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=Af-IYKSnrHs",
+      "videoId": "Af-IYKSnrHs",
+      "title": "girl and water buffalo",
+      "publishedAt": "2026-04-26",
+      "status": "public",
+      "views": 9,
+      "thumbnailUrl": "https://img.youtube.com/vi/Af-IYKSnrHs/hqdefault.jpg",
+      "description": "#buffalo #waterbuffalo #vietnambuffalo #vietnamtourism",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/girl-and-water-buffalo.md"
+  },
+  {
+    "id": "song-hoa-gao-va-em",
+    "slug": "hoa-gao-va-em",
+    "title": "Hoa Gạo Và Em",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Children’s song, Vietnamese lyrics, innocent and pure mood, gentle and cheerful melody, acoustic style with ukulele, light piano, and soft flute. Tempo medium slow (90–110 BPM).\\n\\nTheme: a young boy playing under a blooming red cotton tree (hoa gạo), picking fallen flowers, joyful countryside atmosphere, springtime, nature sounds, birds chirping, warm and nostalgic feeling.\\n\\nVocals: childlike voice or soft female vocal, bright, playful, expressive.\\nStyle: simple melody, easy to sing along, repetitive chorus, emotional but light.\\n\\nKeywords: children song, Vietnamese folk-inspired, spring, nature, innocent, playful, countryside, happy, warm, storytelling.",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "dem-thanh-pho-mua.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=gIzcBeXzqko",
+      "videoId": "gIzcBeXzqko",
+      "title": "Cây hoa gạo",
+      "publishedAt": "2026-04-28",
+      "status": "public",
+      "views": 9,
+      "thumbnailUrl": "https://img.youtube.com/vi/gIzcBeXzqko/hqdefault.jpg",
+      "description": "#hoagao #cayhoagao #yeuhoa #hoagạo",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/hoa-gao-va-em.md"
+  },
+  {
+    "id": "song-hoa-giay-nho-xinh",
+    "slug": "hoa-giay-nho-xinh",
+    "title": "🌸 HOA GIẤY NHỎ XINH 🌸",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Style:\\nVietnamese children's song, cheerful, playful, innocent, bright and happy mood, cute melody, simple and catchy, kindergarten style\\n\\nGenre:\\nChildren's music, pop, light acoustic\\n\\nTempo:\\n120–140 BPM, upbeat\\n\\nInstruments:\\nUkulele, acoustic guitar, piano, bells, xylophone, light drums, claps\\n\\nVocal:\\nFemale child voice or soft young female voice, sweet, clear, playful, smiling while singing\\n\\nMood:\\nHappy, sunny, innocent, dreamy, warm, nostalgic childhood\\n\\nTheme:\\nA little girl singing about a pink bougainvillea flower in her yard, carefree childhood, nature, simple joy\\n\\nExtra instructions:\\n\\nAdd children choir in chorus\\nMake chorus very catchy and easy to sing along\\nKeep pronunciation clear (Vietnamese)\\nBright and colorful sound, like a cartoon soundtrack",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "hoa-giay-nho-xinh.mp3",
+      "filePath": "public/audio/dem-thanh-pho-mua.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=YZ-ui87PsPc",
+      "videoId": "YZ-ui87PsPc",
+      "title": "Giàn hoa giấy",
+      "publishedAt": "2026-04-28",
+      "status": "public",
+      "views": 31,
+      "thumbnailUrl": "https://img.youtube.com/vi/YZ-ui87PsPc/hqdefault.jpg",
+      "description": "#gianhoagiay #hoagiấy #hoagiay #giànhoagiấy #béchơicẩu",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/hoa-giay-nho-xinh.md"
+  },
+  {
+    "id": "song-ngay-mai-nang-len",
     "slug": "ngay-mai-nang-len",
     "title": "Ngày Mai Nắng Lên",
     "artist": "Quân & Suno AI",
@@ -405,7 +912,58 @@
     "filePath": "data/songs/ngay-mai-nang-len.md"
   },
   {
-    "id": "nhim-va-gio-san-truong",
+    "id": "song-nhat-minh-xe-dao-remix",
+    "slug": "nhat-minh-xe-dao-remix",
+    "title": "🎶 “NHẬT MINH XE ĐÀO – REMIX”",
+    "artist": "Quân & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Create a fast remix Vietnamese kids song in Baby Shark style with EDM dance beat (140–150 BPM).\\nSuper catchy, repetitive chorus, energetic drop, TikTok dance vibe.\\nTheme: A 6-year-old boy named Nhật Minh who is like an excavator and a Volvo crane, hardworking and full of energy.\\nInclude fun sound effects: “vroom vroom”, “beep beep”, “đào đào đào”, “doo doo doo”.\\nStructure: Short intro – Verse – Big Chorus – Drop – Verse – Chorus – Dance Break – Final Chorus x2.\\nVery cute, playful, explosive energy.",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "nhat-minh-xe-dao-remix.mp3",
+      "filePath": "data/mp3/cây xoài.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=v1KXrzdNWCU",
+      "videoId": "v1KXrzdNWCU",
+      "title": "Nhật Minh Xe Đào Remix 🚜",
+      "publishedAt": "2026-04-16T21:30:00Z",
+      "status": "public",
+      "views": 42,
+      "thumbnailUrl": "https://img.youtube.com/vi/v1KXrzdNWCU/hqdefault.jpg",
+      "description": "Bài hát so sánh bé Nhật Minh với xe đào excavator và cẩu Volvo chăm chỉ, mạnh mẽ và luôn hăng say làm việc. Phiên bản remix nhanh, cực bắt tai, phù hợp để nhảy TikTok, mở tiệc sinh nhật hoặc cho bé vận động mỗi ngày",
+      "isShort": false
+    },
+    "lyrics": "",
+    "lyricsSections": [],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/nhat-minh-xe-dao-remix.md"
+  },
+  {
+    "id": "song-nhim-va-gio-san-truong",
     "slug": "nhim-va-gio-san-truong",
     "title": "NHÍM VÀ GIÓ SÂN TRƯỜNG 🎵",
     "artist": "Quân & Suno AI",
@@ -489,98 +1047,87 @@
     "filePath": "data/songs/nhim-va-gio-san-truong.md"
   },
   {
-    "id": "song-004",
-    "slug": "thanh-xuan-ruc-ro",
-    "title": "Thanh Xuân Rực Rỡ",
+    "id": "song-qua-vai",
+    "slug": "qua-vai",
+    "title": "Quả vải",
     "artist": "Quân & Suno AI",
-    "genre": "V-Pop Dance",
+    "genre": "Lofi R&B Chillhop",
     "tags": [
-      "#vpop",
-      "#dance",
-      "#summer",
-      "#youth",
-      "#energy"
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
     ],
     "status": "published",
-    "createdAt": "2026-10-10",
-    "updatedAt": "2026-10-17",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
     "suno": {
       "model": "v3.5",
-      "stylePrompt": "Modern Vietnamese pop dance, energetic synthesizer drop, catchy hook, bright cheerful female vocal, youth festival atmosphere, summer beach party vibe, 126 bpm",
-      "lyricsPrompt": "Lời bài hát V-Pop sôi động về chuyến đi phượt mùa hè của nhóm bạn trẻ, tràn ngập năng lượng và nụ cười",
-      "clipId": "d4e5f6a7-8901-23de-f012-4567890123de",
-      "songUrl": "https://suno.com/song/d4e5f6a7-8901-23de-f012-4567890123de",
+      "stylePrompt": "Vietnamese kids EDM, tropical house + dance pop, very upbeat, 125-135 BPM, bouncy bass, bright synths, plucky melody, claps, vocal chops, playful children vocals, energetic drop, summer vibe, catchy hook, festival kids dance",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/s/dngm16J7aqKvoOms",
       "taskStatus": "completed",
-      "tempo": "126 bpm",
-      "vocalType": "female"
+      "tempo": "82 bpm",
+      "vocalType": "male"
     },
     "audio": {
-      "fileName": "thanh-xuan-ruc-ro.mp3",
-      "filePath": "public/audio/thanh-xuan-ruc-ro.mp3",
-      "audioUrl": "https://cdn1.suno.ai/d4e5f6a7-8901-23de-f012-4567890123de.mp3",
-      "duration": "02:58",
-      "durationSeconds": 178,
+      "fileName": "qua-vai.mp3",
+      "filePath": "data/mp3/quả vải.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "02:32",
+      "durationSeconds": 195,
       "bitrate": "192kbps",
-      "takeVersion": "Take 4 (Catchy Club Edit)"
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
     },
     "youtube": {
-      "publishedUrl": "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
-      "videoId": "3JZ_D3ELwOQ",
-      "title": "Thanh Xuân Rực Rỡ | V-Pop Mùa Hè Sôi Động Bùng Cháy | Suno AI Music",
-      "publishedAt": "2026-10-14T19:00:00Z",
+      "publishedUrl": "https://www.youtube.com/watch?v=1JitolhpNzI",
+      "videoId": "1JitolhpNzI",
+      "title": "Em thích cây vải",
+      "publishedAt": "2026-05-02",
       "status": "public",
-      "views": 8900,
-      "thumbnailUrl": "https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg",
-      "description": "Cùng quẩy hết mình với Thanh Xuân Rực Rỡ. Đừng để tuổi trẻ trôi qua trong tiếc nuối!",
+      "views": 5,
+      "thumbnailUrl": "https://img.youtube.com/vi/1JitolhpNzI/hqdefault.jpg",
+      "description": "",
       "isShort": false
     },
-    "lyrics": "[Intro]\n(Synthesizer plucks nảy bật, tiếng đếm nhịp 1 2 3 go! và bassline bắt đầu tăng tốc)\n\n[Verse 1]\nXách vali lên và đi thôi nào\nBỏ lại sau lưng thành phố ồn ào\nGió biển mơn man thổi tung mái tóc\nNắng hè rực rỡ lấp lánh nụ cười xinh.\n\n[Pre-Chorus]\nNào ta cùng bước, tay trong tay\nBầu trời xanh ngắt rộng mở chân mây\nĐời có bao lâu mà cứ đắn đo\nHãy cháy hết mình cho tuổi đôi mươi!\n\n[Chorus]\nThanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!\n(Hey! Ho! Quẩy lên nào!)\n[Dance Drop with Funky Bass & Brass Synth]\n\n[Verse 2]\nĐốt lửa trại bập bùng trong đêm tối\nKể nhau nghe những ước mơ đầu đời\nDẫu mai này mỗi người một lối rẽ\nKỷ niệm này sẽ sống mãi trong tim.\n\n[Bridge]\n(Nhịp vỗ tay dồn dập build-up)\n1, 2, 3... Hãy hét thật to!\n1, 2, 3... Hãy bay thật cao!\nTuổi trẻ ơi... ta không bao giờ hối tiếc!\n\n[Chorus]\nThanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!\n[Catchy Synth Drop]\n\n[Outro]\nThanh xuân rực rỡ...\nMãi mãi bên nhau nhé bạn ơi!\n[Fade Out]",
+    "lyrics": "[Verse 1]\nTrên vỉa hè có cây xoài xanh\nXe qua lại, phố đông thật nhanh\nBé đứng nhìn, mắt tròn long lanh\nQuả lủng lẳng đung đưa trên cành\n\nBé thì thầm: “Xoài ơi lớn nha”\nGiữa phố đông vẫn thật hiền hòa\nBao ngày qua bé luôn ghé qua\nNgắm xoài xanh mỗi chiều tan ca\n\n[Pre-Chorus]\nDòng người đi vội vàng\nRiêng bé đứng mơ màng\nNhìn xoài xanh lớn dần\nTheo nắng gió dịu dàng\n\n[Chorus]\nXoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!\n\n[Verse 2]\nMột ngày kia nắng lên lung linh\nBé reo vui: “Xoài chín đẹp xinh!”\nQuả vàng óng giữa trời phố xinh\nBé nhón chân hái đầy yêu thương\n\nÔm vào lòng, xoài thơm ngát hương\nXe vẫn chạy trên con phố quen\nMà lòng bé vui như tiếng nhạc\nRộn ràng giữa bao người\n\n[Pre-Chorus]\nGió len qua hàng cây\nNắng nhảy trên bàn tay\nXoài thơm như gọi mời\nNiềm vui bé mỗi ngày\n\n[Chorus]\nXoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!\n\n[Bridge]\nLa la la giữa phố đông\nMột cây xoài thật ấm lòng\nTuổi thơ bé thật trong\nGiữa phố dài mênh mông\n\n[Final Chorus]\nXoài xanh nay đã chín rồi\nBé nâng niu chẳng rời\nGiữa phố đông vẫn rạng ngời\nNụ cười bé sáng ngời\n\nLa la la hát vang lên\nGiữa con đường thân quen\nKỷ niệm nhỏ bé êm đềm\nTheo bé mãi không quên!",
     "lyricsSections": [
       {
-        "tag": "[Intro]",
-        "content": "(Synthesizer plucks nảy bật, tiếng đếm nhịp 1 2 3 go! và bassline bắt đầu tăng tốc)"
-      },
-      {
         "tag": "[Verse 1]",
-        "content": "Xách vali lên và đi thôi nào\nBỏ lại sau lưng thành phố ồn ào\nGió biển mơn man thổi tung mái tóc\nNắng hè rực rỡ lấp lánh nụ cười xinh."
+        "content": "Trên vỉa hè có cây xoài xanh\nXe qua lại, phố đông thật nhanh\nBé đứng nhìn, mắt tròn long lanh\nQuả lủng lẳng đung đưa trên cành\n\nBé thì thầm: “Xoài ơi lớn nha”\nGiữa phố đông vẫn thật hiền hòa\nBao ngày qua bé luôn ghé qua\nNgắm xoài xanh mỗi chiều tan ca"
       },
       {
         "tag": "[Pre-Chorus]",
-        "content": "Nào ta cùng bước, tay trong tay\nBầu trời xanh ngắt rộng mở chân mây\nĐời có bao lâu mà cứ đắn đo\nHãy cháy hết mình cho tuổi đôi mươi!"
+        "content": "Dòng người đi vội vàng\nRiêng bé đứng mơ màng\nNhìn xoài xanh lớn dần\nTheo nắng gió dịu dàng"
       },
       {
         "tag": "[Chorus]",
-        "content": "Thanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!\n(Hey! Ho! Quẩy lên nào!)"
-      },
-      {
-        "tag": "[Dance Drop with Funky Bass & Brass Synth]",
-        "content": ""
+        "content": "Xoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!"
       },
       {
         "tag": "[Verse 2]",
-        "content": "Đốt lửa trại bập bùng trong đêm tối\nKể nhau nghe những ước mơ đầu đời\nDẫu mai này mỗi người một lối rẽ\nKỷ niệm này sẽ sống mãi trong tim."
+        "content": "Một ngày kia nắng lên lung linh\nBé reo vui: “Xoài chín đẹp xinh!”\nQuả vàng óng giữa trời phố xinh\nBé nhón chân hái đầy yêu thương\n\nÔm vào lòng, xoài thơm ngát hương\nXe vẫn chạy trên con phố quen\nMà lòng bé vui như tiếng nhạc\nRộn ràng giữa bao người"
       },
       {
-        "tag": "[Bridge]",
-        "content": "(Nhịp vỗ tay dồn dập build-up)\n1, 2, 3... Hãy hét thật to!\n1, 2, 3... Hãy bay thật cao!\nTuổi trẻ ơi... ta không bao giờ hối tiếc!"
+        "tag": "[Pre-Chorus]",
+        "content": "Gió len qua hàng cây\nNắng nhảy trên bàn tay\nXoài thơm như gọi mời\nNiềm vui bé mỗi ngày"
       },
       {
         "tag": "[Chorus]",
-        "content": "Thanh xuân này là những chuyến đi xa\nHát vang khúc ca dưới bầu trời rực rỡ\nCùng nhau vượt qua ngàn trùng sóng gió\nNụ cười ta sáng bừng cả không gian!"
+        "content": "Xoài xanh ơi, lớn nhanh nha!\nGiữa phố vui thật là la la\nMai chín vàng, thơm bay xa\nBé ôm xoài cười ha ha\n\nGiữa bao nhiêu người qua\nCó cây xoài và bé ta\nNiềm vui thật giản đơn\nMà sao vui bất ngờ!"
       },
       {
-        "tag": "[Catchy Synth Drop]",
-        "content": ""
+        "tag": "[Bridge]",
+        "content": "La la la giữa phố đông\nMột cây xoài thật ấm lòng\nTuổi thơ bé thật trong\nGiữa phố dài mênh mông"
       },
       {
-        "tag": "[Outro]",
-        "content": "Thanh xuân rực rỡ...\nMãi mãi bên nhau nhé bạn ơi!"
-      },
-      {
-        "tag": "[Fade Out]",
-        "content": ""
+        "tag": "[Final Chorus]",
+        "content": "Xoài xanh nay đã chín rồi\nBé nâng niu chẳng rời\nGiữa phố đông vẫn rạng ngời\nNụ cười bé sáng ngời\n\nLa la la hát vang lên\nGiữa con đường thân quen\nKỷ niệm nhỏ bé êm đềm\nTheo bé mãi không quên!"
       }
     ],
-    "filePath": "data/songs/thanh-xuan-ruc-ro.md"
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/qua-vai.md"
   }
 ]

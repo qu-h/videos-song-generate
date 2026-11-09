@@ -18,6 +18,8 @@ export interface SongManagerProps {
   className?: string;
   glassPreset?: 'aurora' | 'frost';
   glassScenery?: 'northwest' | 'ha-long' | 'tuan-chau' | 'phu-quoc' | 'hai-van';
+  initialSelectedSongSlug?: string;
+  activeTag?: string;
 }
 
 export const SongManager: React.FC<SongManagerProps> = ({
@@ -27,6 +29,8 @@ export const SongManager: React.FC<SongManagerProps> = ({
   className = '',
   glassPreset = 'aurora',
   glassScenery = 'northwest',
+  initialSelectedSongSlug,
+  activeTag,
 }) => {
   const [songs] = useState<SongItem[]>(initialSongs);
   const [search, setSearch] = useState('');
@@ -39,11 +43,34 @@ export const SongManager: React.FC<SongManagerProps> = ({
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   // Modal State
-  const [selectedSong, setSelectedSong] = useState<SongItem | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSong, setSelectedSong] = useState<SongItem | null>(() =>
+    initialSelectedSongSlug ? songs.find((song) => song.slug === initialSelectedSongSlug) || null : null,
+  );
+  const [isModalOpen, setIsModalOpen] = useState(Boolean(initialSelectedSongSlug));
 
   // Global Audio Playback State
   const [playingSong, setPlayingSong] = useState<SongItem | null>(null);
+
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/songs';
+  const songsPathIndex = currentPath.indexOf('/songs');
+  const songBasePath = songsPathIndex >= 0 ? currentPath.slice(0, songsPathIndex + '/songs'.length) : '/songs';
+  const makeTagPath = (tag: string) => `${songBasePath}/tag/${encodeURIComponent(tag.toLowerCase().replace(/^#/, '').trim().replace(/\s+/g, '-'))}`;
+
+  React.useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      const slug = path.slice(path.lastIndexOf('/') + 1);
+      const match = songs.find((song) => song.slug === slug);
+      if (match) {
+        setSelectedSong(match);
+        setIsModalOpen(true);
+      } else {
+        setIsModalOpen(false);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [songs]);
 
   // Thống kê
   const stats = useMemo(() => calculateSongStats(songs), [songs]);
@@ -77,6 +104,11 @@ export const SongManager: React.FC<SongManagerProps> = ({
   const handleSelectSong = (song: SongItem) => {
     setSelectedSong(song);
     setIsModalOpen(true);
+    if (typeof window !== 'undefined') window.history.pushState({}, '', `${songBasePath}/${encodeURIComponent(song.slug)}`);
+  };
+
+  const handleSelectTag = (tag: string) => {
+    if (typeof window !== 'undefined') window.location.assign(makeTagPath(tag));
   };
 
   const handlePlayToggle = (song: SongItem) => {
@@ -231,6 +263,7 @@ export const SongManager: React.FC<SongManagerProps> = ({
                 isPlaying={playingSong?.id === song.id}
                 onPlayToggle={handlePlayToggle}
                 onSelect={handleSelectSong}
+                onSelectTag={handleSelectTag}
               />
             ))}
           </div>
@@ -286,7 +319,12 @@ export const SongManager: React.FC<SongManagerProps> = ({
       <SongDetailModal
         song={selectedSong}
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {
+          setIsModalOpen(false);
+          if (typeof window !== 'undefined' && initialSelectedSongSlug) window.location.assign(songBasePath);
+          else if (typeof window !== 'undefined') window.history.pushState({}, '', songBasePath);
+        }}
+        onSelectTag={handleSelectTag}
       />
       </div>
     </div>
