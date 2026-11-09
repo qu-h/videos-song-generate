@@ -1,7 +1,5 @@
 ---
-id: "be-chay-ra-vuon"
-slug: "dem-thanh-pho-mua"
-title: "Bé chạy ra vườn 🌿"
+title: "Chú Tắc Kè Đổi Màu"
 artist: "Quân & Suno AI"
 genre: "Lofi R&B Chillhop"
 tags: ["#lofi", "#chillhop", "#rainy", "#night", "#vietnamese-rnb"]
@@ -11,8 +9,8 @@ updatedAt: "2026-10-21"
 
 suno:
   model: "v3.5"
-  stylePrompt: "Vietnamese lofi chillhop, smooth female vocal, jazzy electric piano, vinyl crackle, mellow bassline, rainy night atmosphere, 82 bpm"
-  lyricsPrompt: "Lời bài hát lofi nhẹ nhàng tâm trạng về một cô gái ngồi bên cửa sổ ngắm mưa Sài Gòn ban đêm"
+  stylePrompt: Upbeat Vietnamese children's song, playful and energetic, catchy melody, kindergarten style, ukulele, xylophone, claps, cheerful kids choir, fun cartoon style, very catchy chorus, playful sound effects like "tak ke tak ke"
+  lyricsPrompt: ""
   clipId: "b2c3d4e5-6789-01bc-def0-2345678901bc"
   songUrl: "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc"
   taskStatus: "completed"
@@ -29,60 +27,66 @@ audio:
   takeVersion: "Take 1 (Smooth & Melancholic)"
 
 youtube:
-  publishedUrl: "https://www.youtube.com/watch?v=Dwj1Ip-1nV4"
-  videoId: "Dwj1Ip-1nV4"
-  title: "Bé chạy ra vườn 🌿"
-  publishedAt: "2026-10-20T21:30:00Z"
+  videoId: "o8urp0GEmAM"
+  title: "Chú Tắc Kè Đổi Màu"
+  publishedAt: "2026-04-16T21:30:00Z"
   status: "public"
-  views: 44
-  thumbnailUrl: "https://img.youtube.com/vi/Dwj1Ip-1nV4/hqdefault.jpg"
-  description: ""
+  views: 259
+  description: "#tacke #tắckè"
 ---
 
-# Đêm Thành Phố Mưa
+# Chú Tắc Kè Đổi Màu
+[Intro]
+Tắc kè! Tắc kè!
+Chú tắc kè đến rồi!
 
-## 🎵 Suno Prompt & Cấu hình
-- **Model**: Suno v3.5
-- **Style of Music**: A cute, playful children’s song about a 19-month-old baby girl who loves running into her grandparents’ garden. The song should feel joyful, innocent, and full of wonder. Include imagery of green trees, colorful flowers, butterflies, birds singing, and soft sunshine. The baby laughs, toddles around, and explores the garden with curiosity and excitement. Add gentle rhythms, simple lyrics, and a catchy melody that feels like a nursery rhyme. The mood should be warm, happy, and full of love, like a peaceful countryside morning. Include playful sounds like giggles, “la la la,” and nature-inspired tones.
-- **Vocal**: Giọng nữ thì thầm, ấm êm (Smooth intimate female vocal)
-- **Tempo**: 82 BPM
+[Verse 1]
+Chú tắc kè leo lên tường cao
+Leo thật nhanh không ngã đâu
+Bám trên trần rồi lộn ngược
+Cười vui thích quá trời!
 
-## 📝 Lời bài hát (Lyrics)
-*(Verse 1)*
-Sáng sớm nắng lên, chim hót líu lo
-Bé con thức dậy, mắt tròn xinh xô
-Lon ton bước nhỏ, chạy ra ngoài hiên
-Ô kìa vườn xanh, gọi bé thật êm
+[Pre-Chorus]
+Mắt tròn xoe nhìn xung quanh
+Chân nhỏ bám thật nhanh
 
-*(Chorus)*
-La la la, bé cười vang
-Chạy ra vườn, nắng dịu dàng
-Hoa rung rinh, bướm bay gần
-Ôm cả trời xanh trong vòng tay bé
+[Chorus]
+Tắc kè! Tắc kè!
+Đổi màu thật hay!
+Tắc kè! Tắc kè!
+Thay màu mỗi ngày!
 
-*(Verse 2)*
-Kìa bông hoa đỏ, kìa lá xanh non
-Chim bay ngang đầu, hót véo von
-Bé đưa tay nhỏ, bắt nắng lung linh
-Cả khu vườn nhỏ, hóa thành chuyện xinh
+[Verse 2]
+Trên chiếc lá màu xanh xanh
+Chú đổi màu xanh thật nhanh
+Đến bông hoa màu đỏ thắm
+Lại đổi màu đỏ tươi
 
-*(Chorus)*
-La la la, bé cười vang
-Chạy ra vườn, nắng dịu dàng
-Ông bà nhìn theo, tim rộn ràng
-Yêu từng bước chân bé ngoan
+[Pre-Chorus]
+Chạy vòng quanh thật là vui
+Chơi cùng bướm xinh tươi
 
-*(Bridge)*
-Gió khe khẽ hát, ru cành cây
-Bé xoay vòng tròn, cười mê say
-Nhặt chiếc lá nhỏ, giơ lên cao
-“Vườn của con đó!” – bé thì thào
+[Chorus]
+Tắc kè! Tắc kè!
+Đổi màu thật hay!
+Tắc kè! Tắc kè!
+Thay màu mỗi ngày!
 
-*(Outro)*
-La la la, ngày thật vui
-Bé yêu vườn, bé yêu đời
-Mai lại chạy ra, nắng đợi rồi
-Khu vườn nhỏ – cả thế giới của bé 🌼
+[Bridge]
+Uống giọt sương trong buổi sớm
+Ngắm cầu vồng thật đẹp
+Mơ mình bay lên bầu trời
+Đổi màu sáng lung linh
+
+[Final Chorus]
+Tắc kè! Tắc kè!
+Bạn của em đây!
+Tắc kè! Tắc kè!
+Cùng chơi thật vui!
+
+[Outro]
+Tắc kè! Tắc kè!
+Chú tắc kè đáng yêu!
 
 ## 📌 Ghi chú sản xuất
 - Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.
