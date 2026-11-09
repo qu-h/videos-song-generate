@@ -252,7 +252,7 @@ export const SongDetailModal: React.FC<SongDetailModalProps> = ({
                   </div>
                   <div className="vsg-spec-item vsg-spec-path">
                     <span className="vsg-spec-key">Đường dẫn nội bộ:</span>
-                    <span className="vsg-spec-val">{song.audio.filePath || 'Chưa lưu local'}</span>
+                    <span className="vsg-spec-val">{song.audio.filePath || 'Dùng link CDN, không cần file trong project'}</span>
                   </div>
                   <div className="vsg-spec-item vsg-spec-version">
                     <span className="vsg-spec-key">Thời lượng:</span>

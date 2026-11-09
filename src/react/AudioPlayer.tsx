@@ -32,10 +32,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const [isMuted, setIsMuted] = useState(false);
   const [waveformData, setWaveformData] = useState<WaveformBin[]>([]);
 
-  const localAudioSrc = audio.filePath
+  const localAudioSrc = audio.filePath && !/^https?:\/\//i.test(audio.filePath)
     ? `/${audio.filePath.replace(/^public\//, '').split('/').map(encodeURIComponent).join('/')}`
     : undefined;
-  const audioSrc = localAudioSrc || audio.audioUrl;
+  // Prefer the package-provided CDN URL so consumers do not need to copy MP3s
+  // into each app's public directory. Keep local paths as a fallback.
+  const audioSrc = audio.audioUrl || localAudioSrc;
 
   useEffect(() => {
     if (!audioSrc || typeof window === 'undefined') return;

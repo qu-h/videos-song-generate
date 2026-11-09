@@ -87,7 +87,9 @@ suno:
 
 audio:
   fileName: "ngay-mai-nang-len.mp3"
+  # Tùy chọn: file MP3 local, chỉ dùng làm fallback nếu không có audioUrl
   filePath: "public/audio/ngay-mai-nang-len.mp3"
+  # Ưu tiên link CDN để app tiêu thụ package không cần chép MP3 vào public/
   audioUrl: "https://cdn1.suno.ai/a1b2c3d4-5678-90ab-cdef-1234567890ab.mp3"
   duration: "03:32"
   durationSeconds: 212
