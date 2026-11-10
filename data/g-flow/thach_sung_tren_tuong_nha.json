@@ -1,0 +1,55 @@
+{
+  "id": "thach_sung_tren_tuong_nha",
+  "compositionId": "thach_sung_tren_tuong_nha",
+  "title": "thạch sùng trên tường nhà",
+  "lyrics": {
+    "enabled": false,
+    "source": "D:\\projects\\nextjs\\packages\\google-flow-scenes\\data\\nhat-anh\\be_gai_va_ban_thach_sung_tren_tuong_nha_24_canh.json"
+  },
+  "video": {
+    "source": "D:\\veo\\thach_sung_tren_tuong_nha",
+    "sceneDurationInSeconds": 10
+  },
+  "generated": {
+    "id": "thach_sung_tren_tuong_nha",
+    "seriesId": "nhat-anh-cartoon",
+    "episodeId": "thach_sung_tren_tuong_nha",
+    "title": "Bé gái và bạn thạch sùng trên tường nhà",
+    "logoText": "NHẬT ÁNH STORY • NHẬT ÁNH STORY",
+    "logoImage": "logo/nhat-anh-6435ffe9.png",
+    "showLogo": true,
+    "sceneDirectory": "projects/nhat-anh-cartoon/thach_sung_tren_tuong_nha/scenes",
+    "sceneFiles": [
+      "01-Girl_drawing,_gecko_on_wall_202607291416.mp4",
+      "02-Girl_notices_gecko_on_wall_202608181854.mp4",
+      "03-Flow_1080p_202607291909.mp4",
+      "04-Girl_watches_gecko_on_wall_202608181856.mp4",
+      "05-Girl_waves_at_gecko_1080p_202607291426.mp4",
+      "06-Girl_watches_gecko_on_wall_202607291428.mp4",
+      "07-Girl_points_at_gecko,_thinks_202608181900.mp4",
+      "08-Girl_and_gecko_walk_1080p_202607291521.mp4",
+      "09-Flow_1080p_202607291521.mp4",
+      "10-Girl_aims_flashlight_at_wall_202608181914.mp4",
+      "11-Girl_moves_light,_gecko_walks_202607291525.mp4",
+      "12-Girl_flashlight_rolls_off_table_202608181915.mp4",
+      "13-Girl_places_flashlight,_picks_cr…_202607291530.mp4",
+      "14-Girl_apologizes_to_gecko_1080p_202607291552.mp4",
+      "15-Girl_and_gecko_in_room_202608181918.mp4",
+      "16-Girl_placing_water_cap_for_202608181927.mp4",
+      "17-Girl_watches_gecko_lick_water_202607291918.mp4",
+      "18-Girl_draws_gecko_on_paper_202607291918.mp4",
+      "19-Girl_holds_drawing,_gecko_reacts_202607291617.mp4",
+      "20-Girl_loses_drawing_to_breeze_202607291932.mp4",
+      "21-Girl_and_gecko_in_room_202608181925.mp4",
+      "22-Girl_picks_up_drawing_nods_202607291933.mp4",
+      "23-Gecko_climbing_and_girl_waving_202608181929.mp4",
+      "24-Người bạn trên tường nhà.mp4"
+    ],
+    "sceneCount": 24,
+    "sceneDurationInSeconds": 10,
+    "durationInSeconds": 240,
+    "fps": 30,
+    "showKaraoke": false,
+    "lines": []
+  }
+}
