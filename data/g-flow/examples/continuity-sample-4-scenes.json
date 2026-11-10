@@ -1,0 +1,324 @@
+{
+  "project": {
+    "title": "Ví dụ liền mạch – 4 cảnh (mẫu để AI bắt chước, không phải bài hát thật)",
+    "slug": "continuity-sample",
+    "brief": "data/briefs/continuity-sample.md",
+    "song": "data/songs/continuity-sample.md",
+    "audio_duration": "00:32",
+    "video_format": "16:9",
+    "resolution": "1920x1080",
+    "orientation": "landscape",
+    "display_mode": "full screen",
+    "video_model": "Veo 3.1",
+    "scene_duration": "8 seconds",
+    "total_scenes": 4,
+    "visual_style": "photorealistic cinematic live-action family-friendly children's music video",
+    "style_anchor": "Shot on a cinematic 35mm lens look with shallow depth of field, soft warm color grade with gentle teal shadows, subtle fine film grain, soft natural contrast, clean highlights, no HDR glow. The entire music video shares this exact same photographic look in every clip.",
+    "light_direction_anchor": "The main key light always comes from screen-left and slightly above, so shadows fall gently toward screen-right in every clip of the whole video. Only the color temperature and brightness of the light may change between chapters, never its direction.",
+    "palette_anchor": "Color palette for the whole video: sky blue, warm sand beige, soft white, with tomato red as the single accent. Every location, costume and prop stays inside this palette.",
+    "camera_height_anchor": "Camera stays at child eye level, about 1 meter above the ground, unless the camera move explicitly says low angle or high angle.",
+    "screen_direction": "Story travel direction is left-to-right. The character faces or moves toward screen-right whenever traveling. Never cross the 180-degree line relative to the main character; never mirror the layout.",
+    "main_character_reference": "@NhatMinh",
+    "characters": {
+      "@NhatMinh": "Nhân vật chính; ảnh reference đã upload lên Flow."
+    },
+    "anchor_props": [
+      {
+        "tag": "@RedBucket",
+        "description": "Xô nhựa đỏ nhỏ, quai trắng – đạo cụ xuyên suốt, đi theo nhân vật qua mọi chapter."
+      }
+    ],
+    "global_ingredients": [
+      {
+        "tag": "@NhatMinh",
+        "type": "character",
+        "scope": "global",
+        "description": "Bé trai Nhật Minh – ảnh reference có sẵn trong Flow.",
+        "source_file": "(ảnh @NhatMinh đã có sẵn trong Flow – ghi đường dẫn file thật ở dự án thật, ví dụ data/sample-data/nhat-minh-front.jpg)",
+        "render_style": "photoreal",
+        "appearance_lock": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: sky-blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume."
+      },
+      {
+        "tag": "@RedBucket",
+        "type": "prop",
+        "scope": "global",
+        "description": "Small tomato-red plastic beach bucket with a white handle, about 20 cm tall.",
+        "image_prompt": "Photorealistic small tomato-red plastic beach bucket with a white handle, about 20 cm tall, plain light-cream studio background, soft light, no text, 16:9.",
+        "appearance_lock": "@RedBucket is one fixed prop: a small tomato-red plastic beach bucket with a white handle, about 20 cm tall. It looks identical in every clip."
+      }
+    ],
+    "global_restrictions": [
+      "Mỗi cảnh là một video liên tục đúng 8 giây (Veo 3.1).",
+      "Chỉ các nhân vật được tag mới xuất hiện; không thêm người/động vật khác.",
+      "Không lật gương bối cảnh hoặc đổi vị trí trái/phải.",
+      "Không chữ, subtitle, logo, watermark."
+    ],
+    "important_instructions": [
+      "Generate every scene in landscape 16:9 widescreen.",
+      "Only tag ingredients that belong to the scene's chapter plus global ingredients.",
+      "Do not generate dialogue. The final Suno audio track will be added during editing."
+    ],
+    "example": true,
+    "render_style": "photoreal",
+    "chapter_count": 2
+  },
+  "format_lock": "Create one continuous 8-second video in 16:9 landscape format. Photorealistic cinematic live-action family-friendly children's music video: realistic fabrics and lighting, natural gentle movement, soft cinematic depth of field, bright clean colors. Use one camera angle or one smooth camera movement only. No abrupt cuts, montage or internal scene transition. Keep the final two seconds visually stable. Do not generate text in the image. No subtitles, captions, dialogue, speech, logo or watermark.",
+  "chapters": [
+    {
+      "chapter_id": "ch1",
+      "flow_chapter_name": "Chương 1 – Phòng ngủ",
+      "scene_range": [
+        1,
+        2
+      ],
+      "song_sections": [
+        "Intro",
+        "Verse 1"
+      ],
+      "setting": "bright children's bedroom, morning",
+      "costume": "sky-blue t-shirt, beige shorts, white sneakers",
+      "time_of_day": "morning",
+      "camera_family": "35mm lens look at child eye level; 28mm or 50mm only when the camera move says so.",
+      "lighting": "soft bright morning daylight, key from screen-left",
+      "energy_range": [
+        1,
+        3
+      ],
+      "ingredients": [
+        {
+          "tag": "@NhatMinh",
+          "type": "character",
+          "scope": "global"
+        },
+        {
+          "tag": "@RedBucket",
+          "type": "prop",
+          "scope": "global"
+        },
+        {
+          "tag": "@Bedroom",
+          "type": "background",
+          "scope": "chapter",
+          "description": "Bed on screen-left, window at rear-center, toy shelf on screen-right, light-blue walls, light-wood floor.",
+          "image_prompt": "Photorealistic bright Vietnamese children's bedroom: a single bed with sky-blue blanket on the left, a large window with white curtains at the center back, a low white toy shelf on the right, light-blue walls, light-wood floor, soft morning daylight from the left, no people, no text, 16:9."
+        }
+      ],
+      "recommended_setup": [
+        "Upload @NhatMinh (ảnh nhân vật, global) và @RedBucket (đạo cụ xuyên suốt) vào chapter này cùng với ảnh bối cảnh.",
+        "Upload @Bedroom vào Chương 1 – Phòng ngủ; dùng đúng một ảnh cho cả chapter.",
+        "Sinh cảnh 1 → chọn take có frame cuối giống end_state nhất → dùng frame cuối làm ảnh frame đầu (Frames to Video) cho cảnh 2.",
+        "Cảnh 2 là cầu nối sang Chương 2: bé đi ra khỏi khung bên phải, cầm @RedBucket."
+      ],
+      "prompt_blocks": {
+        "character_lock": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: sky-blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume. Only @NhatMinh may appear as a living character. @RedBucket is one fixed prop: a small tomato-red plastic beach bucket with a white handle, about 20 cm tall. It looks identical in every clip.",
+        "background_lock": "@Bedroom is the fixed approved background reference of Chương 1 – Phòng ngủ. It is the exact same bright children's bedroom: screen-left a single bed with a sky-blue blanket, rear-center a large window with white curtains, screen-right a low white toy shelf, light-blue walls, light-wood floor. Preserve the exact layout, positions, scale, colors and materials. Do not mirror, rotate, redesign or randomly decorate the room. Do not add extra doors, windows, furniture, people or animals. Keep the bed on screen-left and the toy shelf on screen-right. Never swap left and right.",
+        "continuity_lock": "This clip is one shot inside a longer music video. Everything needed is described in this prompt. Keep the camera at child eye level, keep the character scale, light direction, weather, season and time of day exactly as described here. Only the props named in the first-frame description exist in the frame; do not invent extra props, people or animals. Each prop stays exactly where the first-frame description places it unless the scene action explicitly moves it. No teleporting, no sudden costume or hairstyle change, no new location interpretation.",
+        "lighting_lock": "Lighting for this chapter: soft bright morning daylight through the rear-center window, key light from screen-left and slightly above, soft shadows toward screen-right, neutral-warm white balance, faces always clearly lit. Keep identical brightness, light direction, white balance and shadow softness in every clip of this chapter."
+      },
+      "scene_numbers": [
+        1,
+        2
+      ],
+      "scene_count": 2,
+      "upload_checklist": [
+        "@NhatMinh",
+        "@RedBucket",
+        "@Bedroom"
+      ]
+    },
+    {
+      "chapter_id": "ch2",
+      "flow_chapter_name": "Chương 2 – Bãi biển",
+      "scene_range": [
+        3,
+        4
+      ],
+      "song_sections": [
+        "Pre-Chorus",
+        "Chorus"
+      ],
+      "setting": "calm sandy beach, late afternoon",
+      "costume": "sky-blue t-shirt, beige shorts, white sneakers",
+      "time_of_day": "late afternoon",
+      "camera_family": "35mm lens look at child eye level; 28mm or 50mm only when the camera move says so.",
+      "lighting": "warm golden late-afternoon sunlight, key from screen-left",
+      "energy_range": [
+        3,
+        5
+      ],
+      "ingredients": [
+        {
+          "tag": "@NhatMinh",
+          "type": "character",
+          "scope": "global"
+        },
+        {
+          "tag": "@RedBucket",
+          "type": "prop",
+          "scope": "global"
+        },
+        {
+          "tag": "@Beach",
+          "type": "background",
+          "scope": "chapter",
+          "description": "Dry pale sand in the foreground, a striped blue-and-white umbrella at rear-center, calm shallow sea on the far right, clear sky.",
+          "image_prompt": "Photorealistic calm sandy beach in late afternoon: dry pale sand foreground, one striped blue-and-white beach umbrella planted at the center back, calm shallow turquoise sea along the right side, clear warm sky, golden sunlight from the left, no people, no text, 16:9."
+        }
+      ],
+      "recommended_setup": [
+        "Upload @NhatMinh (ảnh nhân vật, global) và @RedBucket (đạo cụ xuyên suốt) vào chapter này cùng với ảnh bối cảnh.",
+        "Upload @Beach vào Chương 2 – Bãi biển.",
+        "Cảnh 3 mở bằng 1 giây bãi biển trống rồi bé bước vào từ mép trái với @RedBucket — khớp với cảnh 2 đi ra bên phải.",
+        "Trang phục giữ nguyên (đổi một biến: chỉ đổi bối cảnh)."
+      ],
+      "prompt_blocks": {
+        "character_lock": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: sky-blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume. Only @NhatMinh may appear as a living character. @RedBucket is one fixed prop: a small tomato-red plastic beach bucket with a white handle, about 20 cm tall. It looks identical in every clip.",
+        "background_lock": "@Beach is the fixed approved background reference of Chương 2 – Bãi biển. It is the exact same calm sandy beach: dry pale sand in the foreground, one striped blue-and-white umbrella planted at rear-center, calm shallow turquoise sea along the far screen-right, clear warm sky. Preserve the exact layout, positions, scale, colors and materials. Do not mirror, rotate or redesign the beach. Do not add extra umbrellas, boats, people or animals. Keep the sea on screen-right. Never swap left and right.",
+        "continuity_lock": "This clip is one shot inside a longer music video. Everything needed is described in this prompt. Keep the camera at child eye level, keep the character scale, light direction, weather, season and time of day exactly as described here. Only the props named in the first-frame description exist in the frame; do not invent extra props, people or animals. Each prop stays exactly where the first-frame description places it unless the scene action explicitly moves it. No teleporting, no sudden costume or hairstyle change, no new location interpretation.",
+        "lighting_lock": "Lighting for this chapter: warm golden late-afternoon sunlight, key light from screen-left and slightly above, long soft shadows toward screen-right, warm white balance, faces always clearly lit. Keep identical brightness, light direction, white balance and shadow softness in every clip of this chapter."
+      },
+      "scene_numbers": [
+        3,
+        4
+      ],
+      "scene_count": 2,
+      "upload_checklist": [
+        "@NhatMinh",
+        "@RedBucket",
+        "@Beach"
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "chapter_id": "ch1",
+      "flow_chapter_name": "Chương 1 – Phòng ngủ",
+      "name": "Tìm thấy chiếc xô đỏ",
+      "timecode": "00:00–00:08",
+      "song_section": "Intro",
+      "lyrics": "(instrumental)",
+      "durationSeconds": 8,
+      "aspectRatio": "16:9",
+      "energy": 2,
+      "transition_in": "hold",
+      "ingredients": [
+        "@NhatMinh",
+        "@RedBucket",
+        "@Bedroom"
+      ],
+      "character_reference": "@NhatMinh",
+      "background_reference": "@Bedroom",
+      "shotSize": "wide → medium",
+      "cameraDirection": "slow dolly push-in",
+      "cameraLensAndAngle": "eye-level 35mm",
+      "emotionAndEnergy": "calm curiosity → delight",
+      "start_state": "@NhatMinh stands at the center of the frame on the light-wood floor, about one meter in front of the rear-center window, facing the toy shelf on screen-right, arms relaxed at his sides, calm curious expression. @RedBucket sits on the lowest shelf of the toy shelf on screen-right. Nothing is in his hands.",
+      "scene_action": "@NhatMinh walks two slow steps toward screen-right, crouches, lifts @RedBucket off the lowest shelf with both hands, stands up and turns to face the camera with a big delighted smile.",
+      "camera_move": "Slow dolly push-in at child eye level, 35mm, from wide to medium, no other movement.",
+      "end_state": "@NhatMinh stands at the center-right of the frame on the light-wood floor, just in front of the toy shelf on screen-right, facing the camera, holding @RedBucket with both hands at chest height, big delighted smile, and holds this pose, nearly still, for the final second.",
+      "prompt": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: sky-blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume. Only @NhatMinh may appear as a living character. @RedBucket is one fixed prop: a small tomato-red plastic beach bucket with a white handle, about 20 cm tall. It looks identical in every clip. @Bedroom is the fixed approved background reference of Chương 1 – Phòng ngủ. It is the exact same bright children's bedroom: screen-left a single bed with a sky-blue blanket, rear-center a large window with white curtains, screen-right a low white toy shelf, light-blue walls, light-wood floor. Preserve the exact layout, positions, scale, colors and materials. Do not mirror, rotate, redesign or randomly decorate the room. Do not add extra doors, windows, furniture, people or animals. Keep the bed on screen-left and the toy shelf on screen-right. Never swap left and right. This clip is one shot inside a longer music video. Everything needed is described in this prompt. Keep the camera at child eye level, keep the character scale, light direction, weather, season and time of day exactly as described here. Only the props named in the first-frame description exist in the frame; do not invent extra props, people or animals. Each prop stays exactly where the first-frame description places it unless the scene action explicitly moves it. No teleporting, no sudden costume or hairstyle change, no new location interpretation. Lighting for this chapter: soft bright morning daylight through the rear-center window, key light from screen-left and slightly above, soft shadows toward screen-right, neutral-warm white balance, faces always clearly lit. Keep identical brightness, light direction, white balance and shadow softness in every clip of this chapter. Camera family for this chapter: 35mm lens look at child eye level; 28mm or 50mm only when the camera move says so. Shot on a cinematic 35mm lens look with shallow depth of field, soft warm color grade with gentle teal shadows, subtle fine film grain, soft natural contrast, clean highlights, no HDR glow. The entire music video shares this exact same photographic look in every clip. The main key light always comes from screen-left and slightly above, so shadows fall gently toward screen-right in every clip of the whole video. Only the color temperature and brightness of the light may change between chapters, never its direction. Color palette for the whole video: sky blue, warm sand beige, soft white, with tomato red as the single accent. Every location, costume and prop stays inside this palette. Camera stays at child eye level, about 1 meter above the ground, unless the camera move explicitly says low angle or high angle. Story travel direction is left-to-right. The character faces or moves toward screen-right whenever traveling. Never cross the 180-degree line relative to the main character; never mirror the layout. Create one continuous 8-second video in 16:9 landscape format. Photorealistic cinematic live-action family-friendly children's music video: realistic fabrics and lighting, natural gentle movement, soft cinematic depth of field, bright clean colors. Use one camera angle or one smooth camera movement only. No abrupt cuts, montage or internal scene transition. Keep the final two seconds visually stable. Do not generate text in the image. No subtitles, captions, dialogue, speech, logo or watermark. The clip opens on exactly this first frame: @NhatMinh stands at the center of the frame on the light-wood floor, about one meter in front of the rear-center window, facing the toy shelf on screen-right, arms relaxed at his sides, calm curious expression. @RedBucket sits on the lowest shelf of the toy shelf on screen-right. Nothing is in his hands. Scene action: @NhatMinh walks two slow steps toward screen-right, crouches, lifts @RedBucket off the lowest shelf with both hands, stands up and turns to face the camera with a big delighted smile. Camera: Slow dolly push-in at child eye level, 35mm, from wide to medium, no other movement. The clip ends on exactly this final frame: @NhatMinh stands at the center-right of the frame on the light-wood floor, just in front of the toy shelf on screen-right, facing the camera, holding @RedBucket with both hands at chest height, big delighted smile, and holds this pose, nearly still, for the final second. The location must remain recognizable as the exact same @Bedroom reference from the first frame to the last frame. Do not generate a new location interpretation.",
+      "voiceover": "Nhật Minh tìm thấy chiếc xô đỏ trên kệ đồ chơi.",
+      "text_overlay": "",
+      "negativePrompt": "cartoon, plastic skin, uncanny face, changed identity, different child, adult-looking child, extra fingers, deformed hands, duplicate character, mirrored layout, swapped left and right, changed costume, changed hairstyle, new furniture, extra people, extra animals, teleporting props, random text, subtitles, logo, watermark, black bars, portrait framing, camera shake, flicker, abrupt cut, montage, zoom transition"
+    },
+    {
+      "scene_number": 2,
+      "chapter_id": "ch1",
+      "flow_chapter_name": "Chương 1 – Phòng ngủ",
+      "name": "Ra khỏi phòng (cầu nối sang bãi biển)",
+      "timecode": "00:08–00:16",
+      "song_section": "Verse 1",
+      "lyrics": "Xô đỏ trên tay, mình đi chơi thôi",
+      "durationSeconds": 8,
+      "aspectRatio": "16:9",
+      "energy": 3,
+      "transition_in": "hold",
+      "bridge_out": true,
+      "ingredients": [
+        "@NhatMinh",
+        "@RedBucket",
+        "@Bedroom"
+      ],
+      "character_reference": "@NhatMinh",
+      "background_reference": "@Bedroom",
+      "shotSize": "medium-wide",
+      "cameraDirection": "static",
+      "cameraLensAndAngle": "eye-level 35mm",
+      "emotionAndEnergy": "excited, bouncy",
+      "start_state": "@NhatMinh stands at the center-right of the frame on the light-wood floor, just in front of the toy shelf on screen-right, facing the camera, holding @RedBucket with both hands at chest height, big delighted smile.",
+      "scene_action": "@NhatMinh swings @RedBucket up once on the beat, laughs, then turns toward screen-right and walks bouncily toward the right edge of the frame carrying @RedBucket in his right hand, as if heading out to the beach.",
+      "camera_move": "Static medium-wide shot at child eye level, 35mm, no camera movement.",
+      "end_state": "@NhatMinh walks toward screen-right carrying @RedBucket in his right hand and fully exits the frame past the right edge; for the final second only the empty bedroom is visible, with the bed on screen-left and the toy shelf on screen-right.",
+      "prompt": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: sky-blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume. Only @NhatMinh may appear as a living character. @RedBucket is one fixed prop: a small tomato-red plastic beach bucket with a white handle, about 20 cm tall. It looks identical in every clip. @Bedroom is the fixed approved background reference of Chương 1 – Phòng ngủ. It is the exact same bright children's bedroom: screen-left a single bed with a sky-blue blanket, rear-center a large window with white curtains, screen-right a low white toy shelf, light-blue walls, light-wood floor. Preserve the exact layout, positions, scale, colors and materials. Do not mirror, rotate, redesign or randomly decorate the room. Do not add extra doors, windows, furniture, people or animals. Keep the bed on screen-left and the toy shelf on screen-right. Never swap left and right. This clip is one shot inside a longer music video. Everything needed is described in this prompt. Keep the camera at child eye level, keep the character scale, light direction, weather, season and time of day exactly as described here. Only the props named in the first-frame description exist in the frame; do not invent extra props, people or animals. Each prop stays exactly where the first-frame description places it unless the scene action explicitly moves it. No teleporting, no sudden costume or hairstyle change, no new location interpretation. Lighting for this chapter: soft bright morning daylight through the rear-center window, key light from screen-left and slightly above, soft shadows toward screen-right, neutral-warm white balance, faces always clearly lit. Keep identical brightness, light direction, white balance and shadow softness in every clip of this chapter. Camera family for this chapter: 35mm lens look at child eye level; 28mm or 50mm only when the camera move says so. Shot on a cinematic 35mm lens look with shallow depth of field, soft warm color grade with gentle teal shadows, subtle fine film grain, soft natural contrast, clean highlights, no HDR glow. The entire music video shares this exact same photographic look in every clip. The main key light always comes from screen-left and slightly above, so shadows fall gently toward screen-right in every clip of the whole video. Only the color temperature and brightness of the light may change between chapters, never its direction. Color palette for the whole video: sky blue, warm sand beige, soft white, with tomato red as the single accent. Every location, costume and prop stays inside this palette. Camera stays at child eye level, about 1 meter above the ground, unless the camera move explicitly says low angle or high angle. Story travel direction is left-to-right. The character faces or moves toward screen-right whenever traveling. Never cross the 180-degree line relative to the main character; never mirror the layout. Create one continuous 8-second video in 16:9 landscape format. Photorealistic cinematic live-action family-friendly children's music video: realistic fabrics and lighting, natural gentle movement, soft cinematic depth of field, bright clean colors. Use one camera angle or one smooth camera movement only. No abrupt cuts, montage or internal scene transition. Keep the final two seconds visually stable. Do not generate text in the image. No subtitles, captions, dialogue, speech, logo or watermark. The clip opens on exactly this first frame: @NhatMinh stands at the center-right of the frame on the light-wood floor, just in front of the toy shelf on screen-right, facing the camera, holding @RedBucket with both hands at chest height, big delighted smile. Scene action: @NhatMinh swings @RedBucket up once on the beat, laughs, then turns toward screen-right and walks bouncily toward the right edge of the frame carrying @RedBucket in his right hand, as if heading out to the beach. Camera: Static medium-wide shot at child eye level, 35mm, no camera movement. The clip ends on exactly this final frame: @NhatMinh walks toward screen-right carrying @RedBucket in his right hand and fully exits the frame past the right edge; for the final second only the empty bedroom is visible, with the bed on screen-left and the toy shelf on screen-right. The location must remain recognizable as the exact same @Bedroom reference from the first frame to the last frame. Do not generate a new location interpretation.",
+      "voiceover": "Bé xách xô đỏ chạy ra ngoài.",
+      "text_overlay": "",
+      "negativePrompt": "cartoon, plastic skin, uncanny face, changed identity, different child, adult-looking child, extra fingers, deformed hands, duplicate character, mirrored layout, swapped left and right, changed costume, changed hairstyle, new furniture, extra people, extra animals, teleporting props, random text, subtitles, logo, watermark, black bars, portrait framing, camera shake, flicker, abrupt cut, montage, zoom transition"
+    },
+    {
+      "scene_number": 3,
+      "chapter_id": "ch2",
+      "flow_chapter_name": "Chương 2 – Bãi biển",
+      "name": "Bước ra bãi biển",
+      "timecode": "00:16–00:24",
+      "song_section": "Pre-Chorus",
+      "lyrics": "Biển xanh đang đợi, cát trắng gọi mời",
+      "durationSeconds": 8,
+      "aspectRatio": "16:9",
+      "energy": 3,
+      "transition_in": "exit-enter",
+      "bridge_in": true,
+      "ingredients": [
+        "@NhatMinh",
+        "@RedBucket",
+        "@Beach"
+      ],
+      "character_reference": "@NhatMinh",
+      "background_reference": "@Beach",
+      "shotSize": "wide",
+      "cameraDirection": "smooth tracking left to right",
+      "cameraLensAndAngle": "eye-level 35mm",
+      "emotionAndEnergy": "amazed, happy",
+      "start_state": "For the first second only the empty beach is visible, with the striped umbrella at rear-center and the calm sea on screen-right; then @NhatMinh walks into the frame from the left edge, facing screen-right, wearing the sky-blue t-shirt and beige shorts, carrying @RedBucket in his right hand.",
+      "scene_action": "@NhatMinh walks happily from screen-left toward the striped umbrella at rear-center, looking around at the sea with wide amazed eyes, swinging @RedBucket gently in his right hand, and stops about two meters in front of the umbrella.",
+      "camera_move": "Smooth tracking shot at child eye level, 35mm, moving from screen-left to screen-right alongside him, no other movement.",
+      "end_state": "@NhatMinh stands at the center of the frame on the dry sand, about two meters in front of the striped umbrella at rear-center, facing three-quarter toward the camera, @RedBucket hanging from his right hand at his side, left arm relaxed, wide amazed smile, and holds this pose, nearly still, for the final second.",
+      "prompt": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: sky-blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume. Only @NhatMinh may appear as a living character. @RedBucket is one fixed prop: a small tomato-red plastic beach bucket with a white handle, about 20 cm tall. It looks identical in every clip. @Beach is the fixed approved background reference of Chương 2 – Bãi biển. It is the exact same calm sandy beach: dry pale sand in the foreground, one striped blue-and-white umbrella planted at rear-center, calm shallow turquoise sea along the far screen-right, clear warm sky. Preserve the exact layout, positions, scale, colors and materials. Do not mirror, rotate or redesign the beach. Do not add extra umbrellas, boats, people or animals. Keep the sea on screen-right. Never swap left and right. This clip is one shot inside a longer music video. Everything needed is described in this prompt. Keep the camera at child eye level, keep the character scale, light direction, weather, season and time of day exactly as described here. Only the props named in the first-frame description exist in the frame; do not invent extra props, people or animals. Each prop stays exactly where the first-frame description places it unless the scene action explicitly moves it. No teleporting, no sudden costume or hairstyle change, no new location interpretation. Lighting for this chapter: warm golden late-afternoon sunlight, key light from screen-left and slightly above, long soft shadows toward screen-right, warm white balance, faces always clearly lit. Keep identical brightness, light direction, white balance and shadow softness in every clip of this chapter. Camera family for this chapter: 35mm lens look at child eye level; 28mm or 50mm only when the camera move says so. Shot on a cinematic 35mm lens look with shallow depth of field, soft warm color grade with gentle teal shadows, subtle fine film grain, soft natural contrast, clean highlights, no HDR glow. The entire music video shares this exact same photographic look in every clip. The main key light always comes from screen-left and slightly above, so shadows fall gently toward screen-right in every clip of the whole video. Only the color temperature and brightness of the light may change between chapters, never its direction. Color palette for the whole video: sky blue, warm sand beige, soft white, with tomato red as the single accent. Every location, costume and prop stays inside this palette. Camera stays at child eye level, about 1 meter above the ground, unless the camera move explicitly says low angle or high angle. Story travel direction is left-to-right. The character faces or moves toward screen-right whenever traveling. Never cross the 180-degree line relative to the main character; never mirror the layout. Create one continuous 8-second video in 16:9 landscape format. Photorealistic cinematic live-action family-friendly children's music video: realistic fabrics and lighting, natural gentle movement, soft cinematic depth of field, bright clean colors. Use one camera angle or one smooth camera movement only. No abrupt cuts, montage or internal scene transition. Keep the final two seconds visually stable. Do not generate text in the image. No subtitles, captions, dialogue, speech, logo or watermark. The clip opens on exactly this first frame: For the first second only the empty beach is visible, with the striped umbrella at rear-center and the calm sea on screen-right; then @NhatMinh walks into the frame from the left edge, facing screen-right, wearing the sky-blue t-shirt and beige shorts, carrying @RedBucket in his right hand. Scene action: @NhatMinh walks happily from screen-left toward the striped umbrella at rear-center, looking around at the sea with wide amazed eyes, swinging @RedBucket gently in his right hand, and stops about two meters in front of the umbrella. Camera: Smooth tracking shot at child eye level, 35mm, moving from screen-left to screen-right alongside him, no other movement. The clip ends on exactly this final frame: @NhatMinh stands at the center of the frame on the dry sand, about two meters in front of the striped umbrella at rear-center, facing three-quarter toward the camera, @RedBucket hanging from his right hand at his side, left arm relaxed, wide amazed smile, and holds this pose, nearly still, for the final second. The location must remain recognizable as the exact same @Beach reference from the first frame to the last frame. Do not generate a new location interpretation.",
+      "voiceover": "Bé đứng trước biển, mắt tròn xoe.",
+      "text_overlay": "",
+      "negativePrompt": "cartoon, plastic skin, uncanny face, changed identity, different child, adult-looking child, extra fingers, deformed hands, duplicate character, mirrored layout, swapped left and right, changed costume, changed hairstyle, extra people, extra animals, teleporting props, deep water, big waves, random text, subtitles, logo, watermark, black bars, portrait framing, camera shake, flicker, abrupt cut, montage, zoom transition"
+    },
+    {
+      "scene_number": 4,
+      "chapter_id": "ch2",
+      "flow_chapter_name": "Chương 2 – Bãi biển",
+      "name": "Điệu nhảy xô đỏ (motif Chorus)",
+      "timecode": "00:24–00:32",
+      "song_section": "Chorus",
+      "lyrics": "Nhật Minh ơi, nhảy lên nào",
+      "durationSeconds": 8,
+      "aspectRatio": "16:9",
+      "energy": 4,
+      "transition_in": "hold",
+      "ingredients": [
+        "@NhatMinh",
+        "@RedBucket",
+        "@Beach"
+      ],
+      "character_reference": "@NhatMinh",
+      "background_reference": "@Beach",
+      "shotSize": "medium",
+      "cameraDirection": "static",
+      "cameraLensAndAngle": "eye-level 35mm",
+      "emotionAndEnergy": "joyful, bouncy on the beat",
+      "start_state": "@NhatMinh stands at the center of the frame on the dry sand, about two meters in front of the striped umbrella at rear-center, facing three-quarter toward the camera, @RedBucket hanging from his right hand at his side, left arm relaxed, wide amazed smile.",
+      "scene_action": "@NhatMinh turns to face the camera and does the chorus dance on the beat: two bouncy knee bends, then raises @RedBucket high above his head with his right hand while his left hand waves, laughing.",
+      "camera_move": "Static medium shot at child eye level, 35mm, no camera movement.",
+      "end_state": "@NhatMinh stands at the center of the frame on the dry sand in front of the striped umbrella at rear-center, facing the camera, @RedBucket raised high above his head in his right hand, left hand raised beside his face in a wave, big laughing smile, and keeps the final two seconds completely still.",
+      "prompt": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: sky-blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume. Only @NhatMinh may appear as a living character. @RedBucket is one fixed prop: a small tomato-red plastic beach bucket with a white handle, about 20 cm tall. It looks identical in every clip. @Beach is the fixed approved background reference of Chương 2 – Bãi biển. It is the exact same calm sandy beach: dry pale sand in the foreground, one striped blue-and-white umbrella planted at rear-center, calm shallow turquoise sea along the far screen-right, clear warm sky. Preserve the exact layout, positions, scale, colors and materials. Do not mirror, rotate or redesign the beach. Do not add extra umbrellas, boats, people or animals. Keep the sea on screen-right. Never swap left and right. This clip is one shot inside a longer music video. Everything needed is described in this prompt. Keep the camera at child eye level, keep the character scale, light direction, weather, season and time of day exactly as described here. Only the props named in the first-frame description exist in the frame; do not invent extra props, people or animals. Each prop stays exactly where the first-frame description places it unless the scene action explicitly moves it. No teleporting, no sudden costume or hairstyle change, no new location interpretation. Lighting for this chapter: warm golden late-afternoon sunlight, key light from screen-left and slightly above, long soft shadows toward screen-right, warm white balance, faces always clearly lit. Keep identical brightness, light direction, white balance and shadow softness in every clip of this chapter. Camera family for this chapter: 35mm lens look at child eye level; 28mm or 50mm only when the camera move says so. Shot on a cinematic 35mm lens look with shallow depth of field, soft warm color grade with gentle teal shadows, subtle fine film grain, soft natural contrast, clean highlights, no HDR glow. The entire music video shares this exact same photographic look in every clip. The main key light always comes from screen-left and slightly above, so shadows fall gently toward screen-right in every clip of the whole video. Only the color temperature and brightness of the light may change between chapters, never its direction. Color palette for the whole video: sky blue, warm sand beige, soft white, with tomato red as the single accent. Every location, costume and prop stays inside this palette. Camera stays at child eye level, about 1 meter above the ground, unless the camera move explicitly says low angle or high angle. Story travel direction is left-to-right. The character faces or moves toward screen-right whenever traveling. Never cross the 180-degree line relative to the main character; never mirror the layout. Create one continuous 8-second video in 16:9 landscape format. Photorealistic cinematic live-action family-friendly children's music video: realistic fabrics and lighting, natural gentle movement, soft cinematic depth of field, bright clean colors. Use one camera angle or one smooth camera movement only. No abrupt cuts, montage or internal scene transition. Keep the final two seconds visually stable. Do not generate text in the image. No subtitles, captions, dialogue, speech, logo or watermark. The clip opens on exactly this first frame: @NhatMinh stands at the center of the frame on the dry sand, about two meters in front of the striped umbrella at rear-center, facing three-quarter toward the camera, @RedBucket hanging from his right hand at his side, left arm relaxed, wide amazed smile. Scene action: @NhatMinh turns to face the camera and does the chorus dance on the beat: two bouncy knee bends, then raises @RedBucket high above his head with his right hand while his left hand waves, laughing. Camera: Static medium shot at child eye level, 35mm, no camera movement. The clip ends on exactly this final frame: @NhatMinh stands at the center of the frame on the dry sand in front of the striped umbrella at rear-center, facing the camera, @RedBucket raised high above his head in his right hand, left hand raised beside his face in a wave, big laughing smile, and keeps the final two seconds completely still. The location must remain recognizable as the exact same @Beach reference from the first frame to the last frame. Do not generate a new location interpretation.",
+      "voiceover": "Bé nhảy điệu xô đỏ trên bãi cát.",
+      "text_overlay": "Nhảy lên nào!",
+      "negativePrompt": "cartoon, plastic skin, uncanny face, changed identity, different child, adult-looking child, extra fingers, deformed hands, duplicate character, mirrored layout, swapped left and right, changed costume, changed hairstyle, extra people, extra animals, teleporting props, deep water, big waves, random text, subtitles, logo, watermark, black bars, portrait framing, camera shake, flicker, abrupt cut, montage, zoom transition"
+    }
+  ]
+}

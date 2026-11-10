@@ -53,7 +53,10 @@
     "song:create": "node scripts/new-song.mjs",
     "song:validate": "node scripts/validate-songs.mjs",
     "build": "node scripts/build-songs-data.mjs && tsc -p tsconfig.json",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "flow:validate": "node scripts/validate-flow.mjs",
+    "validate": "node scripts/validate-songs.mjs && node scripts/validate-flow.mjs",
+    "flow:assemble": "node scripts/assemble-flow-prompts.mjs"
   },
   "dependencies": {
     "@quan/theme-glassmorphism": "file:../theme-glassmorphism"
@@ -88,4 +91,3 @@
     "lyrics"
   ]
 }
-

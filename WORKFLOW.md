@@ -8,13 +8,23 @@
 
 | # | File | Đường dẫn | Dùng cho |
 |---|------|-----------|----------|
-| 1 | **Production Brief** – mô tả chi tiết nội dung, nhân vật, bối cảnh, chapter, cảnh quay | `data/briefs/<slug>.md` | Người dùng duyệt + tạo ảnh reference |
+| 1 | **Production Brief** – mô tả nội dung, danh sách nhân vật/asset, bối cảnh và cảnh quay (chapter nếu được yêu cầu) | `data/briefs/<slug>.md` | Người dùng duyệt + tạo ảnh reference |
 | 2 | **Song MD** – chủ đề, style, lời bài hát cho Suno | `data/songs/<slug>.md` | Dán vào Suno |
 | 3 | **Google Flow JSON** – danh sách cảnh để Flow tạo video tự động | `data/g-flow/<slug>-flow-16x9.json` | Nạp vào Google Flow |
 
 `<slug>` = tên bài hát viết thường, bỏ dấu, nối bằng `-` (giống `toSlug()` trong [scripts/new-song.mjs](scripts/new-song.mjs)). Ví dụ: *"Nhật Minh đi tắm biển"* → `nhat-minh-di-tam-bien`.
 
-**Thứ tự bắt buộc:** Brief (1) → Song (2) → Flow JSON (3). File sau phải dùng đúng tên nhân vật, tag, chapter và lời bài hát của file trước.
+**Thứ tự bắt buộc:** Brief (1) → Song (2) → Flow JSON (3). File sau phải dùng đúng tên nhân vật, tag và lời bài hát của file trước. Không tự tạo chapter nếu người dùng không yêu cầu.
+
+**Công cụ bắt buộc cho bước 3 (Flow JSON):**
+
+| Lệnh | Việc |
+|---|---|
+| Skill [.claude/skills/flow-scene-continuity/SKILL.md](.claude/skills/flow-scene-continuity/SKILL.md) | Bộ rule liền mạch 5 lớp + [prompt templates](.claude/skills/flow-scene-continuity/references/prompt-templates.md) tiếng Anh dùng nguyên văn. **Đọc trước khi viết `scenes`.** |
+| `npm run flow:assemble -- data/g-flow/<slug>-flow-16x9.json` | Ghép máy `scenes[].prompt` từ các khối lock + state theo đúng thứ tự, tự điền `ingredients`. AI **không tự tay viết `prompt`**. |
+| `npm run flow:validate -- data/g-flow/<slug>-flow-16x9.json` | Kiểm tra liền mạch (handoff, cụm cấm, anchor, cut grammar, timecode, tag). Phải **0 error** mới được coi là xong. |
+
+File mẫu đã pass validator 0 error / 0 warning: [data/g-flow/examples/continuity-sample-4-scenes.json](data/g-flow/examples/continuity-sample-4-scenes.json) — bắt chước cấu trúc và cách viết state của file này.
 
 ---
 
@@ -32,17 +42,29 @@ Tối thiểu chỉ cần **chủ đề**. Các tham số còn lại dùng mặc
 | Thời lượng mỗi cảnh | **8 giây — cố định** (mức tối đa của Veo 3.1 mỗi lần tạo). Không dùng 10 giây |
 | Khung hình | 16:9 landscape, 1920×1080 |
 | Phong cách hình ảnh | Photorealistic cinematic live-action children's music video |
-| Số chapter | 3–6 (theo số bối cảnh/trang phục) |
+| Cấu trúc Flow | Manifest phẳng theo asset là mặc định; chỉ dùng chapter khi người dùng yêu cầu hoặc input chỉ định rõ |
 
 Nếu người dùng đưa thêm nhân vật phụ (ví dụ `@NhatAnh`, `@GoldenCat`), thêm vào bảng nhân vật.
 
 ---
 
-## 2. Khái niệm Chapter trong Google Flow
+## 2. Cấu trúc asset và Chapter trong Google Flow
+
+Mặc định, người dùng cần **danh sách nhân vật/ảnh reference để upload**, không cần tạo chapter. Dùng manifest phẳng:
+
+- `project.manifest_mode: "flat"` và `project.reference_assets[]` là catalog duy nhất, mỗi tag có một record với `tag`, `type`, file (`asset_file`/`source_file`), `render_style`, `appearance_lock` nếu là character/prop, và `used_in_scenes`.
+- Chia catalog thành `project.characters[]`, `project.props[]`, `project.backgrounds[]` để người dùng nhìn và upload dễ dàng. `project.upload_instructions[]` nêu file nào dùng chung nhiều cảnh.
+- Scene phẳng không có `chapter_id`, `flow_chapter_name`, `bridge_in/out` hoặc `chapters[]`. Scene tự khai báo `background_reference`, ingredients, state và prompt đầy đủ.
+- `npm run flow:assemble` ở flat mode giữ nguyên prompt tự chứa, đồng bộ ingredients từ tag prompt; validator đối chiếu tag với catalog và kiểm tra continuity/timecode.
+- Không chuyển scene thành chapter chỉ vì thay bối cảnh. Mỗi bối cảnh vẫn là một background asset riêng trong catalog.
+
+Chỉ áp dụng các quy tắc chapter dưới đây khi người dùng yêu cầu chapter hoặc nguồn đã có chapter breakdown cần giữ nguyên.
 
 Google Flow hiện có **Chapter**. Quy ước trong dự án này:
 
 - **1 chapter = 1 nhóm cảnh liên tiếp dùng chung bối cảnh + trang phục + bộ ảnh reference (ingredients).**
+- **Nguồn chapter là chỉ dẫn chapter của người dùng.** Nếu người dùng gửi chapter/scene breakdown thì giữ nguyên số lượng, thứ tự và ranh giới ý nghĩa; không tự gộp chapter vì cùng bối cảnh. Nếu chỉ gửi chủ đề, suy ra chapter theo các lần đổi bối cảnh/trang phục và liệt kê rõ trong Brief trước khi viết scene. Không để số chapter mặc định 3–6 ghi đè danh sách thực tế.
+- Mỗi scene phải được gắn với beat/câu hát cụ thể từ input manifest. Scene không được chuyển sang chapter khác chỉ để cân số lượng. Trước khi bàn giao, so từng cảnh với bối cảnh, trang phục, nhân vật và đạo cụ đúng chapter.
 - Mỗi chapter có **danh sách ảnh reference riêng**, mỗi ảnh có một **tag `@Ten`** (PascalCase, không dấu, không khoảng trắng).
 - Ảnh nhân vật chính (`@NhatMinh`) là **ảnh dùng chung (global)** – được tag ở mọi chapter.
 - Ảnh bối cảnh / đạo cụ / trang phục đặc biệt là **ảnh của chapter** – chỉ được tag trong các cảnh thuộc chapter đó.
@@ -56,7 +78,7 @@ Google Flow hiện có **Chapter**. Quy ước trong dự án này:
    và câu bối cảnh luôn nêu tag + chapter: `@Beach is the fixed approved background reference of Chương 2 – Bãi biển.`
 4. Mọi tag xuất hiện trong `prompt` phải có trong `ingredients` của cảnh, và ngược lại.
 5. Tag viết **giống hệt** tên ảnh đã đặt trong Flow (phân biệt hoa thường), không thêm dấu chấm/dấu phẩy dính liền sau tag nếu Flow không nhận (an toàn nhất: `@NhatMinh ` có khoảng trắng phía sau).
-6. Cảnh đầu tiên của mỗi chapter dùng `continuityFromPreviousScene` để mô tả chuyển cảnh từ chapter trước (đi ra cửa, chuyển ánh sáng, match-cut…).
+6. Cảnh đầu tiên của mỗi chapter có `start_state` riêng mô tả việc nhân vật "đến" bối cảnh mới (bước qua cửa, xuất hiện từ mép trái khung hình…) — không copy `end_state` của chapter trước vì bối cảnh đã đổi, nhưng phải giữ nguyên trang phục/đạo cụ đang cầm nếu chưa có lý do đổi.
 7. Tên chapter trong JSON phải **giống y hệt** tên chapter người dùng tạo trong Flow: `"Chương <số> – <Tên ngắn>"`.
 
 ---
@@ -139,9 +161,21 @@ files:
 | 1 | ch1 | 00:00–00:08 | [Intro] | ... | wide, dolly-in | @NhatMinh @Bedroom |
 | 2 | ch1 | 00:08–00:16 | "Câu hát..." | ... | medium, slide L→R | @NhatMinh @Bedroom |
 
-## 6. Bảng màu & âm hưởng hình ảnh
-- **Palette:** ...
-- **Ánh sáng từng chapter:** ...
+## 5b. Continuity Map (duyệt TRƯỚC khi viết prompt)
+> Bảng này quyết định độ liền mạch. Kiểm tra theo skill `flow-scene-continuity` mục 3–4: shot đổi 1–2 nấc, không 2 cảnh liền cùng shot + máy, energy đổi ≤ 1 nấc (+2 khi vào Chorus), cảnh cuối chapter hướng về screen-right, cảnh đầu chapter `exit-enter` / `match-pose`.
+
+| # | Ch | Energy | Shot | Camera | transition_in | Frame cuối (tóm tắt) | Đạo cụ trong khung |
+|---|----|--------|------|--------|---------------|----------------------|--------------------|
+| 1 | ch1 | 2 | WS→MS | dolly push-in | hold | đứng center-right, facing camera, cầm @RedBucket 2 tay | @RedBucket |
+| 2 | ch1 | 3 | MW | static | hold | đi ra khỏi khung bên phải, khung trống 1 s (**bridge_out**) | @RedBucket (mang theo) |
+| 3 | ch2 | 3 | WS | tracking L→R | exit-enter | đứng center, 3/4 camera, xô ở tay phải (**bridge_in**) | @RedBucket |
+| 4 | ch2 | 4 | MS | static | hold | facing camera, giơ xô lên cao, 2 s cuối đứng yên | @RedBucket |
+
+## 6. Bảng màu & âm hưởng hình ảnh (neo toàn video)
+- **Palette (`palette_anchor`):** 3 màu chủ đạo + 1 màu nhấn, dùng cho mọi chapter: ...
+- **Hướng sáng (`light_direction_anchor`):** key light luôn từ screen-left; từng chapter chỉ đổi màu/độ ấm: ch1 ..., ch2 ...
+- **Chất hình (`style_anchor`):** ống kính, grade, grain – một câu duy nhất, chép vào mọi cảnh.
+- **Đạo cụ xuyên suốt (`anchor_props`):** 1–2 món đi theo nhân vật qua mọi chapter: ...
 - **Hiệu ứng vui cho bé:** bong bóng, confetti, lấp lánh … (tiết chế, không rối khung)
 
 ## 7. An toàn nội dung
@@ -159,9 +193,12 @@ files:
 ### Quy tắc khi viết Brief
 - Số cảnh = `ceil(thời lượng dự kiến / sceneDurationSeconds)`. Ví dụ 3:20 = 200s, cảnh 8s → 25 cảnh.
 - Mỗi chapter 3–8 cảnh. Đổi chapter khi đổi bối cảnh hoặc trang phục.
-- Mỗi cảnh **một hành động chính**, dễ đọc với trẻ nhỏ.
+- Mỗi cảnh **một hành động chính**, dễ đọc với trẻ nhỏ, và **kết thúc ở một tư thế tĩnh dễ tả lại** (đứng thẳng, ngồi xuống, giơ tay…) để cảnh sau bắt đầu đúng từ tư thế đó — đây là khớp nối giữa các cảnh.
 - Chorus lặp lại → hình ảnh có **motif lặp** (cùng động tác/vũ đạo) nhưng đổi góc máy.
 - Bối cảnh mô tả bố cục cố định (cái gì bên trái/phải/giữa) để không bị lật gương giữa các cảnh.
+- Thêm mục `Input Coverage`: liệt kê nguyên thứ tự chapter nguồn và map tất cả beat/chi tiết bắt buộc tới `chapter_id` + scene number. Nếu đầu vào chỉ là chủ đề, ghi đây là chapter breakdown do AI đề xuất.
+- Thêm mục `Reference Audit`: ghi ảnh/preset đã dùng cho từng nhân vật và xác nhận mô tả costume/kiểu tóc lấy từ ảnh. Không truy cập được ảnh thì ghi rõ chưa xác minh; không bịa chi tiết.
+- Trước khi xuất JSON, so lại `setting`, `costume`, character appearance lock, `scene_action`, ingredient tags ở từng scene với chapter manifest. Không dùng tag/costume/background chapter khác nếu chapter hiện tại không khai báo dùng chung.
 
 ---
 
@@ -252,6 +289,21 @@ youtube:
 - ...
 ````
 
+### Thông số "More Options" của Suno (ghi vào `suno.settings` trong frontmatter)
+| Thông số | Nhạc thiếu nhi (mặc định) | Ghi chú |
+|---|---|---|
+| Vocal Gender | Female | Giọng trẻ em mô tả thêm trong stylePrompt |
+| Duration | Custom = thời lượng mục tiêu (≥ 3:00) | Tránh Auto ra bài quá ngắn |
+| Max Mode | On (so sánh với Off) | |
+| Weirdness | 25–35% | Giai điệu quen tai, dễ đoán |
+| Style Influence | 70–80% | Bám sát style prompt |
+| Variety | Normal | |
+| Personalize | Off | Không lẫn gu cá nhân |
+
+Với nhạc người lớn/thử nghiệm có thể tăng Weirdness 45–60% và giảm Style Influence 50–60%.
+
+Thêm `excludeStyles` (ô loại trừ của Suno) cho mọi bài thiếu nhi: `horror, scary, dark, screaming, heavy metal, dubstep, deep growl`.
+
 ### Quy tắc viết Style prompt (Suno)
 - **Tiếng Anh**, ≤ 200 ký tự (Suno cắt phần thừa), theo thứ tự:
   `thể loại, tempo BPM, giọng hát, nhạc cụ chính, mood, đặc điểm sản xuất`
@@ -270,7 +322,35 @@ youtube:
 
 ## 5. BƯỚC 3 – Tạo Google Flow JSON `data/g-flow/<slug>-flow-16x9.json`
 
-Kế thừa cấu trúc file mẫu [data/g-flow/nhat-minh-rang-sua-thu-2-flow-16x9-cinematic-v2.json](data/g-flow/nhat-minh-rang-sua-thu-2-flow-16x9-cinematic-v2.json) và **bổ sung `chapters` + `ingredients`**.
+Kế thừa cấu trúc prompt/state mẫu. Mặc định dùng `project.reference_assets[]` + `characters[]`/`props[]`/`backgrounds[]`; chỉ thêm `chapters[]` và `chapter_id` trong chapter mode được người dùng yêu cầu.
+
+### 🔗 Nguyên tắc liền mạch (đọc trước khi viết `scenes` — đây là phần quan trọng nhất)
+
+> Bản đầy đủ: skill [.claude/skills/flow-scene-continuity/SKILL.md](.claude/skills/flow-scene-continuity/SKILL.md). Tóm tắt **5 lớp neo**:
+>
+> | Lớp | Neo | Trường |
+> |---|---|---|
+> | 1. Toàn video | chất hình, **hướng sáng**, bảng màu, hướng tiến, chiều cao máy, đạo cụ xuyên suốt | `project.style_anchor`, `light_direction_anchor`, `palette_anchor`, `screen_direction`, `camera_height_anchor`, `anchor_props` |
+> | 2. Chapter | bối cảnh, trang phục, màu sáng, **họ ống kính**, thời điểm trong ngày | `chapters[].prompt_blocks`, `camera_family`, `time_of_day`, `energy_range` |
+> | 3. Cảnh ↔ cảnh | `end_state` → `start_state` nguyên văn, kiểu nối, thang shot, đường energy | `start_state`, `end_state`, `transition_in`, `energy`, `shotSize`, `camera_move` |
+> | 4. Cầu nối chapter | "đổi một biến", cảnh cuối hướng screen-right, cảnh đầu `exit-enter` | `bridge_out`, `bridge_in` |
+> | 5. Trong Flow | sinh tuần tự, Frames-to-Video từ frame cuối, chọn take theo `end_state` | `recommended_setup` |
+
+Veo sinh mỗi cảnh **hoàn toàn độc lập, không nhìn thấy cảnh trước**. Vì vậy:
+
+1. **CẤM mọi tham chiếu tương đối trong `prompt`**: không viết `previous scene`, `previous clip`, `previous numbered clip`, `direct continuation`, `the same as before`, `continue from…`, `continue as…`, `moments later`. Veo không có gì để "continue". Mọi thông tin phải là **mô tả tuyệt đối, tự chứa**. Validator báo lỗi khi gặp các cụm này.
+2. **Liền mạch = bàn giao trạng thái tường minh.** Mỗi cảnh có 2 trường bắt buộc:
+   - `start_state` – mô tả **frame đầu tiên**: nhân vật đứng/ngồi ở đâu trong bối cảnh, tư thế gì, quay mặt hướng nào (screen-left/right/camera), biểu cảm, đang cầm/đeo gì, các đạo cụ đã xuất hiện đang nằm ở vị trí nào.
+   - `end_state` – mô tả **frame cuối cùng** theo đúng các mục trên, kết ở một **tư thế tĩnh, dễ tả lại** (đứng thẳng, ngồi xuống, giơ tay chữ V…), kèm câu `…and holds this pose, nearly still, for the final second.`
+   - **`start_state` của cảnh N+1 = `end_state` của cảnh N chép lại nguyên văn** (bỏ câu "holds this pose"), chỉ đổi khi sang chapter mới. Đây chính là "khớp nối" làm các clip dựng cạnh nhau trông liền mạch.
+3. **Luật hướng chuyển động (screen direction):** chọn một hướng tiến chính cho cả bài (mặc định trái → phải). Nhân vật đi ra khỏi khung bên phải thì cảnh sau phải đi vào từ bên trái. Không đổi phía máy quay qua "trục" nhân vật (luật 180°). Ghi hướng mặt/hướng di chuyển vào cả `start_state` lẫn `end_state`.
+4. **Một "neo phong cách" duy nhất cho cả video:** `project.style_anchor` (màu phim, ống kính, độ sâu trường ảnh, grain, độ tương phản) được chép **nguyên văn** vào prompt của **mọi cảnh, mọi chapter** — ánh sáng đổi theo chapter nhưng "chất hình" không đổi, tránh cảm giác mỗi cảnh một bộ phim khác nhau.
+5. **Kỹ thuật Flow (khuyến nghị mạnh, ghi vào `recommended_setup`):** với các cảnh **trong cùng chapter**, tải frame cuối của clip vừa sinh về, dùng làm **ảnh frame đầu** cho cảnh kế tiếp (tính năng Frames to Video / ảnh đầu-cuối của Flow), hoặc dùng **Extend** khi hành động nối tiếp trực tiếp. Prompt JSON vẫn phải tự chứa đầy đủ như trên để dùng được cả khi không có frame reference.
+6. **Nhịp dàn dựng xen kẽ:** không đặt 2 cảnh liền nhau có shot size + góc máy giống hệt, nhưng cũng không nhảy từ extreme close-up sang extreme wide; đổi tối đa 1–2 "nấc" mỗi lần cắt (wide → medium → close-up). Sau cảnh máy chuyển động mạnh (orbit / tracking) là cảnh static hoặc push-in chậm.
+7. **Kiểu nối tường minh (`transition_in`)** cho mỗi cảnh: `hold` (mặc định) · `cut-on-action` (≤ 30% số cảnh) · `exit-enter` (đổi khu vực / chapter: ra khỏi khung bên phải, vào từ mép trái) · `match-pose` (cùng tư thế, đổi góc ≥ 2 nấc – dùng cho motif Chorus) · `look-off` (nhìn ra ngoài khung → cảnh sau là thứ bé nhìn thấy) · `establishing` (khung trống, chỉ cảnh mở đầu).
+8. **Đường năng lượng (`energy` 1–5)** bám theo phần nhạc (Intro 1–2, Verse 2–3, Pre-Chorus 3–4, Chorus 4–5, Bridge 2–3, Outro 1); mỗi cắt đổi ≤ 1 nấc, vào Chorus được +2.
+9. **Hướng sáng không đổi cả bài** (`light_direction_anchor`, mặc định key light từ screen-left). Chapter chỉ đổi màu / độ ấm. Bóng đổ đổi phía là lỗi liền mạch dễ thấy nhất.
+10. **Cầu nối chapter – "đổi một biến":** sang chapter mới chỉ đổi bối cảnh **hoặc** trang phục. Cảnh cuối chapter (`bridge_out`) kết với nhân vật hướng / đi / chỉ về screen-right và cầm theo `anchor_props`; cảnh đầu chapter mới (`bridge_in`) dùng `exit-enter` hoặc `match-pose`, cùng trang phục, cùng đạo cụ, energy lệch ≤ 1.
 
 ### Cấu trúc
 
@@ -290,6 +370,14 @@ Kế thừa cấu trúc file mẫu [data/g-flow/nhat-minh-rang-sua-thu-2-flow-16
     "scene_duration": "8 seconds",
     "total_scenes": 25,
     "visual_style": "photorealistic cinematic children's music video, ...",
+    "style_anchor": "Shot on a cinematic 35mm lens look with shallow depth of field, soft warm color grade with gentle teal shadows, subtle fine film grain, soft natural contrast, clean highlights, no HDR glow. The entire music video shares this exact same photographic look in every clip.",
+    "light_direction_anchor": "The main key light always comes from screen-left and slightly above, so shadows fall gently toward screen-right in every clip of the whole video. Only the color temperature and brightness of the light may change between chapters, never its direction.",
+    "palette_anchor": "Color palette for the whole video: <màu 1>, <màu 2>, <màu 3>, with <màu nhấn> as the single accent. Every location, costume and prop stays inside this palette.",
+    "camera_height_anchor": "Camera stays at child eye level, about 1 meter above the ground, unless the camera move explicitly says low angle or high angle.",
+    "screen_direction": "Story travel direction is left-to-right. The character faces or moves toward screen-right whenever traveling. Never cross the 180-degree line relative to the main character; never mirror the layout.",
+    "anchor_props": [
+      { "tag": "@RedBucket", "description": "Đạo cụ xuyên suốt, đi theo nhân vật qua mọi chapter; mô tả cố định trong character_lock." }
+    ],
     "main_character_reference": "@NhatMinh",
     "characters": {
       "@NhatMinh": "Nhân vật chính; ảnh reference đã upload lên Flow.",
@@ -331,7 +419,10 @@ Kế thừa cấu trúc file mẫu [data/g-flow/nhat-minh-rang-sua-thu-2-flow-16
       "song_sections": ["Intro", "Verse 1"],
       "setting": "bright children's bedroom, morning",
       "costume": "blue t-shirt, beige shorts",
-      "lighting": "warm morning sunlight from screen-left",
+      "time_of_day": "morning",
+      "camera_family": "35mm lens look at child eye level; 28mm or 50mm only when the camera move says so.",
+      "energy_range": [1, 3],
+      "lighting": "warm morning sunlight, key from screen-left",
       "ingredients": [
         { "tag": "@NhatMinh", "type": "character", "scope": "global" },
         {
@@ -349,14 +440,14 @@ Kế thừa cấu trúc file mẫu [data/g-flow/nhat-minh-rang-sua-thu-2-flow-16
         "Ưu tiên dùng khung cuối cảnh trước làm reference bổ sung cho cảnh sau."
       ],
       "prompt_blocks": {
-        "character_lock": "Use the approved uploaded character reference for @NhatMinh. Preserve @NhatMinh's approved face exactly, including facial proportions, hairstyle, skin tone, body proportions, apparent age, clothing, colors, patterns and shoes. Do not redesign, recolor, restyle, or age the child. Keep @NhatMinh visually identical in all clips. Chapter costume: blue t-shirt, beige shorts.",
+        "character_lock": "Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Chapter costume, identical in every clip of this chapter: blue short-sleeve t-shirt, beige shorts, white sneakers. Do not redesign, recolor or restyle the costume. Only @NhatMinh may appear as a living character. @RedBucket is one fixed prop: <màu, kích thước, chất liệu, 1 chi tiết nhận dạng>. It looks identical in every clip.",
         "background_lock": "@Bedroom is the fixed approved background reference of Chương 1 – Phòng ngủ. It is the exact same bright children's bedroom: <liệt kê bố cục: vật gì ở screen-left / screen-right / rear-center, màu tường, sàn>. Preserve the exact layout, positions, scale, colors and materials. Do not mirror, rotate, redesign or randomly decorate the room. Do not add extra doors, windows, furniture, people or animals. Keep <A> on screen-left and <B> on screen-right. Never swap left and right.",
-        "lighting_lock": "Use the same warm morning sunlight from screen-left in every clip of this chapter. Keep identical brightness, light direction, white balance, shadow softness and color temperature.",
-        "continuity_lock": "Treat this clip as a direct continuation of the previous numbered clip. Keep the same camera height, character scale, daylight direction, weather and season. Only introduce a prop when the scene explicitly introduces it. Keep each prop in the same logical position until it is explicitly moved or removed. No teleporting characters or props."
+        "continuity_lock": "This clip is one shot inside a longer music video. Everything needed is described in this prompt. Keep the camera at child eye level, keep the character scale, light direction, weather, season and time of day exactly as described here. Only the props named in the first-frame description exist in the frame; do not invent extra props, people or animals. Each prop stays exactly where the first-frame description places it unless the scene action explicitly moves it. No teleporting, no sudden costume or hairstyle change, no new location interpretation.",
+        "lighting_lock": "Lighting for this chapter: soft bright morning daylight through the rear-center window, key light from screen-left and slightly above, soft shadows toward screen-right, neutral-warm white balance, faces always clearly lit. Keep identical brightness, light direction, white balance and shadow softness in every clip of this chapter."
       }
     }
   ],
-  "format_lock": "Create one continuous 8-second video in 16:9 landscape format. Photorealistic cinematic live-action children's music video, realistic skin, hair, fabric, natural body movement. Use one camera angle or one smooth camera movement only. No abrupt cuts, montage, or internal scene transition. Keep the final two seconds visually stable. Do not generate text in the image. No subtitles, captions, dialogue, logo, or watermark.",
+  "format_lock": "Create one continuous 8-second video in 16:9 landscape format. Photorealistic cinematic live-action family-friendly children's music video: realistic fabrics and lighting, natural gentle movement, soft cinematic depth of field, bright clean colors. Use one camera angle or one smooth camera movement only. No abrupt cuts, montage or internal scene transition. Keep the final two seconds visually stable. Do not generate text in the image. No subtitles, captions, dialogue, speech, logo or watermark.",
   "scenes": [
     {
       "scene_number": 1,
@@ -368,10 +459,13 @@ Kế thừa cấu trúc file mẫu [data/g-flow/nhat-minh-rang-sua-thu-2-flow-16
       "lyrics": "<câu hát tương ứng hoặc '(instrumental)'>",
       "durationSeconds": 8,
       "aspectRatio": "16:9",
-      "ingredients": ["@NhatMinh", "@Bedroom"],
+      "energy": 2,
+      "transition_in": "hold",
+      "ingredients": ["@NhatMinh", "@RedBucket", "@Bedroom"],
       "character_reference": "@NhatMinh",
       "background_reference": "@Bedroom",
-      "continuityFromPreviousScene": "Opening scene. ...",
+      "start_state": "@NhatMinh stands at the center of the frame on the light-wood floor, about one meter in front of the rear-center window, facing the toy shelf on screen-right, arms relaxed at his sides, calm curious expression. @RedBucket sits on the lowest shelf of the toy shelf on screen-right. Nothing is in his hands.",
+      "end_state": "@NhatMinh stands at the center-right of the frame on the light-wood floor, just in front of the toy shelf on screen-right, facing the camera, holding @RedBucket with both hands at chest height, big delighted smile, and holds this pose, nearly still, for the final second.",
       "environmentContinuity": "bedroom, morning",
       "visualStyle": "photorealistic cinematic live-action children's music video",
       "shotSize": "wide → medium",
@@ -382,9 +476,9 @@ Kế thừa cấu trúc file mẫu [data/g-flow/nhat-minh-rang-sua-thu-2-flow-16
       "visualFocus": "...",
       "characterConsistency": "Use @NhatMinh consistently; preserve the same face, hairstyle, age appearance and body proportions. Keep the chapter costume.",
       "motionGuidance": "Natural child movement, large readable gestures synchronized to the beat.",
-      "scene_action": "@NhatMinh stands near the mirror, discovers a loose front baby tooth, touches it gently, looks surprised, then smiles excitedly.",
-      "camera_move": "Use a slow dolly-in at eye level.",
-      "prompt": "<character_lock> <background_lock> <continuity_lock> <lighting_lock> <format_lock> Scene-specific continuity state: <continuityFromPreviousScene> Scene action: <scene_action> <camera_move> The room must remain recognizable as the exact same @Bedroom reference from the first frame to the last frame. Do not generate a new room interpretation.",
+      "scene_action": "@NhatMinh walks two slow steps toward screen-right, crouches, lifts @RedBucket off the lowest shelf with both hands, stands up and turns to face the camera with a big delighted smile.",
+      "camera_move": "Slow dolly push-in at child eye level, 35mm, from wide to medium, no other movement.",
+      "prompt": "<ĐỂ TRỐNG – sinh bằng `npm run flow:assemble`. Thứ tự: character_lock, background_lock, continuity_lock, lighting_lock, camera_family, style_anchor, light_direction_anchor, palette_anchor, camera_height_anchor, screen_direction, format_lock, 'The clip opens on exactly this first frame: ' + start_state, 'Scene action: ' + scene_action, 'Camera: ' + camera_move, 'The clip ends on exactly this final frame: ' + end_state, câu khoá bối cảnh.>",
       "voiceover": "<câu tiếng Việt mô tả cảnh – dùng cho hậu kỳ/nội dung, KHÔNG đưa vào Flow>",
       "text_overlay": "<chữ ngắn 2–5 từ chèn ở hậu kỳ, hoặc lời hát karaoke>",
       "negativePrompt": "cartoon plastic skin, uncanny face, changed identity, adult-looking child, extra fingers, deformed hands, duplicate character, mirrored layout, random text, subtitles, logo, watermark, black bars, portrait framing, camera shake"
@@ -397,31 +491,56 @@ Kế thừa cấu trúc file mẫu [data/g-flow/nhat-minh-rang-sua-thu-2-flow-16
 
 > Mẫu tham chiếu đã chạy tốt: [google-flow-scenes/data/nhat-anh/em_be_choi_voi_meo_vang_beo_tron_tren_san_24_canh.json](../google-flow-scenes/data/nhat-anh/em_be_choi_voi_meo_vang_beo_tron_tren_san_24_canh.json)
 
-Mỗi lần Flow sinh video là **độc lập**, không nhớ cảnh trước → `prompt` của **mọi cảnh** phải là **bản đầy đủ, tự chứa**, ghép **nguyên văn** theo thứ tự:
+Mỗi lần Flow sinh video là **độc lập**, không nhớ cảnh trước → `prompt` của **mọi cảnh** phải là **bản đầy đủ, tự chứa**. **Không viết tay** `prompt`: AI chỉ điền các trường, rồi chạy
 
-```
-1. character_lock   (của chapter – gọi @NhatMinh, + mỗi nhân vật phụ một đoạn mô tả cố định có tag @)
-2. background_lock  (của chapter – gọi @<Background>, bố cục trái/phải/giữa)
-3. continuity_lock  (của chapter)
-4. lighting_lock    (của chapter)
-5. format_lock      (toàn project)
-6. "Scene-specific continuity state: " + continuityFromPreviousScene
-7. "Scene action: " + scene_action          ← phần duy nhất thay đổi nhiều giữa các cảnh
-8. camera_move                               ← đúng MỘT kiểu máy
-9. "The room must remain recognizable as the exact same @<Background> reference from the first frame to the last frame. Do not generate a new room interpretation."
+```bash
+npm run flow:assemble -- data/g-flow/<slug>-flow-16x9.json   # ghép prompt + ingredients
+npm run flow:validate -- data/g-flow/<slug>-flow-16x9.json   # phải 0 error
 ```
 
-- Khối 1–5 **copy y hệt** giữa các cảnh cùng chapter (không viết lại theo cách khác) → giúp Flow giữ nhân vật/bối cảnh ổn định.
-- Sang chapter mới thì đổi khối 1–4 theo `chapters[].prompt_blocks` của chapter đó.
+Script [scripts/assemble-flow-prompts.mjs](scripts/assemble-flow-prompts.mjs) ghép **nguyên văn** theo thứ tự:
+
+```
+1. character_lock          (chapter – @NhatMinh + mỗi nhân vật phụ / anchor prop một câu mô tả cố định có tag @)
+2. background_lock         (chapter – @<Background>, bố cục trái/phải/giữa)
+3. continuity_lock         (chapter – TỰ CHỨA, không nhắc clip khác)
+4. lighting_lock           (chapter – màu sáng; hướng = light_direction_anchor)
+5. camera_family           (chapter)
+6. style_anchor            (toàn project – MỌI cảnh)
+7. light_direction_anchor  (toàn project)
+8. palette_anchor          (toàn project)
+9. camera_height_anchor    (toàn project)
+10. screen_direction       (toàn project)
+11. format_lock            (toàn project)
+12. "The clip opens on exactly this first frame: " + start_state   ← = end_state cảnh trước chép nguyên văn
+13. "Scene action: " + scene_action                                 ← phần duy nhất thay đổi nhiều giữa các cảnh
+14. "Camera: " + camera_move                                        ← đúng MỘT kiểu máy, có tiêu cự + chiều cao
+15. "The clip ends on exactly this final frame: " + end_state       ← tư thế tĩnh + "holds this pose, nearly still, for the final second"
+16. "The location must remain recognizable as the exact same @<Background> reference from the first frame to the last frame. Do not generate a new location interpretation."
+```
+
+- Khối 1–5 **copy y hệt** giữa các cảnh cùng chapter; khối 6–11 **không bao giờ đổi** trong cả video. Lặp nguyên văn là có chủ ý: Flow giữ nhân vật / bối cảnh ổn định hơn khi câu chữ giống hệt.
+- Prompt ghép xong dài ~700–800 từ là bình thường với Veo 3.1; phần thay đổi (12–15) nằm cuối để mô hình đọc hành động sau khi đã "khoá" mọi thứ.
+- **Tuyệt đối không** dùng các cụm `previous scene`, `previous clip`, `same as before`, `continue from` trong prompt — Veo không nhìn thấy cảnh trước; sự liền mạch đến từ cặp `end_state` → `start_state` mô tả tuyệt đối.
 - Nhân vật phụ: mô tả cố định một lần trong `characters`, rồi lặp nguyên văn trong `character_lock`, ví dụ: `@GoldenCat is one fixed character: a small chubby round golden-orange cat ... green collar with one small red bell. Keep ... identical in every clip.`
 - Câu khẳng định số nhân vật: `Only @NhatMinh and @<X> may appear as living characters.`
 
+### ⚠️ Tránh lỗi "This generation might violate our policies"
+Nhân vật là **trẻ em thật** (dùng ảnh thật làm reference) thì `character_lock` **chỉ tả trang phục và kiểu tóc**, để ảnh reference giữ khuôn mặt.
+- **Không** tả cơ thể, da, môi, độ tròn trịa, cân nặng, tỷ lệ cơ thể (`chubby body`, `skin texture`, `lips`, `body proportions`…).
+- **Không** nhấn mạnh "real child" kèm số tuổi.
+- Tránh cảnh soi gương, tắm, thay đồ, ngủ cận mặt.
+- Thêm `family-friendly` vào `format_lock`.
+
 ### Quy tắc viết từng cảnh
 1. **`prompt` viết tiếng Anh**, ghép theo khung trên. `scene_action` 1–3 câu, **một hành động chính**, gọi nhân vật bằng tag `@`.
-2. Đạo cụ mới phải có chữ `introduces one ...` trong `scene_action` và ghi rõ vị trí đặt; cảnh sau nhắc lại vị trí đạo cụ trong `continuityFromPreviousScene`.
-3. Giữ hướng di chuyển nhất quán (trái → phải) và tư thế cuối cảnh trước = tư thế đầu cảnh sau.
-4. Camera đa dạng: wide, medium, close-up, low-angle hero, tracking, orbit, dolly — không lặp cùng một kiểu quá 2 cảnh liền.
-5. Cảnh Chorus: động tác nhảy/hook giống nhau giữa các lần chorus (motif), khác góc máy hoặc bối cảnh chapter.
+2. Đạo cụ mới phải có chữ `introduces one ...` trong `scene_action` và ghi rõ vị trí đặt; từ cảnh sau trở đi, đạo cụ đó phải xuất hiện kèm vị trí trong `start_state`/`end_state` cho đến khi được cất đi tường minh.
+3. `end_state` cảnh N chép **nguyên văn** thành `start_state` cảnh N+1 (bỏ câu "holds this pose"); `scene_action` phải kết thúc đúng ở tư thế mô tả trong `end_state`. Giữ hướng di chuyển nhất quán (trái → phải), ghi hướng mặt/hướng đi vào cả hai state. **Không** viết `the same spot` / `where he was` — lặp lại vị trí thật (screen-left / center / screen-right + mốc bối cảnh).
+   - Mỗi state theo mẫu: *vị trí trong khung + mốc bối cảnh → hướng mặt → tay trái / tay phải → biểu cảm → từng đạo cụ trong khung + vị trí của nó*.
+   - Viết **tuần tự**: `end_state` 1 → `start_state` 2 → `scene_action` 2 → `end_state` 2 → … Không viết hết action rồi "vá" state sau.
+4. Camera đa dạng: wide, medium, close-up, low-angle hero, tracking, orbit, dolly — không lặp cùng một kiểu quá 2 cảnh liền, nhưng mỗi lần cắt chỉ đổi 1–2 nấc shot size (không nhảy extreme close-up → extreme wide). Sau orbit / tracking phải là static hoặc push-in chậm. `camera_move` luôn ghi tiêu cự (theo `camera_family`) và chiều cao máy.
+5. Cảnh Chorus: động tác nhảy/hook giống nhau giữa các lần chorus (motif), khác góc máy hoặc bối cảnh chapter; nối bằng `match-pose`.
+5b. Mỗi cảnh có `transition_in` và `energy`; cảnh cuối chapter có `bridge_out: true`, cảnh đầu chapter có `bridge_in: true` (xem skill mục 3.2, 3.4, 4).
 6. `negativePrompt` dùng khối chuẩn + bổ sung theo chủ đề (ví dụ biển: `deep water, drowning, big waves`).
 7. `timecode` liên tục, không trùng, không hở; tổng = `audio_duration` (cảnh cuối có thể ngắn hơn).
 8. Không có chữ, logo, phụ đề, lời thoại trong video.
@@ -432,12 +551,31 @@ Mỗi lần Flow sinh video là **độc lập**, không nhớ cảnh trước �
 
 ## 6. Kiểm tra chéo trước khi kết thúc (AI tự check)
 
+**Bắt buộc chạy và dán kết quả vào câu trả lời:**
+```bash
+npm run flow:assemble -- data/g-flow/<slug>-flow-16x9.json
+npm run flow:validate -- data/g-flow/<slug>-flow-16x9.json   # 0 error; đọc và xử lý hết warning
+npm run song:validate
+```
+Validator ([scripts/validate-flow.mjs](scripts/validate-flow.mjs)) kiểm tra: anchors toàn video, prompt_blocks đủ, cụm cấm, `start_state` = `end_state` trước, "holds this pose", hướng mặt + vị trí trong state, tag ↔ ingredients ↔ chapter, timecode liên tục, thang shot ≤ 2 nấc, không lặp shot + máy, góc máy, tiêu cự, energy, cầu nối chapter, time_of_day không lùi, "đổi một biến".
+
 - [ ] 3 file cùng `slug`, cùng tên bài hát.
 - [ ] `total_scenes` = số phần tử `scenes` = số dòng shot list trong Brief.
+- [ ] Số chapter và thứ tự khớp input manifest; nếu chapter do AI suy ra từ chủ đề, đã ghi rõ ở Brief.
+- [ ] Mỗi beat/chi tiết bắt buộc trong input coverage được map đến ít nhất một scene; không thiếu chapter hoặc beat.
+- [ ] Đọc theo từng chapter: `setting`, `costume`, nhân vật/appearance lock, scene actions và ingredients đúng chapter; không nhầm hình/nhân vật giữa chapter.
+- [ ] `scene_count` = số `scene_numbers` = độ dài `scene_range`; các chapter liên tiếp, không rỗng, không hở hoặc trùng.
+- [ ] Bảng chapter trong Brief, các heading ảnh, checklist upload, `chapters[]` và câu trả lời cuối có cùng thứ tự, tên, số lượng.
 - [ ] Mỗi `scene.chapter_id` tồn tại trong `chapters`; `scene_number` nằm trong `scene_range` của chapter.
 - [ ] Mỗi tag trong `scene.ingredients` thuộc `global_ingredients` hoặc `chapters[chapter_id].ingredients`.
 - [ ] Mọi tag `@...` trong `prompt` đều có trong `scene.ingredients`.
-- [ ] `prompt` mỗi cảnh chứa nguyên văn `prompt_blocks` của đúng chapter + `format_lock` (không tóm tắt, không viết lại).
+- [ ] `prompt` mỗi cảnh chứa nguyên văn `prompt_blocks` của đúng chapter + `style_anchor` + `format_lock` (không tóm tắt, không viết lại).
+- [ ] `start_state` của cảnh N+1 = `end_state` của cảnh N chép nguyên văn (trừ cảnh mở đầu chapter mới); mọi `end_state` kết ở tư thế tĩnh có câu "holds this pose".
+- [ ] Không có cụm `previous scene` / `previous clip` / `direct continuation` / `same as before` / `continue from` / `continue as` trong bất kỳ `prompt` nào.
+- [ ] Hướng di chuyển/hướng mặt trong các state nhất quán theo `screen_direction` (trái → phải, không vượt trục 180°).
+- [ ] `project` có đủ `style_anchor`, `light_direction_anchor`, `palette_anchor`, `camera_height_anchor`, `screen_direction`, `anchor_props`; mỗi chapter có `camera_family`, `time_of_day`.
+- [ ] Mỗi cảnh có `transition_in` + `energy`; cảnh cuối mỗi chapter hướng về screen-right (`bridge_out`), cảnh đầu chapter mới `exit-enter` / `match-pose` (`bridge_in`), chỉ đổi bối cảnh **hoặc** trang phục.
+- [ ] Continuity Map (Brief mục 5b) khớp với `scenes` (shot, camera, energy, transition).
 - [ ] Mỗi nhân vật phụ có trong `characters` và được mô tả cố định giống nhau ở mọi cảnh.
 - [ ] `flow_chapter_name` của scene = của chapter; tên chapter khớp bảng ở Brief mục 4.
 - [ ] Mỗi ảnh reference trong chapters đều có `image_prompt` (trừ ảnh global đã có sẵn).
