@@ -1,0 +1,43 @@
+# Cursor & Codex Rules for videos-song-generate
+
+You are working in `packages/videos-song-generate`.
+Follow WORKFLOW.md and .agents/skills/flow-scene-continuity/SKILL.md strictly.
+
+## 3-File Standard Output
+1. `data/briefs/<slug>.md` – Production Brief
+2. `data/songs/<slug>.md` – Suno Song MD
+3. `data/g-flow/<slug>-flow-16x9.json` – Google Flow JSON (Veo 3.1)
+
+## 4 Critical Rules for Google Flow & Veo 3.1
+
+1. **Image-to-Video (Keyframe-First) Workflow:**
+   - Text-to-Video causes face drift and character inconsistency.
+   - Always structure scenes for Image-to-Video (Frames-to-Video): the first frame is 100% physically identical to the input keyframe image.
+   - Include `keyframe_prompt` (16:9 aspect ratio, cinematic prompt) in each scene so users can generate keyframes via Midjourney/Flux/Imagen 3.
+   - Chain the Last Frame (8.0s) of scene N as the First Frame (0.0s) of scene N+1 for pixel-level continuity.
+
+2. **Strict 3-Ingredient Limit:**
+   - Google Flow allows a MAXIMUM of 3 reference image ingredients per generation.
+   - Every scene must satisfy `ingredients.length <= 3`. Allocate:
+     - Slot 1: `@MainCharacter`
+     - Slot 2: `@SecondaryCharacter` or `@KeyProp`
+     - Slot 3: `@Background`
+   - If a scene has > 3 characters: Composite them into 1 single Start Frame image beforehand!
+
+3. **Dynamic 3-Phase Motion (Avoid Stiff/Boring Videos):**
+   - Phase 1 (0-2s): Immediate Lead-in motion synchronized to the first beat of the lyrics.
+   - Phase 2 (2-6.5s): Lively choreography, eye-contact with camera, joyful smiling engagement.
+   - Phase 3 (6.5-8s): Dynamic Settle into a clear pose (natural smiling, gentle breathing, no rigid frozen pose).
+
+4. **Child Safety & Policy Violation Guard:**
+   - Turn OFF "Enhance Prompt" in Google Flow.
+   - NEVER describe child anatomy or skin (`chubby`, `plump`, `skin texture`, `bare skin`, `rosy lips`, `cheeks`).
+   - For beach/water scenes: MUST use `sun-protective long-sleeve UV rashguard swim shirt, knee-length swim shorts, bright child life vest`. NEVER use `swimsuit`, `bikini`, `shirtless`, `bare chest`, `bathing`.
+   - For Halloween/night: Use `cheerful festive illuminated celebration`, NEVER use `horror`, `creepy`.
+
+## Validation Commands
+Run:
+- `npm run flow:assemble -- data/g-flow/<slug>-flow-16x9.json`
+- `npm run flow:validate -- data/g-flow/<slug>-flow-16x9.json` (Must achieve 0 error)
+- `npm run song:validate`
+

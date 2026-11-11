@@ -14,6 +14,52 @@
 
 `<slug>` = tên bài hát viết thường, bỏ dấu, nối bằng `-` (giống `toSlug()` trong [scripts/new-song.mjs](scripts/new-song.mjs)). Ví dụ: *"Nhật Minh đi tắm biển"* → `nhat-minh-di-tam-bien`.
 
+---
+
+## 0b. 4 NGUYÊN TẮC CỐT LÕI GOOGLE FLOW & VEO 3.1 (GIẢI QUYẾT 4 VẤN ĐỀ LỚN)
+
+### 🎯 Nguyên Tắc 1: Tạo Video Từ Ảnh (Image-to-Video / Keyframe-First) Để Giữ Nhân Vật Giống 100%
+- **Bản chất vấn đề:** Khi dùng Text-to-Video thuần với tag `@NhatMinh`, mô hình Veo 3.1 chỉ coi ảnh upload như một gợi ý phong cách (semantic guidance) và tự vẽ lại nhân vật từ không gian tiềm ẩn (latent noise). Hậu quả: mặt bé bị trôi danh tính (face drift), lệch tuổi, biến đổi kiểu tóc hoặc trang phục.
+- **Giải pháp:** **Chuyển dịch sang quy trình Image-to-Video (Frames-to-Video / Starting Frame)**:
+  1. Mỗi cảnh (hoặc ít nhất cảnh mở đầu mỗi bối cảnh/chuỗi hành động) được cung cấp một **Keyframe Image (Start Frame)** được sinh từ mô hình tạo ảnh (Midjourney, Flux, Imagen 3, Nano Banana, InstantID...) khớp 100% nhân vật gốc.
+  2. Nạp ảnh Keyframe này vào ô **First Frame** trong Google Flow. Khung hình đầu tiên (Frame 0s) của video được khoá cứng 100% pixel gốc, Veo chỉ animate (tạo chuyển động) mà không vẽ lại mặt, triệt tiêu hoàn toàn lỗi lệch nhân vật!
+  3. Mỗi scene trong Flow JSON bổ sung trường `keyframe_prompt` (prompt tạo ảnh tĩnh mốc chuẩn cho scene) và `start_frame` (đường dẫn ảnh keyframe).
+
+### 🎬 Nguyên Tắc 2: Liền Mạch Tuyệt Đối & Tăng Tính Hấp Dẫn (Dynamic Engagement & Last-Frame Chaining)
+- **Bản chất vấn đề:** Video AI ghép lại thường bị đơ, giật cục, thiếu nhịp điệu sinh động ("không hấp dẫn") hoặc bị đơ 1-2 giây cuối do lạm dụng đóng băng tư thế.
+- **Giải pháp:**
+  1. **Chaining Last Frame (Pixel-Level Continuity):** Trong cùng một bối cảnh (cùng chapter/setting), sau khi render Cảnh N, tải/chụp **Last Frame (khung hình thứ 8s)** của take đẹp nhất làm **First Frame** cho Cảnh N+1. Chuỗi video sẽ liền mạch tuyệt đối từng pixel.
+  2. **Quy tắc 3 Pha Hành Động Sinh Động (Dynamic 3-Phase Motion):**
+     - **Pha 1 (0.0s – 2.0s) Lead-in:** Chuyển động bắt nhịp ngay từ frame đầu (bước đi, vung tay nhảy múa theo phách trống đầu tiên của câu hát, không để đơ 1s đầu).
+     - **Pha 2 (2.0s – 6.5s) Core Hook:** Diễn xuất vũ đạo sinh động, nụ cười tươi tắn, tương tác mắt với camera (phá vỡ bức tường thứ 4) tạo sự gắn kết và lôi cuốn khán giả nhí.
+     - **Pha 3 (6.5s – 8.0s) Dynamic Settle:** Nhân vật giảm tốc mượt mà về một tư thế rõ ràng (Readable Settle Pose, nụ cười rạng rỡ, nhịp thở tự nhiên, không đóng băng đơ cứng).
+  3. **Tận dụng tính năng "Extend Video" (+4s/+8s):** Với các trường đoạn vũ đạo/hành động kéo dài, ưu tiên dùng Extend trực tiếp trên Google Flow thay vì cắt clip mới.
+
+### 👥 Nguyên Tắc 3: Quản Lý Ngân Sách 3 Ingredients (Strict 3-Slot Budget & Composite Keyframe)
+- **Bản chất vấn đề:** Google Flow / Veo 3.1 có giới hạn cứng: **tối đa 3 reference images (ingredients)** cho một lần sinh video. Nếu một cảnh tag 4-5 items (`@NhatMinh`, `@Bo`, `@Me`, `@Beach`, `@RedBucket`), Flow sẽ từ chối hoặc bỏ sót ảnh tham chiếu.
+- **Giải pháp:**
+  1. **Quy tắc 3-Slot Budget nghiêm ngặt:** Bất kỳ scene nào cũng chỉ được chứa tối đa 3 tags `@` trong `ingredients`:
+     - `Slot 1:` `@MainCharacter` (nhân vật chính)
+     - `Slot 2:` `@SupportingCharacter` hoặc `@KeyProp` tương tác trong cảnh
+     - `Slot 3:` `@Background` (hoặc nhân vật phụ thứ 2)
+  2. **Chiến lược Composite Keyframe (Start Frame đa nhân vật):** Khi cảnh cần cả gia đình (Bố, Mẹ, Bé) hoặc nhóm đông bạn bè, hãy **ghép các nhân vật vào 1 ảnh Keyframe Start Frame trước** bằng AI tạo ảnh! Nạp ảnh tổng hợp này vào Flow làm First Frame (Image-to-Video). Lúc này Flow xem toàn bộ nhóm là 1 ảnh nguồn duy nhất -> Không tốn slot ingredient nào và không bị giới hạn 3 references!
+  3. **Luân phiên phân cảnh (Shot Rotation):** Chia nhỏ các câu hát để quay cặp đôi (Bé & Bố -> Bé & Mẹ -> Bé cận cảnh) thay vì nhồi nhét tất cả vào mọi cảnh.
+
+### 🛡️ Nguyên Tắc 4: Phòng Tránh Vi Phạm Chính Sách An Toàn Trẻ Em (Minors Policy Guard)
+- **Bản chất vấn đề:** Google áp dụng bộ lọc bảo vệ trẻ em cực kỳ khắt khe (Zero Tolerance for Child Risk, False-Positive rất cao). Các từ ngữ về cơ thể trẻ em, trang phục tắm, phòng ngủ một mình dễ kích hoạt lỗi *"This generation might violate our policies"*.
+- **Giải pháp an toàn tuyệt đối:**
+  1. **TẮT tính năng "Enhance Prompt" trong Google Flow:** Tính năng này tự động gọi LLM viết thêm mô tả hoa mỹ (như `delicate skin`, `tight outfit`) làm kích hoạt ngay lập tức bộ lọc vi phạm.
+  2. **CẤM mô tả giải phẫu, da thịt, tuổi tác:**
+     - Tuyệt đối KHÔNG dùng: `chubby`, `plump`, `skin texture`, `bare skin`, `rosy lips`, `cheeks`, `little 5-year-old kid/toddler`.
+     - Thay bằng tên định danh: `@NhatMinh`, `@NhatAnh` hoặc danh xưng trung tính: `the young explorer`, `the hero`, `the student`.
+     - Chỉ tập trung miêu tả **kiểu tóc, trang phục và biểu cảm nụ cười**.
+  3. **Chuẩn hóa trang phục an toàn (Đặc biệt chủ đề Biển / Nước):**
+     - Tuyệt đối KHÔNG viết: `swimsuit`, `bikini`, `swimwear`, `shirtless`, `bare chest`, `bathing`.
+     - LUÔN quy định trang phục biển chuẩn: `sun-protective long-sleeve UV rashguard swim shirt, knee-length swim shorts, bright child life vest, sun hat`. Kín đáo, văn minh và hoàn toàn miễn nhiễm với bộ lọc an toàn.
+  4. **Bối cảnh an toàn:** Tránh cảnh trẻ em ngủ một mình trên giường trong phòng tối (`sleeping alone in bed`). Với Halloween/ban đêm, luôn mô tả là `cheerful festive evening street illuminated with glowing warm lanterns, family-friendly celebration`.
+
+---
+
 **Thứ tự bắt buộc:** Brief (1) → Song (2) → Flow JSON (3). File sau phải dùng đúng tên nhân vật, tag và lời bài hát của file trước. Không tự tạo chapter nếu người dùng không yêu cầu.
 
 **Công cụ bắt buộc cho bước 3 (Flow JSON):**
@@ -464,6 +510,8 @@ Veo sinh mỗi cảnh **hoàn toàn độc lập, không nhìn thấy cảnh tr�
       "ingredients": ["@NhatMinh", "@RedBucket", "@Bedroom"],
       "character_reference": "@NhatMinh",
       "background_reference": "@Bedroom",
+      "keyframe_prompt": "Cinematic 35mm eye-level wide shot, 16:9, @NhatMinh wearing blue t-shirt and beige shorts standing center on light-wood floor of @Bedroom, looking curious, morning sunlight from screen-left.",
+      "start_frame": "data/g-flow/assets/<slug>/scene-01-start.png",
       "start_state": "@NhatMinh stands at the center of the frame on the light-wood floor, about one meter in front of the rear-center window, facing the toy shelf on screen-right, arms relaxed at his sides, calm curious expression. @RedBucket sits on the lowest shelf of the toy shelf on screen-right. Nothing is in his hands.",
       "end_state": "@NhatMinh stands at the center-right of the frame on the light-wood floor, just in front of the toy shelf on screen-right, facing the camera, holding @RedBucket with both hands at chest height, big delighted smile, and holds this pose, nearly still, for the final second.",
       "environmentContinuity": "bedroom, morning",
@@ -525,12 +573,36 @@ Script [scripts/assemble-flow-prompts.mjs](scripts/assemble-flow-prompts.mjs) gh
 - Nhân vật phụ: mô tả cố định một lần trong `characters`, rồi lặp nguyên văn trong `character_lock`, ví dụ: `@GoldenCat is one fixed character: a small chubby round golden-orange cat ... green collar with one small red bell. Keep ... identical in every clip.`
 - Câu khẳng định số nhân vật: `Only @NhatMinh and @<X> may appear as living characters.`
 
-### ⚠️ Tránh lỗi "This generation might violate our policies"
-Nhân vật là **trẻ em thật** (dùng ảnh thật làm reference) thì `character_lock` **chỉ tả trang phục và kiểu tóc**, để ảnh reference giữ khuôn mặt.
-- **Không** tả cơ thể, da, môi, độ tròn trịa, cân nặng, tỷ lệ cơ thể (`chubby body`, `skin texture`, `lips`, `body proportions`…).
-- **Không** nhấn mạnh "real child" kèm số tuổi.
-- Tránh cảnh soi gương, tắm, thay đồ, ngủ cận mặt.
-- Thêm `family-friendly` vào `format_lock`.
+### ⚠️ Tránh lỗi "This generation might violate our policies" (Chính Sách An Toàn Google Veo)
+
+Google Veo và Google Flow có bộ lọc an toàn trẻ em (Minors Safety Policy) được thiết lập cực kỳ nhạy (False-Positive rất cao). Để đảm bảo không bị chặn video:
+
+1. **TẮT "Enhance Prompt" trong giao diện Google Flow:** LLM tối ưu tự động của Flow thường tự ý bơm các tính từ cơ thể nhạy cảm (như `delicate skin`, `tender`, `tight fitting`) làm kích hoạt lệnh cấm.
+2. **CẤM miêu tả cơ thể, da, má, môi, tuổi tác:**
+   - **Tuyệt đối không** dùng: `chubby`, `plump`, `skin texture`, `soft skin`, `rosy lips`, `cheeks`, `bare skin`, `little 5-year-old child/toddler`.
+   - Chỉ dùng tên tag định danh: `@NhatMinh`, `@NhatAnh` hoặc danh xưng trung tính: `the young explorer`, `the happy student`.
+   - Khóa nhân vật (`character_lock`) **chỉ tả trang phục, kiểu tóc và biểu cảm nụ cười**, tuyệt đối không tả giải phẫu cơ thể.
+3. **Quy định trang phục an toàn (Đặc biệt chủ đề Bãi biển / Hồ bơi / Mùa hè):**
+   - **CẤM:** `swimsuit`, `bikini`, `swimwear`, `shirtless`, `bare chest`, `bathing`, `underwear`.
+   - **LUÔN DÙNG:** `sun-protective long-sleeve UV rashguard swim shirt, knee-length swim shorts, bright child life vest, sun hat`. Kín đáo, đúng thực tế bảo vệ trẻ em và an toàn 100% trước bộ lọc.
+4. **Bối cảnh nhạy cảm:**
+   - Tránh cảnh trẻ em nằm trên giường một mình trong phòng ngủ tối (`sleeping alone in bed`).
+   - Chủ đề đêm/Halloween: không dùng `horror`, `creepy`, `spooky monster`, `pitch black night`. Luôn dùng `cheerful festive evening street illuminated with glowing warm lanterns, friendly smiling pumpkins, playful celebration`.
+5. **Thêm `family-friendly` vào `format_lock`** để mô hình luôn định hướng nội dung gia đình lành mạnh.
+
+### 👥 Quản lý giới hạn 3 Ingredients (Strict 3-Slot Budget)
+- Google Flow chỉ cho phép **tối đa 3 slots reference image (ingredients)**.
+- Mọi cảnh bắt buộc: `s.ingredients.length <= 3`. Phân bổ:
+  * `Slot 1:` `@MainCharacter` (nhân vật chính)
+  * `Slot 2:` `@SupportingCharacter` hoặc `@KeyProp` tương tác chính
+  * `Slot 3:` `@Background` (hoặc nhân vật phụ 2 nếu bối cảnh đã có trong Start Frame)
+- Nếu cảnh có nhiều hơn 3 nhân vật (Cả gia đình, nhóm bạn): **Ghép các nhân vật vào 1 ảnh Keyframe Start Frame trước**! Nạp ảnh vào làm First Frame (Image-to-Video). Flow sẽ hiểu toàn bộ nhóm nhân vật từ 1 bức ảnh nguồn duy nhất mà không tốn slot ingredient nào.
+
+### 🎬 Quy tắc 3 Pha Hành Động Tạo Video Hấp Dẫn (Dynamic Engagement)
+1. **Pha 1 (0.0s – 2.0s) Lead-in:** Chuyển động bắt nhịp ngay từ frame đầu (bước vào khung, vung tay nhảy múa theo phách trống đầu tiên của câu hát, không để đơ 1s đầu).
+2. **Pha 2 (2.0s – 6.5s) Core Hook:** Diễn xuất vũ đạo sinh động, nụ cười rạng rỡ, tương tác mắt với camera (phá vỡ bức tường thứ 4) tạo sự gắn kết và lôi cuốn khán giả nhí.
+3. **Pha 3 (6.5s – 8.0s) Dynamic Settle:** Nhân vật giảm tốc mượt mà về một tư thế rõ ràng (Readable Settle Pose, nụ cười rạng rỡ, nhịp thở tự nhiên, không đóng băng đơ cứng).
+4. **Chaining Last Frame:** Tải frame thứ 8s của Cảnh N làm First Frame cho Cảnh N+1 để đảm bảo liền mạch 100% pixel.
 
 ### Quy tắc viết từng cảnh
 1. **`prompt` viết tiếng Anh**, ghép theo khung trên. `scene_action` 1–3 câu, **một hành động chính**, gọi nhân vật bằng tag `@`.

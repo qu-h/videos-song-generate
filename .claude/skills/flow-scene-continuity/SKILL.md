@@ -35,6 +35,27 @@ Flow giữ nhân vật qua **ảnh reference người dùng upload vào từng c
 6. `prompt_blocks.character_lock` **không viết tay nữa**: `npm run flow:assemble` ghép tự động từ `appearance_lock` của **đúng những nhân vật / đạo cụ xuất hiện trong `start_state` / `scene_action` / `end_state`** của cảnh, cộng câu `Only @A and @B may appear as living characters.` (hoặc `No people or animals appear in this clip.`). Nhân vật chưa xuất hiện trong state thì **không** được tag trong prompt (Veo sẽ tự chèn).
 7. Người dùng đổi ảnh reference → **sinh lại toàn bộ JSON** (đổi preset), không sửa tay vài câu.
 
+### Lớp 0b – Quy trình Image-to-Video (Frames-to-Video / Keyframe-First) Giữ Nhân Vật 100%
+- Khi dùng Text-to-Video với `@Tag`, Veo 3.1 tự vẽ lại nhân vật từ latent space gây biến dạng mặt và đổi trang phục.
+- **Tạo video từ ảnh (Image-to-Video / Frames-to-Video):**
+  1. Mỗi cảnh sinh một ảnh Keyframe bằng mô hình tạo ảnh (Midjourney, Flux, Imagen 3, Nano Banana...) khớp 100% tư thế `start_state`.
+  2. Nạp ảnh này vào ô **First Frame** trong Flow. Khung hình 0s được khoá 100% pixel gốc, Veo chỉ animate tự nhiên mà không vẽ lại mặt.
+  3. Cung cấp trường `keyframe_prompt` trong mỗi scene của Flow JSON để người dùng tạo ảnh mốc nhanh chóng.
+
+### Lớp 0c – Giới hạn 3 Ingredients (Strict 3-Slot Budget & Composite Start Frame)
+- Google Flow giới hạn tối đa **3 reference images (ingredients)** cho một lần sinh.
+- Mỗi cảnh chỉ được tag tối đa 3 `@Tag` trong `ingredients`:
+  * Slot 1: `@MainCharacter`
+  * Slot 2: `@SupportingCharacter` hoặc `@KeyProp`
+  * Slot 3: `@Background` (hoặc nhân vật phụ 2)
+- Cảnh có > 3 nhân vật (Cả gia đình, nhóm bạn): **Ghép các nhân vật vào 1 ảnh Keyframe Start Frame trước**, nạp vào làm First Frame cho Flow (tiêu tốn 0 ingredient slot).
+
+### Lớp 0d – Phòng chống vi phạm chính sách trẻ em (Minors Safety Policy Guard)
+- **TẮT "Enhance Prompt" trong Google Flow.**
+- **CẤM từ ngữ giải phẫu/cơ thể trẻ em:** `chubby`, `plump`, `skin texture`, `soft skin`, `rosy lips`, `cheeks`, `bare skin`, `little 5-year-old kid/toddler`. Thay bằng tag định danh `@NhatMinh` hoặc `the young explorer`.
+- **Trang phục biển/nước bắt buộc:** `sun-protective long-sleeve UV rashguard swim shirt, knee-length swim shorts, bright child life vest`. CẤM `swimsuit`, `bikini`, `shirtless`, `bare chest`, `bathing`.
+- **Bối cảnh an toàn:** Không dùng `sleeping alone in bed`. Chủ đề đêm/Halloween dùng `cheerful festive evening street illuminated with glowing warm lanterns, friendly celebration`, CẤM `horror`, `creepy`.
+
 Validator: `source_file` / `render_style` / `appearance_lock` thiếu = error; prompt thiếu nguyên văn `appearance_lock` của nhân vật có mặt = error; phong cách lệch `render_style` = error.
 
 ### Đối chiếu ảnh và nguồn đầu vào (bắt buộc)
@@ -102,7 +123,13 @@ Mỗi chapter (`chapters[]`) có thêm:
 
 ---
 
-## Lớp 3 – Khớp nối cảnh với cảnh (handoff)
+## Lớp 3 – Khớp nối cảnh với cảnh (handoff) & Nhịp điệu hấp dẫn
+
+### 3.0 Quy tắc 3 Pha Hành Động Sinh Động (Dynamic Engagement Rhythm)
+Tránh cảnh đơ hoặc giật cục, mỗi cảnh 8 giây tuân thủ 3 pha:
+1. **Pha 1 (0.0s – 2.0s) Lead-in:** Chuyển động bắt nhịp ngay từ frame đầu tiên (bước đi, vung tay nhảy múa theo phách trống đầu tiên của câu hát, không để đơ 1s đầu).
+2. **Pha 2 (2.0s – 6.5s) Core Hook:** Diễn xuất vũ đạo sinh động, nụ cười rạng rỡ, tương tác mắt với camera (phá vỡ bức tường thứ 4) tạo sự gắn kết và lôi cuốn khán giả nhí.
+3. **Pha 3 (6.5s – 8.0s) Dynamic Settle:** Nhân vật giảm tốc mượt mà về một tư thế rõ ràng (Readable Settle Pose, nụ cười rạng rỡ, nhịp thở tự nhiên, không đóng băng đơ cứng).
 
 ### 3.1 Cặp `end_state` -> `start_state` (bắt buộc, validator kiểm tra)
 
@@ -159,14 +186,15 @@ Mỗi cắt đổi tối đa **1 nấc**; cắt vào Chorus được +2, cắt t
 
 ---
 
-## Lớp 5 – Kỹ thuật trong Google Flow (ghi vào `recommended_setup`)
+## Lớp 5 – Kỹ thuật thực chiến trong Google Flow (ghi vào `recommended_setup`)
 
-1. **Upload đúng danh sách `upload_checklist`** của từng chapter, **đúng tên tag**, và **cùng một file** `@MainCharacter` (ghi tên file) cho mọi chapter. Không upload lẫn hai phiên bản ảnh nhân vật.
-2. **Sinh theo thứ tự**, không nhảy cóc. Trong một chapter dùng **Frames to Video**: ảnh frame đầu của cảnh N+1 = frame cuối của take đã chọn của cảnh N (chụp / tải frame cuối). Prompt vẫn phải tự chứa đầy đủ.
-3. **Extend** cho cặp `cut-on-action` khi hành động nối trực tiếp.
-4. **Chọn take theo frame cuối**: mỗi cảnh sinh ≥ 2 output, chọn take có frame cuối **giống `end_state` nhất**. Nếu không take nào khớp thì re-roll **trước khi** sang cảnh sau. Không sửa cảnh sau để khớp cảnh sai (gây trôi dây chuyền).
-5. Cùng bộ ảnh reference (ingredients) cho mọi cảnh trong chapter; không thêm / bớt ảnh giữa chừng.
-6. Hậu kỳ: cắt 0.3–0.5 s đầu / cuối mỗi clip (phần Veo hay "khởi động"), cắt đúng nhịp trống; nếu còn lệch dùng cross-dissolve 6–8 frame. Không dùng wipe / zoom transition, chúng làm lộ sự rời rạc.
+1. **Luôn TẮT tính năng "Enhance Prompt":** Trong giao diện Flow, tắt toggle Enhance Prompt để tránh LLM tự động chèn các từ miêu tả cơ thể nhạy cảm làm vi phạm chính sách an toàn trẻ em.
+2. **Quy trình Image-to-Video (First Frame):** Với cảnh mở đầu hoặc đổi bối cảnh, nạp ảnh **Keyframe Start Frame** (tạo từ Imagen 3 / Midjourney / Flux) vào ô **First Frame** trong Flow để giữ nhân vật chuẩn 100%.
+3. **Chaining Last Frame (Frames to Video):** Trong cùng bối cảnh, xuất frame thứ 8s (Last Frame) của Cảnh N làm First Frame cho Cảnh N+1. Prompt giữ tự chứa đầy đủ.
+4. **Tận dụng tính năng "Extend Video" (+4s/+8s):** Cho các cảnh vũ đạo/hành động dài cần chuyển động camera mượt mà liên tục mà không phải cắt ghép.
+5. **Tuân thủ giới hạn 3 Ingredients:** Không tag quá 3 `@Tag` trong bất kỳ cảnh nào. Nếu cần nhiều nhân vật, ghép vào ảnh Start Frame trước.
+6. **Chọn take theo frame cuối**: mỗi cảnh sinh ≥ 2 output, chọn take có frame cuối **giống `end_state` nhất**. Nếu không take nào khớp thì re-roll **trước khi** sang cảnh sau. Không sửa cảnh sau để khớp cảnh sai (gây trôi dây chuyền).
+7. **Hậu kỳ:** cắt 0.3–0.5 s đầu / cuối mỗi clip (phần Veo hay "khởi động"), cắt đúng nhịp trống; nếu còn lệch dùng cross-dissolve 6–8 frame. Không dùng wipe / zoom transition, chúng làm lộ sự rời rạc.
 
 ---
 

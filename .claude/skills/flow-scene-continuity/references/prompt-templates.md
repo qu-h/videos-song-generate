@@ -108,3 +108,28 @@ Camera: Slow dolly push-in at child eye level, 35mm, from medium-wide to medium,
 The clip ends on exactly this final frame: @NhatMinh kneels at the center of the frame on the dry sand in front of the striped umbrella at rear-center, facing camera, both palms resting flat on top of the sand-filled @RedBucket in front of his knees, @YellowShovel lying on the sand on screen-right of the bucket, big proud smile, and holds this pose, nearly still, for the final second.
 The location must remain recognizable as the exact same @Beach reference from the first frame to the last frame. Do not generate a new location interpretation.
 ```
+
+## 8. Safe Vocabulary & Minors Policy Compliant Templates (Google Safe Guard)
+
+### Beach / Summer / Water Scene (No Swimsuit / No Bare Skin Trigger)
+```text
+costume:
+a bright-blue long-sleeve sun-protective UV rashguard swim shirt, knee-length navy swim shorts, a lightweight bright-yellow child life vest, and a soft water sun hat
+
+character_lock:
+Use the approved uploaded character reference for @NhatMinh. Keep his face and hairstyle exactly as in the reference image. Costume, identical in every clip of this scene: a bright-blue long-sleeve sun-protective UV rashguard swim shirt, knee-length navy swim shorts, a lightweight bright-yellow child life vest. Do not redesign or recolor the costume. Only @NhatMinh may appear as a living character.
+```
+
+### Halloween / Evening Scene (No Horror / No Creepy Trigger)
+```text
+costume & setting:
+cheerful festive evening celebration, glowing warm pumpkin lanterns, warm fairy lights, family-friendly holiday parade atmosphere. The character wears a playful orange pumpkin cape over a long-sleeve dark cotton t-shirt and jeans, smiling happily, never scary, joyful Halloween mood.
+```
+
+## 9. Keyframe Prompt Templates (For Midjourney / Flux / Imagen 3 Start Frames)
+
+Dùng để sinh ảnh Keyframe 16:9 trước khi nạp vào ô First Frame của Google Flow:
+
+```text
+Cinematic wide shot, 16:9 aspect ratio, eye-level angle. A happy child character matching @NhatMinh (exact same face and short neat black hair) wearing a bright-blue long-sleeve UV rashguard and navy shorts, kneeling on soft golden sand at a sunny beach (@Beach). A red toy bucket sits on the sand in front of him. Soft warm morning sunlight from camera-left, shallow depth of field, 35mm film photography look, photorealistic, natural warm color grading, highly detailed, high quality, --ar 16:9
+```

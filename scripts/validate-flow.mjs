@@ -41,6 +41,19 @@ const FORBIDDEN_PHRASES = [
 const TRANSITIONS = ['hold', 'cut-on-action', 'exit-enter', 'match-pose', 'look-off', 'establishing'];
 const BRIDGE_TRANSITIONS = ['exit-enter', 'match-pose', 'establishing'];
 
+const MAX_INGREDIENTS_PER_SCENE = 3;
+
+const SAFETY_POLICY_TRIGGERS = [
+  // Child body / anatomical descriptions that trigger Google child safety filter
+  [/\b(chubby\s+cheeks?|chubby\s+body|plump\s+body|skin\s+texture|rosy\s+lips|bare\s+skin|naked|nude)\b/i, 'Mô tả giải phẫu/da/cơ thể trẻ em dễ bị Google Child Safety filter chặn'],
+  // Sensitive clothing / beach / bathing triggers
+  [/\b(bikini|shirtless|bare\s+chest|undressed|bathing|underwear|boxers|panties)\b/i, 'Trang phục hở/nhạy cảm cho trẻ em. Với cảnh biển/nước hãy dùng "sun-protective UV rashguard swim shirt + knee-length shorts"'],
+  // Bedroom / intimate triggers when related to kids
+  [/\b(sleeping\s+alone\s+in\s+bed|lying\s+in\s+bed\s+at\s+night|taking\s+a\s+bath|bathroom\s+shower)\b/i, 'Bối cảnh phòng ngủ/giường/tắm nhạy cảm với trẻ em'],
+  // Danger / violence / extreme fear triggers
+  [/\b(drowning|deep\s+water\s+struggle|falling\s+from\s+high|blood|screaming\s+in\s+terror)\b/i, 'Hành động nguy hiểm/kinh dị vi phạm chính sách an toàn nội dung'],
+];
+
 // Shot ladder: ECU(1) CU(2) MCU(3) MS(4) MW(5) WS(6) EWS(7)
 const SHOT_LADDER = [
   [/extreme\s*close|ecu\b|macro/i, 1],
@@ -167,6 +180,14 @@ function validateFile(file) {
         if (!ingredients.includes(tag)) E(`${id}: ingredients thiếu ${tag}`);
       }
       for (const tag of ingredients) if (!promptTags.includes(tag)) E(`${id}: ingredients có ${tag} nhưng prompt không gọi`);
+      if (ingredients.length > MAX_INGREDIENTS_PER_SCENE && !s.start_frame && !s.composite_frame) {
+        W(`${id}: ingredients có ${ingredients.length} items (${ingredients.join(', ')}) — vượt quá giới hạn tối đa ${MAX_INGREDIENTS_PER_SCENE} của Google Flow. Khuyến nghị: dùng Image-to-Video (Start Frame) hoặc luân phiên nhân vật ≤ 3 tags.`);
+      }
+      for (const [re, msg] of SAFETY_POLICY_TRIGGERS) {
+        const textToCheck = `${prompt} ${s.start_state || ''} ${s.scene_action || ''} ${s.end_state || ''}`;
+        const m = textToCheck.match(re);
+        if (m) E(`${id}: phát hiện từ vi phạm chính sách an toàn "${m[0]}" (${msg})`);
+      }
       if (s.transition_in && !TRANSITIONS.includes(s.transition_in)) E(`${id}: transition_in không hợp lệ`);
       const tc = parseTimecode(s.timecode);
       if (!tc) E(`${id}: timecode không hợp lệ`);
@@ -477,6 +498,14 @@ function validateFile(file) {
     for (const t of ing) {
       if (!promptTags.includes(t)) E(`${id}: ingredient ${t} không được gọi trong prompt`);
       if (ch && !ch.__tags.has(t)) E(`${id}: ingredient ${t} không thuộc global_ingredients hay ${ch.chapter_id}.ingredients`);
+    }
+    if (ing.length > MAX_INGREDIENTS_PER_SCENE && !s.start_frame && !s.composite_frame) {
+      W(`${id}: ingredients có ${ing.length} items (${ing.join(', ')}) — vượt quá giới hạn tối đa ${MAX_INGREDIENTS_PER_SCENE} của Google Flow. Khuyến nghị: dùng Image-to-Video (Start Frame) hoặc luân phiên nhân vật ≤ 3 tags.`);
+    }
+    for (const [re, msg] of SAFETY_POLICY_TRIGGERS) {
+      const textToCheck = `${prompt} ${s.start_state || ''} ${s.scene_action || ''} ${s.end_state || ''}`;
+      const m = textToCheck.match(re);
+      if (m) E(`${id}: phát hiện từ vi phạm chính sách an toàn "${m[0]}" (${msg})`);
     }
 
     // ---------- handoff with previous scene ----------

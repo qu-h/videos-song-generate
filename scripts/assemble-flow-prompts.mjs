@@ -95,6 +95,9 @@ for (const f of files) {
       s.ingredients = tags;
       s.character_reference = tags.includes(project.main_character_reference) ? project.main_character_reference : null;
       for (const tag of tags) if (!validTags.has(tag)) console.warn(`scene ${s.scene_number}: ${tag} chưa có trong project.reference_assets`);
+      if (tags.length > 3 && !s.start_frame && !s.composite_frame) {
+        console.warn(`  ⚠️  scene ${s.scene_number}: có ${tags.length} ingredients (${tags.join(', ')}) vượt quá giới hạn 3 của Google Flow! Hãy dùng Start Frame (Image-to-Video) hoặc luân phiên nhân vật.`);
+      }
       changed++;
     }
     project.total_scenes = (data.scenes || []).length;
@@ -163,6 +166,9 @@ for (const f of files) {
     s.ingredients = tagsIn(prompt);
     s.character_reference = s.ingredients.includes(project.main_character_reference) ? project.main_character_reference : null;
     if (bg) s.background_reference = bg;
+    if (s.ingredients.length > 3 && !s.start_frame && !s.composite_frame) {
+      console.warn(`  ⚠️  scene ${s.scene_number}: có ${s.ingredients.length} ingredients (${s.ingredients.join(', ')}) vượt quá giới hạn 3 của Google Flow! Hãy dùng Start Frame (Image-to-Video) hoặc luân phiên nhân vật.`);
+    }
   }
 
   if (dry) {
