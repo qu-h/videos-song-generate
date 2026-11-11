@@ -133,3 +133,9 @@ Dùng để sinh ảnh Keyframe 16:9 trước khi nạp vào ô First Frame củ
 ```text
 Cinematic wide shot, 16:9 aspect ratio, eye-level angle. A happy child character matching @NhatMinh (exact same face and short neat black hair) wearing a bright-blue long-sleeve UV rashguard and navy shorts, kneeling on soft golden sand at a sunny beach (@Beach). A red toy bucket sits on the sand in front of him. Soft warm morning sunlight from camera-left, shallow depth of field, 35mm film photography look, photorealistic, natural warm color grading, highly detailed, high quality, --ar 16:9
 ```
+
+## Keyframe-first fields
+keyframe_prompt: Photorealistic cinematic 16:9 still; approved reference tags; exact visible composition of start_state; no motion.
+keyframe_status: prompt_ready until an image is created and checked; ready after it is saved; chained when using the preceding clip final frame.
+start_frame: empty until there is a still; then the actual project-relative file path.
+Production order: create still from keyframe_prompt, inspect and save it, set start_frame/status, load it as Flow Starting Frame/First Frame, then animate using scenes[].prompt.

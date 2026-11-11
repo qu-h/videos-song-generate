@@ -23,7 +23,7 @@
 - **Giải pháp:** **Chuyển dịch sang quy trình Image-to-Video (Frames-to-Video / Starting Frame)**:
   1. Mỗi cảnh (hoặc ít nhất cảnh mở đầu mỗi bối cảnh/chuỗi hành động) được cung cấp một **Keyframe Image (Start Frame)** được sinh từ mô hình tạo ảnh (Midjourney, Flux, Imagen 3, Nano Banana, InstantID...) khớp 100% nhân vật gốc.
   2. Nạp ảnh Keyframe này vào ô **First Frame** trong Google Flow. Khung hình đầu tiên (Frame 0s) của video được khoá cứng 100% pixel gốc, Veo chỉ animate (tạo chuyển động) mà không vẽ lại mặt, triệt tiêu hoàn toàn lỗi lệch nhân vật!
-  3. Mỗi scene trong Flow JSON bổ sung trường `keyframe_prompt` (prompt tạo ảnh tĩnh mốc chuẩn cho scene) và `start_frame` (đường dẫn ảnh keyframe).
+  3. Mỗi scene bắt buộc có `keyframe_prompt`, `keyframe_status` và `start_frame`. Tạo ảnh tĩnh từ `keyframe_prompt` trước, kiểm tra và lưu ảnh, cập nhật `start_frame` thành đường dẫn thật, rồi nạp ảnh vào Starting Frame/First Frame của Google Flow và tạo video bằng `scenes[].prompt`. Không render video trước khi có ảnh mốc.
 
 ### 🎬 Nguyên Tắc 2: Liền Mạch Tuyệt Đối & Tăng Tính Hấp Dẫn (Dynamic Engagement & Last-Frame Chaining)
 - **Bản chất vấn đề:** Video AI ghép lại thường bị đơ, giật cục, thiếu nhịp điệu sinh động ("không hấp dẫn") hoặc bị đơ 1-2 giây cuối do lạm dụng đóng băng tư thế.
@@ -679,3 +679,6 @@ Theo WORKFLOW.md, tạo bộ nội dung cho chủ đề: "Nhật Minh đi tắm 
 ```
 
 AI trả lời bằng: danh sách 3 file đã tạo + bảng chapter & ảnh reference cần tạo trong Flow (để người dùng chuẩn bị ảnh).
+
+### Required keyframe-first production order
+Every scene must include keyframe_prompt, keyframe_status, and start_frame. Write the still-image prompt from start_state, create and inspect that still, save it, set start_frame to its actual project path, then use it as Starting Frame/First Frame in Flow and run the video with scenes[].prompt. Never render video before its keyframe exists. keyframe_prompt is for the still image; prompt is for animating that supplied image toward end_state.

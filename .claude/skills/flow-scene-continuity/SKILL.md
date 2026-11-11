@@ -40,7 +40,7 @@ Flow giữ nhân vật qua **ảnh reference người dùng upload vào từng c
 - **Tạo video từ ảnh (Image-to-Video / Frames-to-Video):**
   1. Mỗi cảnh sinh một ảnh Keyframe bằng mô hình tạo ảnh (Midjourney, Flux, Imagen 3, Nano Banana...) khớp 100% tư thế `start_state`.
   2. Nạp ảnh này vào ô **First Frame** trong Flow. Khung hình 0s được khoá 100% pixel gốc, Veo chỉ animate tự nhiên mà không vẽ lại mặt.
-  3. Cung cấp trường `keyframe_prompt` trong mỗi scene của Flow JSON để người dùng tạo ảnh mốc nhanh chóng.
+  3. Bắt buộc có `keyframe_prompt` trong TỪNG scene, mô tả ảnh tĩnh đúng `start_state` và tỷ lệ 16:9. Tạo ảnh trước video; `scenes[].prompt` chỉ dùng để animate ảnh đã nạp làm Starting Frame/First Frame.
 
 ### Lớp 0c – Giới hạn 3 Ingredients (Strict 3-Slot Budget & Composite Start Frame)
 - Google Flow giới hạn tối đa **3 reference images (ingredients)** cho một lần sinh.
@@ -214,3 +214,6 @@ Thay bằng mô tả tuyệt đối: *"The clip opens on exactly this first fram
 3. Viết `end_state` cảnh 1, chép thành `start_state` cảnh 2, viết `scene_action` 2, rồi `end_state` 2, … (viết tuần tự, không viết action trước rồi "vá" state). Nên viết trong một **generator** `scripts/flows/<slug>.mjs` để máy tự chép state và tự đổi preset ảnh.
 4. `npm run flow:assemble -- data/g-flow/<slug>-flow-16x9.json` (ghép prompt, character_lock theo dàn nhân vật, scene_numbers, upload_checklist).
 5. `npm run flow:validate -- data/g-flow/<slug>-flow-16x9.json`; sửa đến khi **0 error**; đọc hết warning. Dán kết quả vào câu trả lời cùng **bảng chapter + danh sách upload** cho người dùng.
+
+## Required keyframe-first workflow
+For every scene, keyframe_prompt must describe a static 16:9 composition matching start_state and all visible references, props, costume and setting. Create and inspect one still per scene from keyframe_prompt before video generation. Save to data/g-flow/assets/<slug>/scene-XX-start.png; set start_frame to the real path and keyframe_status to ready. Until then use prompt_ready and an empty start_frame. In Google Flow, load start_frame as Starting Frame/First Frame, then use scenes[].prompt only to animate from that image toward end_state. Never run text-to-video first or use keyframe_prompt as the motion prompt.

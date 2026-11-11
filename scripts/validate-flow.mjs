@@ -164,7 +164,7 @@ function validateFile(file) {
     scenes.forEach((s, idx) => {
       const id = `scene ${s.scene_number ?? idx + 1}`;
       if (s.scene_number !== idx + 1) E(`${id}: scene_number không liên tục`);
-      for (const key of ['start_state', 'end_state', 'scene_action', 'camera_move', 'prompt']) if (!s[key]) E(`${id}: thiếu ${key}`);
+      for (const key of ['start_state', 'end_state', 'scene_action', 'camera_move', 'keyframe_prompt', 'prompt']) if (!s[key]) E(`${id}: thiếu ${key}`);
       if (!s.background_reference || !assetByTag.has(s.background_reference)) E(`${id}: background_reference không có trong project.reference_assets`);
       const prompt = String(s.prompt || '');
       for (const key of ['style_anchor', 'light_direction_anchor', 'palette_anchor', 'camera_height_anchor', 'screen_direction'])
@@ -398,7 +398,7 @@ function validateFile(file) {
     const isLast = idx === scenes.length - 1;
 
     // required continuity fields
-    for (const k of ['start_state', 'end_state', 'scene_action', 'camera_move', 'prompt']) {
+    for (const k of ['start_state', 'end_state', 'scene_action', 'camera_move', 'keyframe_prompt', 'prompt']) {
       if (!s[k]) E(`${id}: thiếu ${k}`);
     }
     if (!s.transition_in) W(`${id}: thiếu transition_in (hold | cut-on-action | exit-enter | match-pose | look-off | establishing)`);
