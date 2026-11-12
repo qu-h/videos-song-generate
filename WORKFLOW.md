@@ -23,7 +23,7 @@
 - **Giải pháp:** **Chuyển dịch sang quy trình Image-to-Video (Frames-to-Video / Starting Frame)**:
   1. Mỗi cảnh (hoặc ít nhất cảnh mở đầu mỗi bối cảnh/chuỗi hành động) được cung cấp một **Keyframe Image (Start Frame)** được sinh từ mô hình tạo ảnh (Midjourney, Flux, Imagen 3, Nano Banana, InstantID...) khớp 100% nhân vật gốc.
   2. Nạp ảnh Keyframe này vào ô **First Frame** trong Google Flow. Khung hình đầu tiên (Frame 0s) của video được khoá cứng 100% pixel gốc, Veo chỉ animate (tạo chuyển động) mà không vẽ lại mặt, triệt tiêu hoàn toàn lỗi lệch nhân vật!
-  3. Mỗi scene bắt buộc có `keyframe_prompt`, `keyframe_status` và `start_frame`. Tạo ảnh tĩnh từ `keyframe_prompt` trước, kiểm tra và lưu ảnh, cập nhật `start_frame` thành đường dẫn thật, rồi nạp ảnh vào Starting Frame/First Frame của Google Flow và tạo video bằng `scenes[].prompt`. Không render video trước khi có ảnh mốc.
+  3. Quy trình keyframe-first (`project.generation_pipeline: "keyframe-first"`): chỉ viết trường nguồn (state, camera, locks, `label` cho mọi tag); `npm run flow:assemble` sinh riêng `scenes[].keyframe` (bước 1 — Flow tạo ẢNH, `keyframe.ingredients` ≤ 3, `keyframe.prompt` = ảnh tĩnh đúng start_state, ảnh duyệt lưu ở `keyframe.output_file`) và `scenes[].video` (bước 2 — Frames to Video, `video.first_frame` = ảnh keyframe, `video.prompt` chỉ mô tả chuyển động tới end_state, không @tag, không ingredients; object `video` có sẵn `cameraDirection`, `cameraLensAndAngle`, `start_state`, `scene_action`, `camera_move`, `end_state`). Không có trường `status`; không tạo video khi keyframe của cảnh đó chưa được duyệt. Extension `google-flow-scenes/chrome-extension` chạy đúng thứ tự Keyframe N → duyệt → Video N.
 
 ### 🎬 Nguyên Tắc 2: Liền Mạch Tuyệt Đối & Tăng Tính Hấp Dẫn (Dynamic Engagement & Last-Frame Chaining)
 - **Bản chất vấn đề:** Video AI ghép lại thường bị đơ, giật cục, thiếu nhịp điệu sinh động ("không hấp dẫn") hoặc bị đơ 1-2 giây cuối do lạm dụng đóng băng tư thế.
@@ -589,6 +589,12 @@ Google Veo và Google Flow có bộ lọc an toàn trẻ em (Minors Safety Polic
    - Tránh cảnh trẻ em nằm trên giường một mình trong phòng ngủ tối (`sleeping alone in bed`).
    - Chủ đề đêm/Halloween: không dùng `horror`, `creepy`, `spooky monster`, `pitch black night`. Luôn dùng `cheerful festive evening street illuminated with glowing warm lanterns, friendly smiling pumpkins, playful celebration`.
 5. **Thêm `family-friendly` vào `format_lock`** để mô hình luôn định hướng nội dung gia đình lành mạnh.
+6. **Không chạm / không cận mặt trẻ em** (lỗi thật ở be-gai-gap-cua-bien scene 8):
+     - CẤM mọi từ chỉ tiếp xúc cơ thể khi có trẻ em, **kể cả trong `negativePrompt`**: `touch`/`touching`/`no touching`, `hand(s) inside`, `tickle`, `kiss`, `cuddle`, `caress`, `on her/his lap`, `undress`. Negative `child touching the crab` cũng bị đọc như prompt.
+     - Thay bằng hành vi nhìn/khoảng cách: `just watches`, `looks from a safe distance`, `stays beside her mother`, `wags one finger side to side as a cheerful "we just look" sign`; negative chỉ ghi kết quả cần tránh về đạo cụ (`crab outside the basin`), không ghi hành động của trẻ.
+     - CẤM camera nhắm vào mặt trẻ em: `push-in onto the girl's face`, `close-up on @X's face`. Khi có trẻ em, `camera_move` không chứa chữ `face`; ưu tiên `medium` / `medium-wide` giữ cả trẻ, người lớn và đạo cụ trong khung; cần cận thì cận **đạo cụ/hành động** (`on the crab in the basin, with the girl and the mother visible behind it`).
+     - Khi bị chặn: đọc lại cả prompt **và** negativePrompt của cảnh đó, sửa trong generator `scripts/flows/<slug>.mjs` (không sửa tay JSON), chạy lại `flow:assemble` + `flow:validate`.
+     - `npm run flow:validate` báo **error** cho các trường hợp trên (`checkChildSafety` trong `scripts/validate-flow.mjs`).
 
 ### 👥 Quản lý giới hạn 3 Ingredients (Strict 3-Slot Budget)
 - Google Flow chỉ cho phép **tối đa 3 slots reference image (ingredients)**.
@@ -681,4 +687,4 @@ Theo WORKFLOW.md, tạo bộ nội dung cho chủ đề: "Nhật Minh đi tắm 
 AI trả lời bằng: danh sách 3 file đã tạo + bảng chapter & ảnh reference cần tạo trong Flow (để người dùng chuẩn bị ảnh).
 
 ### Required keyframe-first production order
-Every scene must include keyframe_prompt, keyframe_status, and start_frame. Write the still-image prompt from start_state, create and inspect that still, save it, set start_frame to its actual project path, then use it as Starting Frame/First Frame in Flow and run the video with scenes[].prompt. Never render video before its keyframe exists. keyframe_prompt is for the still image; prompt is for animating that supplied image toward end_state.
+Quy trình keyframe-first (`project.generation_pipeline: "keyframe-first"`): chỉ viết trường nguồn (state, camera, locks, `label` cho mọi tag); `npm run flow:assemble` sinh riêng `scenes[].keyframe` (bước 1 — Flow tạo ẢNH, `keyframe.ingredients` ≤ 3, `keyframe.prompt` = ảnh tĩnh đúng start_state, ảnh duyệt lưu ở `keyframe.output_file`) và `scenes[].video` (bước 2 — Frames to Video, `video.first_frame` = ảnh keyframe, `video.prompt` chỉ mô tả chuyển động tới end_state, không @tag, không ingredients; object `video` có sẵn `cameraDirection`, `cameraLensAndAngle`, `start_state`, `scene_action`, `camera_move`, `end_state`). Không có trường `status`; không tạo video khi keyframe của cảnh đó chưa được duyệt. Extension `google-flow-scenes/chrome-extension` chạy đúng thứ tự Keyframe N → duyệt → Video N. Chi tiết: skill flow-scene-continuity, mục "Quy trình keyframe-first".

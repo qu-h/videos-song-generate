@@ -34,10 +34,32 @@ Safety: child stays with mother, does not touch the crab or reach into the basin
 
 Generated character references: data/g-flow/assets/be-gai-gap-cua-bien/BeGai.png (@BeGai) and data/g-flow/assets/be-gai-gap-cua-bien/Me.png (@Me).
 
-## Reference fidelity and cartoon fallback
 
-Compare each generated reference and starting frame directly with the original photograph. Reject any apparent-age, face, hairstyle or wardrobe drift before video generation. Empty start_frame means no approved frame is supplied. Starting frames improve control but do not guarantee identity throughout a clip. Inspect the beginning, middle and end; never chain a frame that already shows drift.
+## Phong cách hiện tại: nhân vật 3D
 
-Cartoon edit prompt: Convert the person in the attached original photograph into a gentle 2D storybook cartoon. Preserve the same apparent age, recognizable facial identity, expression, high black ponytail with pink hair tie, white long-sleeve top and light lavender trousers. Change only the rendering style to soft linework and warm flat colors. Do not age up, redesign clothing, replace the face with a generic cartoon face or exaggerate the eyes. Plain neutral background, one character, no text or watermark.
+Chỉ có hai nhân vật người: bé gái và mẹ. Cua là con vật trong chậu, không nhân cách hóa. Xóa mọi người khác khỏi ảnh tạo ra, kể cả hậu cảnh, phản chiếu và chân dung trong phòng. Giữ nguyên ảnh gốc. Asset hiện tại chưa được chuyển 3D; cần tạo và duyệt bộ 3D rồi cập nhật source_file trước khi render. Không bảo đảm hoặc đo được mức giống 99%.
 
-Approve one cartoon reference before animating. Convert mother, props and room to the same style. Update render_style to 2d-cartoon, visual_style, style_anchor, format_lock and every keyframe_prompt together; remove photoreal/live-action requirements and cartoon from negativePrompt. The current JSON remains photoreal; this is the fallback workflow, not an already generated cartoon asset.
+### Prompt tạo bé gái
+
+Đính kèm ảnh gốc bé áo trắng, quần tím trong data/sample-data.
+
+> Create an isolated polished stylized 3D animation character of ONLY the girl in this original photograph. Preserve her apparent age, recognizable face, expression and pose, high black ponytail with pink hair tie and straight fringe, white long-sleeve top and light lavender trousers. Carefully sculpted reference-faithful features, natural eye size, detailed cloth, soft cinematic lighting, neutral cream background. Remove every other person and all room objects. One character only. No generic doll face, age-up, beautification, flat 2D illustration, text or watermark.
+
+### Prompt tạo mẹ
+
+Đính kèm data/sample-data/20261024_114613.jpg. Chỉ lấy người phụ nữ áo đen đeo kính ở giữa.
+
+> Create an isolated polished stylized 3D portrait of ONLY the adult woman wearing glasses and a black top in the CENTER of this photograph. Preserve her apparent age, recognizable face, black-framed glasses, tied-back dark hair and black short-sleeve top. Remove the boy on the left, girl on the right and EVERY background person. Never blend their features into the mother. Waist-up portrait; do not invent unseen lower clothing. Natural eye size, detailed cloth, soft cinematic lighting, neutral cream background. Exactly one person. No generic doll face, beauty makeover, flat 2D illustration, text or watermark.
+
+### Prompt bối cảnh
+
+> Recreate the original home as a polished stylized 3D environment. Preserve the wood floor and glass doors. Include exactly one green basin containing one restrained olive sea crab. Remove ALL people, human reflections and human portraits. Keep the crab a natural non-speaking animal, not a humanoid. Match character lighting and material style. No duplicate objects, text or watermark.
+
+### Sử dụng prompt theo scene
+
+1. Tạo và duyệt hai mẫu nhân vật riêng từ ảnh thật, kiểm tra tuổi, nét mặt, tóc và quần áo. Không dùng ảnh 2D để làm nguồn khuôn mặt.
+2. Upload ba mẫu: bé 3D, mẹ 3D, bối cảnh/chậu/cua 3D. Đặt tên BeGai, Me, PhongMau. Tag trong JSON không tự upload hay liên kết file.
+3. Bước 1 (Keyframe): Flow chế độ tạo ảnh, đính kèm ba mẫu `keyframe.ingredients`, dùng `keyframe.prompt` của scene. Duyệt ảnh chỉ có hai người, một chậu và một cua; lưu ảnh đạt vào `keyframe.output_file` (`data/g-flow/assets/be-gai-gap-cua-bien/keyframes/scene-XX-start.png`). Bước 2 (Video): Frames to Video, ảnh keyframe ở ô First Frame, không gắn ingredients, dùng `video.prompt`.
+4. Chỉ chạy bước Video của một cảnh sau khi keyframe của cảnh đó đã duyệt; 16:9, 8 giây. Có thể dùng extension google-flow-scenes để chạy lần lượt Keyframe N → duyệt → Video N.
+5. Kiểm tra đầu/giữa/cuối clip; loại clip nếu đổi mặt hoặc thêm người. Chỉ nối khung cuối khi còn đúng nhân vật và hợp bố cục scene sau.
+6. Ghép theo scene_number/timecode, thêm nhạc sau. Hiện JSON đã đổi phong cách prompt; chưa tạo ảnh 3D mới.

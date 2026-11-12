@@ -16,9 +16,22 @@
  *                                   trừ khi chapter đã có `prompt_blocks.character_lock` viết tay.
  *   - `chapters[].scene_numbers`, `scene_count`, `upload_checklist` (danh sách tag cần upload vào chapter)
  *   - `project.total_scenes`, `project.chapter_count`
+ *
+ * Khi `project.generation_pipeline = "keyframe-first"` (mặc định cho dự án mới), mỗi cảnh được tách
+ * thành 2 bước riêng, KHÔNG còn `prompt` / `keyframe_prompt` trộn lẫn:
+ *   - `scenes[].keyframe` (bước 1, Flow tạo ảnh + ingredients ≤ 3) — ảnh tĩnh đúng start_state
+ *   - `scenes[].video`    (bước 2, Flow Frames-to-Video, first_frame = keyframe.output_file) — chỉ chuyển động
+ * Xem scripts/lib/keyframe-first.mjs.
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import {
+  DEFAULT_KEYFRAME_FORMAT_LOCK,
+  DEFAULT_VIDEO_REFERENCE_LOCK,
+  assembleKeyframeFirstScene,
+  isKeyframeFirst,
+  sceneIngredients,
+} from './lib/keyframe-first.mjs';
 
 const args = process.argv.slice(2);
 const dry = args.includes('--dry');
@@ -84,6 +97,23 @@ for (const f of files) {
   const data = JSON.parse(fs.readFileSync(file, 'utf8'));
   const project = data.project || {};
   const formatLock = data.format_lock || project.format_lock || '';
+  const keyframeFirst = isKeyframeFirst(project);
+  if (keyframeFirst) {
+    project.keyframe_format_lock ||= DEFAULT_KEYFRAME_FORMAT_LOCK;
+    project.video_reference_lock ||= DEFAULT_VIDEO_REFERENCE_LOCK;
+  }
+  if (project.manifest_mode === 'flat' && keyframeFirst) {
+    const missing = new Set();
+    for (const s of data.scenes || []) {
+      for (const tag of assembleKeyframeFirstScene(s, null, project, formatLock)) missing.add(tag);
+      warnIngredients(s, project);
+    }
+    project.total_scenes = (data.scenes || []).length;
+    reportMissingLabels(missing);
+    if (!dry) fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n', 'utf8');
+    console.log(`${f}: flat manifest, keyframe-first — đã sinh ${(data.scenes || []).length} cặp keyframe/video`);
+    continue;
+  }
   if (project.manifest_mode === 'flat') {
     const catalog = project.reference_assets || [];
     const validTags = new Set(catalog.map(ingTag).filter(Boolean));
@@ -107,6 +137,7 @@ for (const f of files) {
   }
   const chapters = new Map((data.chapters || []).map((c) => [c.chapter_id, c]));
   let changed = 0;
+  const missingLabels = new Set();
 
   // ---------- chapter manifest: scene_numbers / scene_count / upload_checklist ----------
   const globalTags = (project.global_ingredients || []).map(ingTag).filter(Boolean);
@@ -125,6 +156,13 @@ for (const f of files) {
     const ch = chapters.get(s.chapter_id);
     if (!ch) {
       console.error(`scene ${s.scene_number}: chapter_id "${s.chapter_id}" không tồn tại — bỏ qua`);
+      continue;
+    }
+    if (keyframeFirst) {
+      const before = JSON.stringify([s.keyframe, s.video]);
+      for (const tag of assembleKeyframeFirstScene(s, ch, project, formatLock)) missingLabels.add(tag);
+      if (JSON.stringify([s.keyframe, s.video]) !== before) changed++;
+      warnIngredients(s, project);
       continue;
     }
     const pb = ch.prompt_blocks || {};
@@ -171,10 +209,22 @@ for (const f of files) {
     }
   }
 
+  reportMissingLabels(missingLabels);
   if (dry) {
     console.log(`${f}: ${changed} prompt sẽ thay đổi (dry run, không ghi)`);
   } else {
     fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n', 'utf8');
-    console.log(`${f}: đã ghép lại ${changed} prompt, cập nhật ingredients / character_lock / chapter manifest`);
+    console.log(`${f}: đã ghép lại ${changed} ${keyframeFirst ? 'cặp keyframe/video' : 'prompt'}, cập nhật ingredients / character_lock / chapter manifest`);
   }
+}
+
+function warnIngredients(s, project) {
+  const tags = sceneIngredients(s, project);
+  if (tags.length > 3)
+    console.warn(`  ⚠️  scene ${s.scene_number}: keyframe cần ${tags.length} ingredients (${tags.join(', ')}) > 3 của Google Flow — gộp bối cảnh + đạo cụ vào một ảnh reference.`);
+}
+
+function reportMissingLabels(missing) {
+  if (missing.size)
+    console.warn(`  ⚠️  thiếu "label" cho ${[...missing].join(', ')} — video.prompt (Frames-to-Video) đang còn @tag. Thêm label vào ingredient/asset rồi chạy lại.`);
 }

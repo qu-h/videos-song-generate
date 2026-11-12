@@ -12,6 +12,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { checkKeyframeFirstScene, isKeyframeFirst, sceneIngredients, scenePromptText } from './lib/keyframe-first.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -45,14 +46,45 @@ const MAX_INGREDIENTS_PER_SCENE = 3;
 
 const SAFETY_POLICY_TRIGGERS = [
   // Child body / anatomical descriptions that trigger Google child safety filter
-  [/\b(chubby\s+cheeks?|chubby\s+body|plump\s+body|skin\s+texture|rosy\s+lips|bare\s+skin|naked|nude)\b/i, 'Mô tả giải phẫu/da/cơ thể trẻ em dễ bị Google Child Safety filter chặn'],
+  [/\b(chubby\s+cheeks?|chubby\s+body|plump\s+body|skin\s+texture|rosy\s+lips|bare\s+skin|naked|nude)\b/i, 'Mô tả giải phẫu/da/cơ thể trẻ em dễ bị Google Child Safety filter chặn', true],
   // Sensitive clothing / beach / bathing triggers
-  [/\b(bikini|shirtless|bare\s+chest|undressed|bathing|underwear|boxers|panties)\b/i, 'Trang phục hở/nhạy cảm cho trẻ em. Với cảnh biển/nước hãy dùng "sun-protective UV rashguard swim shirt + knee-length shorts"'],
+  [/\b(bikini|shirtless|bare\s+chest|undressed|bathing|underwear|boxers|panties)\b/i, 'Trang phục hở/nhạy cảm cho trẻ em. Với cảnh biển/nước hãy dùng "sun-protective UV rashguard swim shirt + knee-length shorts"', true],
   // Bedroom / intimate triggers when related to kids
   [/\b(sleeping\s+alone\s+in\s+bed|lying\s+in\s+bed\s+at\s+night|taking\s+a\s+bath|bathroom\s+shower)\b/i, 'Bối cảnh phòng ngủ/giường/tắm nhạy cảm với trẻ em'],
   // Danger / violence / extreme fear triggers
   [/\b(drowning|deep\s+water\s+struggle|falling\s+from\s+high|blood|screaming\s+in\s+terror)\b/i, 'Hành động nguy hiểm/kinh dị vi phạm chính sách an toàn nội dung'],
+  // Physical-contact words near a child — đã gây lỗi "harmful content related to minors" (be-gai-gap-cua-bien, scene 8: "no touching").
+  // Kiểm cả negativePrompt: "child touching the crab" trong negative vẫn bị bộ lọc đọc.
+  [/\b(touch(es|ed|ing)?|no[-\s]touch\w*|hands?\s+inside|tickl\w*|caress\w*|cuddl\w*|fondl\w*|undress\w*|on\s+(her|his|the\s+\w+['’]s)\s+lap)\b|(?<!-)\bkiss\w*/i, 'Từ chỉ chạm/tiếp xúc cơ thể khi có trẻ em (kể cả trong negativePrompt). Thay bằng "just watches", "looks from a safe distance", "stays beside her mother", "a cheerful \\"we just look\\" sign"', true],
 ];
+
+// Cận mặt trẻ em: camera "push-in onto the girl's face" ở MCU đã bị chặn (be-gai-gap-cua-bien, scene 8).
+const CHILD_WORDS = /\b(girl|boy|kid|kids|baby|toddler|daughter|son|children)\b/i;
+const CHILD_FACE_AIM = /\b(onto|into|on|toward|towards|at)\s+(the\s+)?(girl|boy|child|kid|baby|toddler|daughter|son|@\w+)['’]s\s+(\w+\s+){0,2}faces?\b/i;
+
+/** Child-safety check chung cho mọi chế độ manifest. Gom cả prompt, state, camera và mọi negativePrompt. */
+function checkChildSafety(s, project, id, E, W) {
+  const negatives = [s.negativePrompt, s.keyframe?.negativePrompt, s.video?.negativePrompt].filter(Boolean).join(' ');
+  const text = [scenePromptText(s, project), s.start_state, s.scene_action, s.end_state, s.camera_move, s.emotionAndEnergy]
+    .filter(Boolean)
+    .join(' ');
+  // negativePrompt chỉ kiểm nhóm cơ thể / trang phục / tiếp xúc (liệt kê "blood, horror" để loại trừ thì vẫn ổn).
+  for (const [re, msg, inNegative] of SAFETY_POLICY_TRIGGERS) {
+    const m = text.match(re) || (inNegative ? negatives.match(re) : null);
+    if (m) E(`${id}: phát hiện từ vi phạm chính sách an toàn "${m[0]}" (${msg})`);
+  }
+  const visible = `${s.video?.start_state || ''} ${s.video?.end_state || ''} ${scenePromptText(s, project)}`;
+  if (!CHILD_WORDS.test(visible)) return;
+  const shot = Math.min(shotLevel(s.shotSize) ?? 9, shotLevel(s.camera_move, 'last') ?? 9);
+  const cam = String(s.camera_move || '');
+  const aim = cam.match(CHILD_FACE_AIM);
+  if (aim)
+    E(`${id}: camera_move nhắm vào mặt trẻ em ("${aim[0]}") — dễ bị chặn "harmful content related to minors". Dùng medium / medium-wide, giữ cả trẻ, người lớn và đạo cụ trong khung, không viết "face" trong camera_move`);
+  else if (shot <= 3 && /\bfaces?\b/i.test(cam))
+    W(`${id}: khung cận (${s.shotSize}) có nhắc mặt trẻ em trong camera_move — để camera nhắm vào đạo cụ / hành động, không nhắm vào mặt`);
+  else if (shot <= 2)
+    W(`${id}: close-up/extreme close-up khi có trẻ em trong khung — ưu tiên cận đạo cụ hoặc dùng medium shot`);
+}
 
 // Shot ladder: ECU(1) CU(2) MCU(3) MS(4) MW(5) WS(6) EWS(7)
 const SHOT_LADDER = [
@@ -161,12 +193,19 @@ function validateFile(file) {
     }
     const formatLock = data.format_lock || project.format_lock || '';
     if (!formatLock) E('format_lock thiếu');
+    const kfFlat = isKeyframeFirst(project);
     scenes.forEach((s, idx) => {
       const id = `scene ${s.scene_number ?? idx + 1}`;
       if (s.scene_number !== idx + 1) E(`${id}: scene_number không liên tục`);
-      for (const key of ['start_state', 'end_state', 'scene_action', 'camera_move', 'keyframe_prompt', 'prompt']) if (!s[key]) E(`${id}: thiếu ${key}`);
+      const requiredFlat = kfFlat ? ['start_state', 'end_state', 'scene_action', 'camera_move'] : ['start_state', 'end_state', 'scene_action', 'camera_move', 'keyframe_prompt', 'prompt'];
+      for (const key of requiredFlat) if (!s[key]) E(`${id}: thiếu ${key}`);
       if (!s.background_reference || !assetByTag.has(s.background_reference)) E(`${id}: background_reference không có trong project.reference_assets`);
+      if (kfFlat) {
+        checkKeyframeFirstScene({ scene: s, prevScene: scenes[idx - 1], ch: null, project, formatLock, root: ROOT, E, W, id });
+      }
+      checkChildSafety(s, project, id, E, W);
       const prompt = String(s.prompt || '');
+      if (!kfFlat) {
       for (const key of ['style_anchor', 'light_direction_anchor', 'palette_anchor', 'camera_height_anchor', 'screen_direction'])
         if (project[key] && !prompt.includes(project[key])) E(`${id}: prompt thiếu nguyên văn project.${key}`);
       if (formatLock && !prompt.includes(formatLock)) E(`${id}: prompt thiếu format_lock`);
@@ -183,10 +222,6 @@ function validateFile(file) {
       if (ingredients.length > MAX_INGREDIENTS_PER_SCENE && !s.start_frame && !s.composite_frame) {
         W(`${id}: ingredients có ${ingredients.length} items (${ingredients.join(', ')}) — vượt quá giới hạn tối đa ${MAX_INGREDIENTS_PER_SCENE} của Google Flow. Khuyến nghị: dùng Image-to-Video (Start Frame) hoặc luân phiên nhân vật ≤ 3 tags.`);
       }
-      for (const [re, msg] of SAFETY_POLICY_TRIGGERS) {
-        const textToCheck = `${prompt} ${s.start_state || ''} ${s.scene_action || ''} ${s.end_state || ''}`;
-        const m = textToCheck.match(re);
-        if (m) E(`${id}: phát hiện từ vi phạm chính sách an toàn "${m[0]}" (${msg})`);
       }
       if (s.transition_in && !TRANSITIONS.includes(s.transition_in)) E(`${id}: transition_in không hợp lệ`);
       const tc = parseTimecode(s.timecode);
@@ -199,13 +234,14 @@ function validateFile(file) {
         const a = normalizeState(prev.end_state), b = normalizeState(s.start_state);
         if (a !== b && !['exit-enter', 'look-off', 'establishing'].includes(s.transition_in)) E(`${id}: start_state không khớp end_state cảnh trước`);
       }
-      for (const bad of forbiddenIn(prompt)) E(`${id}: prompt chứa cụm cấm ${bad}`);
+      for (const bad of forbiddenIn(scenePromptText(s, project))) E(`${id}: prompt chứa cụm cấm ${bad}`);
     });
     return { errors, warnings };
   }
   const chapters = Array.isArray(data.chapters) ? data.chapters : [];
   const scenes = Array.isArray(data.scenes) ? data.scenes : [];
   const formatLock = data.format_lock || project.format_lock || '';
+  const kf = isKeyframeFirst(project);
 
   if (!scenes.length) E('Không có scenes[]');
   if (!chapters.length) E('Không có chapters[] (WORKFLOW mục 2)');
@@ -297,9 +333,9 @@ function validateFile(file) {
     if (!Array.isArray(ch.ingredients) || !ch.ingredients.length) E(`${ch.chapter_id}: thiếu ingredients[]`);
     if (!Array.isArray(ch.recommended_setup) || !ch.recommended_setup.length) W(`${ch.chapter_id}: thiếu recommended_setup`);
     const chIngTags = (ch.ingredients || []).map(ingTag).filter(Boolean);
-    if (mainTag && !chIngTags.includes(mainTag) && chScenes.some((s) => (s.ingredients || []).includes(mainTag)))
+    if (mainTag && !chIngTags.includes(mainTag) && chScenes.some((s) => sceneIngredients(s, project).includes(mainTag)))
       E(`${ch.chapter_id}: ingredients không liệt kê ${mainTag} dù có cảnh dùng — danh sách upload của chapter chưa đủ`);
-    const usedInCh = new Set(chScenes.flatMap((s) => s.ingredients || []));
+    const usedInCh = new Set(chScenes.flatMap((s) => sceneIngredients(s, project)));
     for (const t of chIngTags) {
       if (!usedInCh.has(t)) W(`${ch.chapter_id}: ingredient ${t} được khai báo nhưng không cảnh nào trong chapter dùng`);
     }
@@ -398,7 +434,8 @@ function validateFile(file) {
     const isLast = idx === scenes.length - 1;
 
     // required continuity fields
-    for (const k of ['start_state', 'end_state', 'scene_action', 'camera_move', 'keyframe_prompt', 'prompt']) {
+    const required = kf ? ['start_state', 'end_state', 'scene_action', 'camera_move'] : ['start_state', 'end_state', 'scene_action', 'camera_move', 'keyframe_prompt', 'prompt'];
+    for (const k of required) {
       if (!s[k]) E(`${id}: thiếu ${k}`);
     }
     if (!s.transition_in) W(`${id}: thiếu transition_in (hold | cut-on-action | exit-enter | match-pose | look-off | establishing)`);
@@ -419,7 +456,7 @@ function validateFile(file) {
     }
 
     // forbidden phrases
-    for (const p of forbiddenIn(s.prompt)) E(`${id}: prompt chứa cụm cấm "${p}"`);
+    for (const p of forbiddenIn(scenePromptText(s, project))) E(`${id}: prompt chứa cụm cấm "${p}"`);
     for (const field of ['start_state', 'end_state', 'scene_action']) {
       for (const p of forbiddenIn(s[field])) E(`${id}: ${field} chứa cụm cấm "${p}"`);
       if (/\bsame (spot|place|position)\b|where (he|she) (was|stood)/i.test(s[field] || ''))
@@ -428,6 +465,16 @@ function validateFile(file) {
 
     // prompt must contain verbatim blocks
     const prompt = String(s.prompt || '');
+    const lookup = (tag) => {
+      const fromCh = (ch?.ingredients || []).find((i) => ingTag(i) === tag);
+      const fromGlobal = (project.global_ingredients || []).find((i) => ingTag(i) === tag);
+      return { ...(typeof fromGlobal === 'object' ? fromGlobal : {}), ...(typeof fromCh === 'object' ? fromCh : {}) };
+    };
+    const stateTags = tagsIn([s.start_state, s.scene_action, s.end_state].join(' '));
+    if (kf) {
+      checkKeyframeFirstScene({ scene: s, prevScene: prev, ch, project, formatLock, root: ROOT, E, W, id });
+      for (const t of s.keyframe?.ingredients || []) if (ch && !ch.__tags.has(t)) E(`${id}: keyframe ingredient ${t} không thuộc global_ingredients hay ${ch.chapter_id}.ingredients`);
+    } else {
     const mustContain = [];
     if (project.style_anchor) mustContain.push(['project.style_anchor', project.style_anchor]);
     if (formatLock) mustContain.push(['format_lock', formatLock]);
@@ -462,12 +509,6 @@ function validateFile(file) {
       W(`${id}: start_state không ghi hướng mặt`);
 
     // Lớp 0: nhân vật / đạo cụ có mặt trong cảnh phải được khoá bằng appearance_lock nguyên văn
-    const stateTags = tagsIn([s.start_state, s.scene_action, s.end_state].join(' '));
-    const lookup = (tag) => {
-      const fromCh = (ch?.ingredients || []).find((i) => ingTag(i) === tag);
-      const fromGlobal = (project.global_ingredients || []).find((i) => ingTag(i) === tag);
-      return { ...(typeof fromGlobal === 'object' ? fromGlobal : {}), ...(typeof fromCh === 'object' ? fromCh : {}) };
-    };
     const livingInScene = [];
     for (const t of stateTags) {
       const info = lookup(t);
@@ -481,12 +522,14 @@ function validateFile(file) {
       W(`${id}: cảnh không có nhân vật nên có câu "No people or animals appear in this clip."`);
     if (mainTag && stateTags.includes(mainTag) && !/approved uploaded character reference for @/i.test(prompt))
       E(`${id}: prompt thiếu câu "Use the approved uploaded character reference for ${mainTag}"`);
+    }
     if (renderStyle && /3d|stylized|anim/.test(renderStyle) && /\b3d render\b|\bstylized\b|\banimated\b/i.test(s.negativePrompt || ''))
       E(`${id}: negativePrompt cấm "3D render / stylized / animated" trong khi ảnh reference là ${renderStyle} — nhân vật sẽ không khớp reference`);
     if (renderStyle === 'photoreal' && !/cartoon|3d render/i.test(s.negativePrompt || ''))
       W(`${id}: negativePrompt nên có "cartoon, 3D render" khi reference là ảnh thật`);
 
     // tags vs ingredients
+    if (!kf) {
     const promptTags = tagsIn(prompt);
     const ing = Array.isArray(s.ingredients) ? s.ingredients : [];
     for (const t of promptTags) {
@@ -502,11 +545,8 @@ function validateFile(file) {
     if (ing.length > MAX_INGREDIENTS_PER_SCENE && !s.start_frame && !s.composite_frame) {
       W(`${id}: ingredients có ${ing.length} items (${ing.join(', ')}) — vượt quá giới hạn tối đa ${MAX_INGREDIENTS_PER_SCENE} của Google Flow. Khuyến nghị: dùng Image-to-Video (Start Frame) hoặc luân phiên nhân vật ≤ 3 tags.`);
     }
-    for (const [re, msg] of SAFETY_POLICY_TRIGGERS) {
-      const textToCheck = `${prompt} ${s.start_state || ''} ${s.scene_action || ''} ${s.end_state || ''}`;
-      const m = textToCheck.match(re);
-      if (m) E(`${id}: phát hiện từ vi phạm chính sách an toàn "${m[0]}" (${msg})`);
     }
+    checkChildSafety(s, project, id, E, W);
 
     // ---------- handoff with previous scene ----------
     if (prev) {

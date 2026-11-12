@@ -18,7 +18,7 @@ Khi người dùng đưa một chủ đề bài hát/video (ví dụ: *"Nhật M
 - **Vấn đề:** Text-to-Video với tag `@Tag` khiến Veo 3.1 tự vẽ lại nhân vật từ latent space, gây biến dạng mặt (face drift), lệch tuổi và đổi trang phục.
 - **Giải pháp:**
   1. Chuyển sang **Image-to-Video (Frames-to-Video / Starting Frame)**: Frame đầu tiên của video là 100% pixel gốc từ ảnh. Veo chỉ animate tự nhiên mà không vẽ lại mặt.
-  2. Mỗi scene trong JSON bổ sung `keyframe_prompt` (prompt tiếng Anh tỷ lệ 16:9 tạo ảnh mốc chuẩn cho scene) và `start_frame`.
+  2. Quy trình keyframe-first (`project.generation_pipeline: "keyframe-first"`): chỉ viết trường nguồn (state, camera, locks, `label` cho mọi tag); `npm run flow:assemble` sinh riêng `scenes[].keyframe` (bước 1 — Flow tạo ẢNH, `keyframe.ingredients` ≤ 3, `keyframe.prompt` = ảnh tĩnh đúng start_state, ảnh duyệt lưu ở `keyframe.output_file`) và `scenes[].video` (bước 2 — Frames to Video, `video.first_frame` = ảnh keyframe, `video.prompt` chỉ mô tả chuyển động tới end_state, không @tag, không ingredients; object `video` có sẵn `cameraDirection`, `cameraLensAndAngle`, `start_state`, `scene_action`, `camera_move`, `end_state`). Không có trường `status`; không tạo video khi keyframe của cảnh đó chưa được duyệt. Extension `google-flow-scenes/chrome-extension` chạy đúng thứ tự Keyframe N → duyệt → Video N.
   3. **Chaining Last Frame:** Trong cùng bối cảnh, lấy frame thứ 8s (Last Frame) của Cảnh N làm First Frame cho Cảnh N+1. Toàn bộ chuỗi cảnh sẽ liền mạch 100% pixel.
 
 ### 🎬 Trụ cột 2: Liền mạch & Hấp dẫn với Dynamic 3-Phase Motion (Khắc phục video đơ, thiếu hấp dẫn)
@@ -41,6 +41,12 @@ Mỗi cảnh 8 giây tuân thủ 3 pha:
 - **CẤM từ ngữ giải phẫu/cơ thể:** Tuyệt đối KHÔNG dùng `chubby`, `plump`, `skin texture`, `soft skin`, `rosy lips`, `cheeks`, `bare skin`, `little 5-year-old kid/toddler`. Thay bằng tag định danh `@NhatMinh` hoặc `the young explorer`.
 - **Trang phục bãi biển/nước bắt buộc:** `sun-protective long-sleeve UV rashguard swim shirt, knee-length swim shorts, bright child life vest, sun hat`. CẤM `swimsuit`, `bikini`, `shirtless`, `bare chest`, `bathing`.
 - **Bối cảnh an toàn:** Không dùng `sleeping alone in bed`. Chủ đề Halloween/đêm dùng `cheerful festive illuminated celebration`, CẤM `horror`, `creepy`.
+- **Không chạm / không cận mặt trẻ em (lỗi thật: be-gai-gap-cua-bien scene 8 bị chặn "harmful content related to minors"):**
+  - CẤM mọi từ chỉ tiếp xúc cơ thể khi có trẻ em, **kể cả trong `negativePrompt`**: `touch`/`touching`/`no touching`, `hand(s) inside`, `tickle`, `kiss`, `cuddle`, `caress`, `on her/his lap`, `undress`. Negative `child touching the crab` cũng bị đọc như prompt.
+  - Thay bằng hành vi nhìn/khoảng cách: `just watches`, `looks from a safe distance`, `stays beside her mother`, `wags one finger side to side as a cheerful "we just look" sign`; negative chỉ ghi kết quả cần tránh về đạo cụ (`crab outside the basin`), không ghi hành động của trẻ.
+  - CẤM camera nhắm vào mặt trẻ em: `push-in onto the girl's face`, `close-up on @X's face`. Khi có trẻ em, `camera_move` không chứa chữ `face`; ưu tiên `medium` / `medium-wide` giữ cả trẻ, người lớn và đạo cụ trong khung; cần cận thì cận **đạo cụ/hành động** (`on the crab in the basin, with the girl and the mother visible behind it`).
+  - Khi bị chặn: đọc lại cả prompt **và** negativePrompt của cảnh đó, sửa trong generator `scripts/flows/<slug>.mjs` (không sửa tay JSON), chạy lại `flow:assemble` + `flow:validate`.
+  - `npm run flow:validate` báo **error** cho các trường hợp trên (`checkChildSafety` trong `scripts/validate-flow.mjs`).
 
 ---
 

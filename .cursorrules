@@ -34,6 +34,11 @@ Follow WORKFLOW.md and .agents/skills/flow-scene-continuity/SKILL.md strictly.
    - NEVER describe child anatomy or skin (`chubby`, `plump`, `skin texture`, `bare skin`, `rosy lips`, `cheeks`).
    - For beach/water scenes: MUST use `sun-protective long-sleeve UV rashguard swim shirt, knee-length swim shorts, bright child life vest`. NEVER use `swimsuit`, `bikini`, `shirtless`, `bare chest`, `bathing`.
    - For Halloween/night: Use `cheerful festive illuminated celebration`, NEVER use `horror`, `creepy`.
+   - No touch words, no face close-ups (real block: be-gai-gap-cua-bien scene 8, "harmful content related to minors"):
+     - NEVER use physical-contact words when a child is present, INCLUDING in `negativePrompt`: `touch`/`touching`/`no touching`, `hand(s) inside`, `tickle`, `kiss`, `cuddle`, `caress`, `on her/his lap`, `undress`.
+     - Use watching/distance wording instead: `just watches`, `looks from a safe distance`, `stays beside her mother`, `wags one finger side to side as a cheerful "we just look" sign`. Negatives describe the prop outcome (`crab outside the basin`), never the child's action.
+     - NEVER aim the camera at a child's face (`push-in onto the girl's face`, `close-up on @X's face`). With a child in frame, `camera_move` must not contain "face"; prefer medium / medium-wide with child, adult and prop in frame; close-ups go on the prop/action.
+     - On a block: re-read the scene's prompt AND negativePrompt, fix the generator `scripts/flows/<slug>.mjs`, rerun flow:assemble + flow:validate. `flow:validate` reports these as errors (`checkChildSafety`).
 
 ## Validation Commands
 Run:

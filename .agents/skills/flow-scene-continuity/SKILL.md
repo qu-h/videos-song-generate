@@ -40,7 +40,7 @@ Flow giữ nhân vật qua **ảnh reference người dùng upload vào từng c
 - **Tạo video từ ảnh (Image-to-Video / Frames-to-Video):**
   1. Mỗi cảnh sinh một ảnh Keyframe bằng mô hình tạo ảnh (Midjourney, Flux, Imagen 3, Nano Banana...) khớp 100% tư thế `start_state`.
   2. Nạp ảnh này vào ô **First Frame** trong Flow. Khung hình 0s được khoá 100% pixel gốc, Veo chỉ animate tự nhiên mà không vẽ lại mặt.
-  3. Cung cấp trường `keyframe_prompt` trong mỗi scene của Flow JSON để người dùng tạo ảnh mốc nhanh chóng.
+  3. Mỗi cảnh tách 2 bước riêng do `flow:assemble` sinh: `keyframe` (prompt ảnh tĩnh đúng `start_state`, có ingredients) và `video` (prompt Frames-to-Video chỉ chuyển động, không @tag). Tạo + duyệt ảnh trước, video sau. Xem mục "Quy trình keyframe-first" cuối file.
 
 ### Lớp 0c – Giới hạn 3 Ingredients (Strict 3-Slot Budget & Composite Start Frame)
 - Google Flow giới hạn tối đa **3 reference images (ingredients)** cho một lần sinh.
@@ -55,6 +55,12 @@ Flow giữ nhân vật qua **ảnh reference người dùng upload vào từng c
 - **CẤM từ ngữ giải phẫu/cơ thể trẻ em:** `chubby`, `plump`, `skin texture`, `soft skin`, `rosy lips`, `cheeks`, `bare skin`, `little 5-year-old kid/toddler`. Thay bằng tag định danh `@NhatMinh` hoặc `the young explorer`.
 - **Trang phục biển/nước bắt buộc:** `sun-protective long-sleeve UV rashguard swim shirt, knee-length swim shorts, bright child life vest`. CẤM `swimsuit`, `bikini`, `shirtless`, `bare chest`, `bathing`.
 - **Bối cảnh an toàn:** Không dùng `sleeping alone in bed`. Chủ đề đêm/Halloween dùng `cheerful festive evening street illuminated with glowing warm lanterns, friendly celebration`, CẤM `horror`, `creepy`.
+- **Không chạm / không cận mặt trẻ em (lỗi thật: be-gai-gap-cua-bien scene 8 bị chặn "harmful content related to minors"):**
+  - CẤM mọi từ chỉ tiếp xúc cơ thể khi có trẻ em, **kể cả trong `negativePrompt`**: `touch`/`touching`/`no touching`, `hand(s) inside`, `tickle`, `kiss`, `cuddle`, `caress`, `on her/his lap`, `undress`. Negative `child touching the crab` cũng bị đọc như prompt.
+  - Thay bằng hành vi nhìn/khoảng cách: `just watches`, `looks from a safe distance`, `stays beside her mother`, `wags one finger side to side as a cheerful "we just look" sign`; negative chỉ ghi kết quả cần tránh về đạo cụ (`crab outside the basin`), không ghi hành động của trẻ.
+  - CẤM camera nhắm vào mặt trẻ em: `push-in onto the girl's face`, `close-up on @X's face`. Khi có trẻ em, `camera_move` không chứa chữ `face`; ưu tiên `medium` / `medium-wide` giữ cả trẻ, người lớn và đạo cụ trong khung; cần cận thì cận **đạo cụ/hành động** (`on the crab in the basin, with the girl and the mother visible behind it`).
+  - Khi bị chặn: đọc lại cả prompt **và** negativePrompt của cảnh đó, sửa trong generator `scripts/flows/<slug>.mjs` (không sửa tay JSON), chạy lại `flow:assemble` + `flow:validate`.
+  - `npm run flow:validate` báo **error** cho các trường hợp trên (`checkChildSafety` trong `scripts/validate-flow.mjs`).
 
 Validator: `source_file` / `render_style` / `appearance_lock` thiếu = error; prompt thiếu nguyên văn `appearance_lock` của nhân vật có mặt = error; phong cách lệch `render_style` = error.
 
@@ -214,3 +220,21 @@ Thay bằng mô tả tuyệt đối: *"The clip opens on exactly this first fram
 3. Viết `end_state` cảnh 1, chép thành `start_state` cảnh 2, viết `scene_action` 2, rồi `end_state` 2, … (viết tuần tự, không viết action trước rồi "vá" state). Nên viết trong một **generator** `scripts/flows/<slug>.mjs` để máy tự chép state và tự đổi preset ảnh.
 4. `npm run flow:assemble -- data/g-flow/<slug>-flow-16x9.json` (ghép prompt, character_lock theo dàn nhân vật, scene_numbers, upload_checklist).
 5. `npm run flow:validate -- data/g-flow/<slug>-flow-16x9.json`; sửa đến khi **0 error**; đọc hết warning. Dán kết quả vào câu trả lời cùng **bảng chapter + danh sách upload** cho người dùng.
+
+## Quy trình keyframe-first (bắt buộc cho dự án mới)
+
+Bật bằng `project.generation_pipeline: "keyframe-first"`. Chỉ viết trường nguồn; **không viết tay** `keyframe` / `video` — `npm run flow:assemble` sinh cả hai từ cùng một nguồn (`scripts/lib/keyframe-first.mjs`), validator so khớp nguyên văn.
+
+| Bước | Trường JSON | Chế độ Flow | Nội dung prompt | Đầu ra |
+|---|---|---|---|---|
+| 1. Keyframe | `scenes[].keyframe` | Tạo hình ảnh, gắn `keyframe.ingredients` (≤ 3) | `keyframe_format_lock` + appearance_lock nhân vật có trong `start_state` + background/lighting lock + anchors (gồm palette) + framing (`shotSize`, `cameraLensAndAngle`) + `Exact composition of this still: <start_state>` + mood | Ảnh duyệt lưu ở `keyframe.output_file` |
+| 2. Video | `scenes[].video` | Frames to Video, `video.first_frame` ở ô First Frame, **không** ingredients | `video_reference_lock` (ảnh đầu là reference duy nhất) + "Only <label> may appear" + continuity/lighting lock + anchors (không palette) + format_lock + start/action/`Camera: <camera_move> Camera direction: …; lens and angle: …` + end_state, mọi `@Tag` đổi thành `label`. Object `video` còn chứa sẵn `cameraDirection`, `cameraLensAndAngle`, `start_state`, `scene_action`, `camera_move`, `end_state` (đã đổi tag → label) | Clip 8 s |
+
+Quy tắc:
+- Mỗi asset có tag phải có `label` tiếng Anh ngắn (`"the girl"`, `"the mother"`, `"living room"`) — `video.prompt` không được chứa `@Tag` vì Frames-to-Video không có ingredients.
+- Video của cảnh N chỉ tạo sau khi keyframe N đã được duyệt. JSON **không** có trường `status`; tiến độ do extension lưu trên trình duyệt.
+- 6 trường chuyển động trong `video` được assemble chép từ trường nguồn của cảnh — chỉ sửa ở cấp scene, không sửa trong `video`.
+- Nhân vật chỉ có trong `scene_action`/`end_state` mà không có trong `start_state` → warning: Frames-to-Video không có reference cho người đó; đưa họ vào keyframe.
+- `keyframe.source: "chain-last-frame"` (chỉ cho `hold` / `cut-on-action` cùng chapter): dùng frame cuối video cảnh trước làm ảnh đầu, bỏ qua bước tạo ảnh.
+- Không còn trường cũ `prompt`, `keyframe_prompt`, `keyframe_status`, `start_frame`, `character_lock`, `ingredients` ở cấp scene trong chế độ này.
+- Chạy trên Flow bằng extension `packages/google-flow-scenes/chrome-extension`: hàng đợi Keyframe N → cổng duyệt → Video N.
