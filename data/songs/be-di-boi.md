@@ -19,7 +19,7 @@ suno:
 
 audio:
   audioUrl: "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3"
-  duration: "16"
+  duration: "03:15"
   durationSeconds: 195
   bitrate: "192kbps"
   takeVersion: "Take 1 (Smooth & Melancholic)"

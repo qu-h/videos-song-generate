@@ -10,6 +10,15 @@ const songsDir = path.join(rootDir, 'data/songs');
 const outputTsFile = path.join(rootDir, 'src/data/songs-bundle.ts');
 const outputJsonFile = path.join(rootDir, 'src/data/songs-bundle.json');
 
+/** SongItem.audio.duration là chuỗi mm:ss; frontmatter có thể cho số giây → quy đổi để không lỗi type. */
+function formatDuration(value) {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    const total = Math.max(0, Math.round(value));
+    return `${String(Math.floor(total / 60)).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`;
+  }
+  return value === undefined || value === null ? undefined : String(value);
+}
+
 function cleanYamlValue(val) {
   let trimmed = val.trim();
   if (
@@ -241,7 +250,7 @@ function parseSongFile(filePath) {
       fileName: rawAudio.fileName || `${slug}.mp3`,
       filePath: rawAudio.filePath,
       audioUrl: rawAudio.audioUrl || rawAudio.url,
-      duration: rawAudio.duration,
+      duration: formatDuration(rawAudio.duration),
       durationSeconds: typeof rawAudio.durationSeconds === 'number' ? rawAudio.durationSeconds : undefined,
       bitrate: rawAudio.bitrate || '192kbps',
       takeVersion: rawAudio.takeVersion,

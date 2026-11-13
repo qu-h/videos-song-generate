@@ -27,9 +27,8 @@
     },
     "audio": {
       "fileName": "bay-cung-co-lau.mp3",
-      "filePath": "audio/Bay Cùng Cỏ Lau.mp3",
       "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
-      "duration": 16,
+      "duration": "03:15",
       "durationSeconds": 195,
       "bitrate": "192kbps",
       "takeVersion": "Take 1 (Smooth & Melancholic)"
@@ -88,6 +87,115 @@
     "filePath": "data/songs/bay-cung-co-lau.md"
   },
   {
+    "id": "song-be-anh-di-halloween",
+    "slug": "be-anh-di-halloween",
+    "title": "Bé Ánh Đi Halloween",
+    "artist": "Quân & Suno AI",
+    "genre": "Kids Bouncy Pop",
+    "tags": [
+      "#thieu-nhi",
+      "#nhatanh",
+      "#halloween",
+      "#bi-ngo",
+      "#nhac-cho-be-2-3-tuoi",
+      "#vietnamese-kids-song"
+    ],
+    "status": "prompt_ready",
+    "createdAt": "2026-11-10",
+    "updatedAt": "2026-11-10",
+    "suno": {
+      "model": "v6-MINI",
+      "stylePrompt": "Vietnamese toddler kids song, bouncy cute Halloween pop, 115 bpm, bright child and warm female vocals, xylophone, ukulele, claps, boing sfx, simple repetitive hook, playful not scary",
+      "lyricsPrompt": "Bài hát Halloween vui nhộn, đáng yêu, không đáng sợ cho bé 2–3 tuổi: bé Ánh hóa phù thủy nhỏ, đếm bí ngô, gặp mèo đen và ma nhỏ thân thiện, gõ cửa xin kẹo, nói cảm ơn, chia kẹo cho bạn, rồi đi ngủ.",
+      "songUrl": "https://suno.com/s/XCXunGQhEvdfO0jJ",
+      "taskStatus": "completed",
+      "tempo": "115 bpm",
+      "vocalType": "child + female"
+    },
+    "audio": {
+      "fileName": "be-anh-di-halloween.mp3",
+      "duration": "",
+      "durationSeconds": 0,
+      "bitrate": "192kbps",
+      "takeVersion": ""
+    },
+    "youtube": {
+      "title": "Bé Ánh Đi Halloween | Nhạc thiếu nhi Halloween vui nhộn cho bé 2–3 tuổi",
+      "status": "draft",
+      "description": "Cùng bé Ánh hóa phù thủy nhỏ, đếm bí ngô, gặp mèo đen và ma nhỏ đáng yêu! Bài hát Halloween vui nhộn, dễ hát, có động tác vỗ tay – dậm chân – xoay vòng cho bé 2–3 tuổi. #halloween #nhacthieunhi #bingo #beanh",
+      "isShort": false
+    },
+    "lyrics": "[Intro: music box, giggles, soft \"boo\"]\nHù! Hù!\nHi hi hi!\nHalloween tới rồi!\nBé Ánh ơi, đi chơi!\n\n[Verse 1]\nMũ nhọn đội lên đầu\nÁo choàng đen thật ngầu\nNgôi sao vàng lấp lánh\nBé là phù thủy xinh!\n\nXoay xoay áo choàng bay\nVẫy vẫy hai bàn tay\nGương ơi gương nhìn này\nPhù thủy nhỏ đây đây!\n\n[Pre-Chorus]\nMột, hai, ba!\nVỗ tay nào! (Bốp! Bốp!)\nMột, hai, ba!\nXoay một vòng!\n\n[Chorus]\nHalloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!\n\n[Verse 2]\nBí ngô cam cam cam\nBí ngô tròn tròn tròn\nĐếm cùng bé nhé\nMột quả! Hai quả! Ba quả!\n\nBí ngô to, bí ngô nhỏ\nBí ngô cười toe toe\nBé ôm một quả nhỏ\nNặng quá! Hi hi!\n\n[Pre-Chorus]\nMột, hai, ba!\nVỗ tay nào! (Bốp! Bốp!)\nMột, hai, ba!\nXoay một vòng!\n\n[Chorus]\nHalloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!\n\n[Verse 3]\nMeo meo, ai đấy nhỉ?\nMèo đen nhỏ xíu xiu\nĐeo nơ cam xinh xinh\nĐi cùng bé Ánh nào!\n\nMeo meo, meo meo\nMèo đen nhảy lon ton\nMeo meo, meo meo\nBé cũng nhảy lon ton!\n\n[Bridge: soft, gentle]\nHù hù, ai thế nhỉ?\nMa nhỏ trắng tinh tinh\nMa nhỏ không đáng sợ\nMa nhỏ muốn làm bạn\n\nHù hù, chào ma nhỏ!\nÔm một cái nào!\nMình là bạn nhé\nHi hi hi!\n\n[Dance Break: bouncy instrumental with call and response]\nDậm chân! (Bum bum!)\nDậm chân! (Bum bum!)\nVẫy tay! (Vẫy vẫy!)\nVẫy tay! (Vẫy vẫy!)\nNhảy lên! (Hop!)\nNhảy lên! (Hop!)\nNgồi xuống… đứng lên!\nHalloween!\n\n[Verse 4]\nCốc cốc cốc, gõ cửa\nKẹo ngọt ơi, cho bé\nBé nói: \"Cảm ơn ạ!\"\nKẹo ngọt bỏ vào giỏ\n\nMột kẹo cho mèo đen\nMột kẹo cho ma nhỏ\nMột kẹo cho bé Ánh\nChia nhau cùng vui nào!\n\n[Pre-Chorus]\nMột, hai, ba!\nVỗ tay nào! (Bốp! Bốp!)\nMột, hai, ba!\nXoay một vòng!\n\n[Chorus]\nHalloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!\n\n[Final Chorus: bigger, kids choir]\nHalloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!\n\n[Outro: slow down, soft lullaby, music box]\nTrăng lên cao rồi\nBí ngô ngủ rồi\nMèo đen ngủ rồi\nMa nhỏ ngủ rồi\nBé Ánh ngủ ngoan\nChúc bé ngủ ngon…\nHù… hi hi.\n\n[End]",
+    "lyricsSections": [
+      {
+        "tag": "[Intro: music box, giggles, soft \"boo\"]",
+        "content": "Hù! Hù!\nHi hi hi!\nHalloween tới rồi!\nBé Ánh ơi, đi chơi!"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Mũ nhọn đội lên đầu\nÁo choàng đen thật ngầu\nNgôi sao vàng lấp lánh\nBé là phù thủy xinh!\n\nXoay xoay áo choàng bay\nVẫy vẫy hai bàn tay\nGương ơi gương nhìn này\nPhù thủy nhỏ đây đây!"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Một, hai, ba!\nVỗ tay nào! (Bốp! Bốp!)\nMột, hai, ba!\nXoay một vòng!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Halloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!"
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Bí ngô cam cam cam\nBí ngô tròn tròn tròn\nĐếm cùng bé nhé\nMột quả! Hai quả! Ba quả!\n\nBí ngô to, bí ngô nhỏ\nBí ngô cười toe toe\nBé ôm một quả nhỏ\nNặng quá! Hi hi!"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Một, hai, ba!\nVỗ tay nào! (Bốp! Bốp!)\nMột, hai, ba!\nXoay một vòng!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Halloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!"
+      },
+      {
+        "tag": "[Verse 3]",
+        "content": "Meo meo, ai đấy nhỉ?\nMèo đen nhỏ xíu xiu\nĐeo nơ cam xinh xinh\nĐi cùng bé Ánh nào!\n\nMeo meo, meo meo\nMèo đen nhảy lon ton\nMeo meo, meo meo\nBé cũng nhảy lon ton!"
+      },
+      {
+        "tag": "[Bridge: soft, gentle]",
+        "content": "Hù hù, ai thế nhỉ?\nMa nhỏ trắng tinh tinh\nMa nhỏ không đáng sợ\nMa nhỏ muốn làm bạn\n\nHù hù, chào ma nhỏ!\nÔm một cái nào!\nMình là bạn nhé\nHi hi hi!"
+      },
+      {
+        "tag": "[Dance Break: bouncy instrumental with call and response]",
+        "content": "Dậm chân! (Bum bum!)\nDậm chân! (Bum bum!)\nVẫy tay! (Vẫy vẫy!)\nVẫy tay! (Vẫy vẫy!)\nNhảy lên! (Hop!)\nNhảy lên! (Hop!)\nNgồi xuống… đứng lên!\nHalloween!"
+      },
+      {
+        "tag": "[Verse 4]",
+        "content": "Cốc cốc cốc, gõ cửa\nKẹo ngọt ơi, cho bé\nBé nói: \"Cảm ơn ạ!\"\nKẹo ngọt bỏ vào giỏ\n\nMột kẹo cho mèo đen\nMột kẹo cho ma nhỏ\nMột kẹo cho bé Ánh\nChia nhau cùng vui nào!"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Một, hai, ba!\nVỗ tay nào! (Bốp! Bốp!)\nMột, hai, ba!\nXoay một vòng!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Halloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!"
+      },
+      {
+        "tag": "[Final Chorus: bigger, kids choir]",
+        "content": "Halloween, Halloween\nBí ngô cười hi hi\nHalloween, Halloween\nBé Ánh cùng đi chơi\nLắc lư, lắc lư\nBum, bum, bum!\nHalloween, Halloween\nVui quá đi thôi!"
+      },
+      {
+        "tag": "[Outro: slow down, soft lullaby, music box]",
+        "content": "Trăng lên cao rồi\nBí ngô ngủ rồi\nMèo đen ngủ rồi\nMa nhỏ ngủ rồi\nBé Ánh ngủ ngoan\nChúc bé ngủ ngon…\nHù… hi hi."
+      },
+      {
+        "tag": "[End]",
+        "content": ""
+      }
+    ],
+    "productionNotes": "- **Mục tiêu thời lượng: ít nhất 3:00.** Lời đã có 4 verse, 4 chorus, bridge, dance break và outro, đủ cho khoảng 3:10–3:40 ở 115 bpm. Nếu Suno ra dưới 3:00, dùng **Extend** từ đoạn `[Dance Break]`, hoặc tạo lại với model mới nhất có trong tài khoản.\n- Nên tạo 2–4 lần và chọn bản có giọng trẻ em trong trẻo, nhịp nảy, không có âm thanh đáng sợ.\n- Map lời → cảnh: xem mục 5 trong `data/briefs/be-anh-di-halloween.md`.\n- Sau khi có MP3, cập nhật `clipId`, `songUrl`, `audioUrl`, `duration`, `durationSeconds` và đổi `status: \"mp3_ready\"`.",
+    "filePath": "data/songs/be-anh-di-halloween.md"
+  },
+  {
     "id": "song-be-chay-ra-vuon",
     "slug": "be-chay-ra-vuon",
     "title": "Bé chạy ra vườn 🌿",
@@ -144,6 +252,93 @@
     "filePath": "data/songs/be-chay-ra-vuon.md"
   },
   {
+    "id": "song-be-di-boi",
+    "slug": "be-di-boi",
+    "title": "Bé Đi Bơi",
+    "artist": "ChatGPT & Suno AI",
+    "genre": "Lofi R&B Chillhop",
+    "tags": [
+      "#lofi",
+      "#chillhop",
+      "#rainy",
+      "#night",
+      "#vietnamese-rnb"
+    ],
+    "status": "published",
+    "createdAt": "2026-10-18",
+    "updatedAt": "2026-10-21",
+    "suno": {
+      "model": "v3.5",
+      "stylePrompt": "Vietnamese children's song for a 2-year-old girl. Very simple, cute and repetitive lyrics. Happy energetic children's pop, 128 BPM. Bright female vocal with cute child responses. Playful piano, ukulele, bells, claps and bouncy drums. Start sweet and curious, gradually become more energetic. Use instrumental breaks between sections to reach around 3 minutes. Several fun build-ups and a big joyful final chorus. Clear Vietnamese pronunciation.",
+      "lyricsPrompt": "",
+      "clipId": "b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "songUrl": "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc",
+      "taskStatus": "completed",
+      "tempo": "82 bpm",
+      "vocalType": "female"
+    },
+    "audio": {
+      "fileName": "be-di-boi.mp3",
+      "audioUrl": "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3",
+      "duration": "03:15",
+      "durationSeconds": 195,
+      "bitrate": "192kbps",
+      "takeVersion": "Take 1 (Smooth & Melancholic)"
+    },
+    "youtube": {
+      "publishedUrl": "https://www.youtube.com/watch?v=vAfVHFyI3Lg",
+      "videoId": "vAfVHFyI3Lg",
+      "title": "Bay cùng cỏ lau",
+      "publishedAt": "2026-05-09",
+      "status": "public",
+      "views": 122,
+      "thumbnailUrl": "https://img.youtube.com/vi/vAfVHFyI3Lg/hqdefault.jpg",
+      "description": "#hoacolau #baycungcolau #minh",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\\nĐi bơi thôi!\\nĐi bơi thôi!\\nHôm nay bé đi bơi!\\nVui quá! Vui quá!\\n\\n[Verse 1]\\nNước xanh xanh,\\nNước mát ơi!\\nBé xuống nước,\\nBé cười tươi.\\n\\nTõm tõm tõm,\\nTé nước nào!\\nTõm tõm tõm,\\nVui làm sao!\\n\\n[Chorus]\\nBơi bơi bơi,\\nBé đi bơi!\\nBơi bơi bơi,\\nVui quá trời!\\n\\nĐạp chân nào!\\nMột, hai, ba!\\nTé nước nào!\\nHa ha ha!\\n\\n[Instrumental Break]\\nLa la la...\\nLa la la...\\nTõm tõm tõm!\\nYeah!\\n\\n[Verse 2]\\nBé ôm phao,\\nPhao xinh xinh.\\nBé đạp chân,\\nBé cười xinh.\\n\\nNước tung lên,\\nƯớt tóc rồi!\\nKhông sao đâu,\\nVui quá thôi!\\n\\n[Chorus]\\nBơi bơi bơi,\\nBé đi bơi!\\nBơi bơi bơi,\\nVui quá trời!\\n\\nĐạp chân nào!\\nMột, hai, ba!\\nTé nước nào!\\nHa ha ha!\\n\\n[Build Up]\\nMột, hai, ba!\\nMột, hai, ba!\\nĐạp chân!\\nĐạp chân!\\nBơi nào!\\n\\n[Final Chorus]\\nBơi bơi bơi!\\nBé đi bơi!\\nTõm tõm tõm!\\nVui quá trời!\\n\\nBơi bơi bơi!\\nBé thích rồi!\\nNgày mai nhé,\\nLại đi bơi!\\n\\n[Outro]\\nĐi bơi...\\nĐi bơi...\\nBé thích đi bơi!\\nLa la la...\\nYay!",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "\\nĐi bơi thôi!\\nĐi bơi thôi!\\nHôm nay bé đi bơi!\\nVui quá! Vui quá!\\n\\n"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "\\nNước xanh xanh,\\nNước mát ơi!\\nBé xuống nước,\\nBé cười tươi.\\n\\nTõm tõm tõm,\\nTé nước nào!\\nTõm tõm tõm,\\nVui làm sao!\\n\\n"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "\\nBơi bơi bơi,\\nBé đi bơi!\\nBơi bơi bơi,\\nVui quá trời!\\n\\nĐạp chân nào!\\nMột, hai, ba!\\nTé nước nào!\\nHa ha ha!\\n\\n"
+      },
+      {
+        "tag": "[Instrumental Break]",
+        "content": "\\nLa la la...\\nLa la la...\\nTõm tõm tõm!\\nYeah!\\n\\n"
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "\\nBé ôm phao,\\nPhao xinh xinh.\\nBé đạp chân,\\nBé cười xinh.\\n\\nNước tung lên,\\nƯớt tóc rồi!\\nKhông sao đâu,\\nVui quá thôi!\\n\\n"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "\\nBơi bơi bơi,\\nBé đi bơi!\\nBơi bơi bơi,\\nVui quá trời!\\n\\nĐạp chân nào!\\nMột, hai, ba!\\nTé nước nào!\\nHa ha ha!\\n\\n"
+      },
+      {
+        "tag": "[Build Up]",
+        "content": "\\nMột, hai, ba!\\nMột, hai, ba!\\nĐạp chân!\\nĐạp chân!\\nBơi nào!\\n\\n"
+      },
+      {
+        "tag": "[Final Chorus]",
+        "content": "\\nBơi bơi bơi!\\nBé đi bơi!\\nTõm tõm tõm!\\nVui quá trời!\\n\\nBơi bơi bơi!\\nBé thích rồi!\\nNgày mai nhé,\\nLại đi bơi!\\n\\n"
+      },
+      {
+        "tag": "[Outro]",
+        "content": "\\nĐi bơi...\\nĐi bơi...\\nBé thích đi bơi!\\nLa la la...\\nYay!"
+      }
+    ],
+    "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
+    "filePath": "data/songs/be-di-boi.md"
+  },
+  {
     "id": "song-be-gai-chay-quanh-cot-nha",
     "slug": "be-gai-chay-quanh-cot-nha",
     "title": "Bé Gái Chạy Quanh Cột Nhà 🎵",
@@ -193,6 +388,96 @@
     "lyricsSections": [],
     "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
     "filePath": "data/songs/be-gai-chay-quanh-cot-nha.md"
+  },
+  {
+    "id": "song-o-kia-chu-cua-bien",
+    "slug": "o-kia-chu-cua-bien",
+    "title": "Ồ Kìa, Chú Cua Biển!",
+    "artist": "Quân & Suno AI",
+    "genre": "Vietnamese Kids Pop",
+    "tags": [
+      "#thieu-nhi",
+      "#be-gai",
+      "#cua-bien",
+      "#vietnamese-kids-song"
+    ],
+    "status": "prompt_ready",
+    "createdAt": "2026-11-11",
+    "updatedAt": "2026-11-11",
+    "suno": {
+      "model": "v4.5",
+      "stylePrompt": "Vietnamese kids pop, 112 bpm, bright child female vocal, ukulele, marimba, handclaps, playful curious mood, catchy hook, clean modern mix",
+      "lyricsPrompt": "Bài hát thiếu nhi về bé gái tò mò vui thích khi mẹ mang cua biển về nhà; cùng mẹ quan sát an toàn, không chạm vào cua.",
+      "taskStatus": "pending",
+      "tempo": "112 bpm",
+      "vocalType": "child female"
+    },
+    "audio": {
+      "fileName": "o-kia-chu-cua-bien.mp3",
+      "duration": "",
+      "durationSeconds": 0,
+      "bitrate": "192kbps",
+      "takeVersion": ""
+    },
+    "youtube": {
+      "title": "Ồ Kìa, Chú Cua Biển! | Nhạc thiếu nhi",
+      "status": "draft",
+      "description": "Bé khám phá chú cua biển mẹ mang về, cùng mẹ quan sát thật vui và an toàn. #thieunhi #cuabien",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\nMẹ vừa đi chợ về đây\nTrong chậu xanh có bạn hay\nMẹ ơi, gì thế mẹ ơi?\nMột chú cua biển đang ngồi!\n\n[Verse 1]\nBé ngồi cách chậu một bên\nNgắm mai xanh sẫm thật êm\nHai chiếc càng khẽ nhúc nhích\nĐôi mắt nhỏ xíu nhìn quanh\n\n[Pre-Chorus]\nMẹ ngồi bên, bé nhìn thôi\nTay để yên nhé, bé ơi\nChú cua bò ngang thật khéo\nBé cười thích thú biết bao\n\n[Chorus]\nỒ kìa, cua đi ngang!\nLắc lư, lắc lư, thật ngoan\nMai xanh, đôi càng cam\nBé ngắm vui, không chạm nha!\nỒ kìa, cua đi ngang!\nMẹ bên, bé cười vang\nHai ngón tay bước nhịp nhàng\nLa la la, cua đi ngang!\n\n[Verse 2]\nMai cua tròn tròn xinh ghê\nMàu xanh nâu ánh đèn khe\nCàng cam khép vào rồi mở\nBé nhìn mẹ, mắt say mê\n\n[Pre-Chorus]\nMẹ kể cua sống gần khơi\nMình ngắm từ xa thôi nhé\nChậu xanh đặt yên trên bàn\nBé nghe lời mẹ dịu dàng\n\n[Chorus]\nỒ kìa, cua đi ngang!\nLắc lư, lắc lư, thật ngoan\nMai xanh, đôi càng cam\nBé ngắm vui, không chạm nha!\nỒ kìa, cua đi ngang!\nMẹ bên, bé cười vang\nHai ngón tay bước nhịp nhàng\nLa la la, cua đi ngang!\n\n[Bridge]\nMẹ ơi, cua có kẹp không?\nMẹ cười, mình cứ ngắm thôi\nĐể người lớn chăm chú cua\nBé đứng bên mẹ thật ngoan\n\n[Dance Break]\nNghiêng qua trái! Nghiêng qua phải!\nHai ngón tay đi ngang nào!\nVỗ tay nhé! Cười thật tươi!\nChú cua vui, bé vui rồi!\n\n[Final Chorus]\nỒ kìa, cua đi ngang!\nLắc lư, lắc lư, thật ngoan\nMai xanh, đôi càng cam\nBé ngắm vui, không chạm nha!\nỒ kìa, cua đi ngang!\nMẹ bên, bé cười vang\nHai ngón tay bước nhịp nhàng\nLa la la, cua đi ngang!\n\n[Outro]\nChào chú cua, bé vẫy tay\nCảm ơn mẹ, vui hôm nay\nMẹ bên chăm chú cua nhé\nBé còn nhớ mãi chuyện này!\n[End]",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "Mẹ vừa đi chợ về đây\nTrong chậu xanh có bạn hay\nMẹ ơi, gì thế mẹ ơi?\nMột chú cua biển đang ngồi!"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Bé ngồi cách chậu một bên\nNgắm mai xanh sẫm thật êm\nHai chiếc càng khẽ nhúc nhích\nĐôi mắt nhỏ xíu nhìn quanh"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Mẹ ngồi bên, bé nhìn thôi\nTay để yên nhé, bé ơi\nChú cua bò ngang thật khéo\nBé cười thích thú biết bao"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Ồ kìa, cua đi ngang!\nLắc lư, lắc lư, thật ngoan\nMai xanh, đôi càng cam\nBé ngắm vui, không chạm nha!\nỒ kìa, cua đi ngang!\nMẹ bên, bé cười vang\nHai ngón tay bước nhịp nhàng\nLa la la, cua đi ngang!"
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Mai cua tròn tròn xinh ghê\nMàu xanh nâu ánh đèn khe\nCàng cam khép vào rồi mở\nBé nhìn mẹ, mắt say mê"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Mẹ kể cua sống gần khơi\nMình ngắm từ xa thôi nhé\nChậu xanh đặt yên trên bàn\nBé nghe lời mẹ dịu dàng"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Ồ kìa, cua đi ngang!\nLắc lư, lắc lư, thật ngoan\nMai xanh, đôi càng cam\nBé ngắm vui, không chạm nha!\nỒ kìa, cua đi ngang!\nMẹ bên, bé cười vang\nHai ngón tay bước nhịp nhàng\nLa la la, cua đi ngang!"
+      },
+      {
+        "tag": "[Bridge]",
+        "content": "Mẹ ơi, cua có kẹp không?\nMẹ cười, mình cứ ngắm thôi\nĐể người lớn chăm chú cua\nBé đứng bên mẹ thật ngoan"
+      },
+      {
+        "tag": "[Dance Break]",
+        "content": "Nghiêng qua trái! Nghiêng qua phải!\nHai ngón tay đi ngang nào!\nVỗ tay nhé! Cười thật tươi!\nChú cua vui, bé vui rồi!"
+      },
+      {
+        "tag": "[Final Chorus]",
+        "content": "Ồ kìa, cua đi ngang!\nLắc lư, lắc lư, thật ngoan\nMai xanh, đôi càng cam\nBé ngắm vui, không chạm nha!\nỒ kìa, cua đi ngang!\nMẹ bên, bé cười vang\nHai ngón tay bước nhịp nhàng\nLa la la, cua đi ngang!"
+      },
+      {
+        "tag": "[Outro]",
+        "content": "Chào chú cua, bé vẫy tay\nCảm ơn mẹ, vui hôm nay\nMẹ bên chăm chú cua nhé\nBé còn nhớ mãi chuyện này!"
+      },
+      {
+        "tag": "[End]",
+        "content": ""
+      }
+    ],
+    "productionNotes": "- Map lời → cảnh: xem `data/briefs/be-gai-gap-cua-bien.md`.\n- Chorus lặp nguyên văn ba lần; vũ đạo ngón tay mô phỏng cua đi ngang.\n- Cảnh dựng theo bản 03:20 ước tính; cập nhật timecode sau khi Suno tạo audio.\n- Exclude styles: horror, scary, dark, screaming, heavy metal, dubstep, deep growl.",
+    "filePath": "data/songs/o-kia-chu-cua-bien.md"
   },
   {
     "id": "song-cay-xoai",
@@ -583,6 +868,87 @@
     "lyricsSections": [],
     "productionNotes": "- Bản phối có thêm tiếng mưa tự nhiên và đĩa than vinyl crackle.\n- Phù hợp làm chuỗi video Lofi Study / Relax trên YouTube.",
     "filePath": "data/songs/dieu-nhay-cua-dong.md"
+  },
+  {
+    "id": "song-doi-truong-bi-ngo",
+    "slug": "doi-truong-bi-ngo",
+    "title": "Đội Trưởng Bí Ngô",
+    "artist": "Quân & Suno AI",
+    "genre": "Vietnamese Kids Pop Rock EDM",
+    "tags": [
+      "#thieu-nhi",
+      "#halloween",
+      "#be-trai",
+      "#vietnamese-kids-song"
+    ],
+    "status": "prompt_ready",
+    "createdAt": "2026-11-10",
+    "updatedAt": "2026-11-10",
+    "suno": {
+      "model": "v4.5",
+      "stylePrompt": "Vietnamese children's pop rock EDM anthem, 124 BPM, punchy kick and snare, energetic tom fills, bright electric guitar riffs, bold synth brass, bouncy bass, handclaps and stomp rhythm, playful Halloween parade atmosphere, confident youthful male lead vocal suitable for a 7-8 year old child, clear Vietnamese diction, catchy repeated chant hook, joyful and brave, never scary, no dark horror mood.",
+      "lyricsPrompt": "",
+      "taskStatus": "completed",
+      "tempo": "124 bpm",
+      "vocalType": "youthful male"
+    },
+    "audio": {
+      "fileName": "doi-truong-bi-ngo.mp3",
+      "bitrate": "192kbps"
+    },
+    "youtube": {
+      "title": "Đội Trưởng Bí Ngô",
+      "status": "draft",
+      "isShort": false
+    },
+    "lyrics": "[Intro]\nHey! Hey! Bí ngô lên đèn!\nĐội trưởng Minh sẵn sàng chưa?\nBa, hai, một — xuất phát!\n\n[Verse 1]\nÁo choàng bay phấp phới sau lưng\nỦng bước vang tưng bừng ngoài sân\nĐèn bí ngô sáng như mặt trời\nĐêm hội vui gọi mình đi thôi!\n\n[Pre-Chorus]\nNắm tay bạn, đội hình thật ngay\nNgực ưỡn cao, cùng hô thật hay\nTrái — phải — trái, ta không ngại gì\nHalloween, tiến lên nào!\n\n[Chorus]\nĐội trưởng Bí Ngô — hey! hey! hey!\nDậm chân thật mạnh — hey! hey! hey!\nGiơ tay lên cao, xoay một vòng\nCả con phố cùng vui tưng bừng!\nĐội trưởng Bí Ngô — ta thật ngầu!\nCười vang một tiếng, bạn theo mau!\nKhông cần phép thuật, chẳng cần lo\nBạn bè bên nhau — vui hết cỡ!\n\n[Verse 2]\nBa quả bí cười toe bên đường\nMèo con lắc đuôi, chạy thật nhanh\nMa bông trắng mềm bay vòng quanh\nMinh chào thật lớn: “Bạn đi cùng!”\n\n[Pre-Chorus]\nGõ cửa nhẹ, nói “kẹo nhé cô?”\nNhận kẹo xong, “cảm ơn” thật to\nChia cho bạn, ai cũng vui ghê\nHalloween, tiến lên nào!\n\n[Chorus]\nĐội trưởng Bí Ngô — hey! hey! hey!\nDậm chân thật mạnh — hey! hey! hey!\nGiơ tay lên cao, xoay một vòng\nCả con phố cùng vui tưng bừng!\nĐội trưởng Bí Ngô — ta thật ngầu!\nCười vang một tiếng, bạn theo mau!\nKhông cần phép thuật, chẳng cần lo\nBạn bè bên nhau — vui hết cỡ!\n\n[Bridge]\nNếu thấy hơi lạ, mình cứ nhìn\nĐèn sáng, bạn cười — chẳng có gì\nHít vào thật sâu, đếm một, hai, ba\nRủ nhau cùng nhảy, la la la!\n\n[Dance Break]\nDậm chân! (Hey!) Vỗ tay! (Hey!)\nXoay một vòng! (Hey!) Nhảy lên nào!\nDậm chân! Vỗ tay! Xoay thật nhanh!\nĐội bí ngô — đoàn kết, tiến lên!\n\n[Final Chorus]\nĐội trưởng Bí Ngô — hey! hey! hey!\nDậm chân thật mạnh — hey! hey! hey!\nGiơ tay lên cao, xoay một vòng\nCả con phố cùng vui tưng bừng!\nĐội trưởng Bí Ngô — ta thật ngầu!\nCười vang một tiếng, bạn theo mau!\nKẹo chia cho bạn, tiếng reo hò\nHalloween vui — nhớ thật lâu!\n\n[Outro]\nĐội bí ngô, chào đêm vui!\nHẹn mùa sau ta lại chơi!\nHey! Hey! Bí ngô lên đèn!",
+    "lyricsSections": [
+      {
+        "tag": "[Intro]",
+        "content": "Hey! Hey! Bí ngô lên đèn!\nĐội trưởng Minh sẵn sàng chưa?\nBa, hai, một — xuất phát!"
+      },
+      {
+        "tag": "[Verse 1]",
+        "content": "Áo choàng bay phấp phới sau lưng\nỦng bước vang tưng bừng ngoài sân\nĐèn bí ngô sáng như mặt trời\nĐêm hội vui gọi mình đi thôi!"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Nắm tay bạn, đội hình thật ngay\nNgực ưỡn cao, cùng hô thật hay\nTrái — phải — trái, ta không ngại gì\nHalloween, tiến lên nào!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Đội trưởng Bí Ngô — hey! hey! hey!\nDậm chân thật mạnh — hey! hey! hey!\nGiơ tay lên cao, xoay một vòng\nCả con phố cùng vui tưng bừng!\nĐội trưởng Bí Ngô — ta thật ngầu!\nCười vang một tiếng, bạn theo mau!\nKhông cần phép thuật, chẳng cần lo\nBạn bè bên nhau — vui hết cỡ!"
+      },
+      {
+        "tag": "[Verse 2]",
+        "content": "Ba quả bí cười toe bên đường\nMèo con lắc đuôi, chạy thật nhanh\nMa bông trắng mềm bay vòng quanh\nMinh chào thật lớn: “Bạn đi cùng!”"
+      },
+      {
+        "tag": "[Pre-Chorus]",
+        "content": "Gõ cửa nhẹ, nói “kẹo nhé cô?”\nNhận kẹo xong, “cảm ơn” thật to\nChia cho bạn, ai cũng vui ghê\nHalloween, tiến lên nào!"
+      },
+      {
+        "tag": "[Chorus]",
+        "content": "Đội trưởng Bí Ngô — hey! hey! hey!\nDậm chân thật mạnh — hey! hey! hey!\nGiơ tay lên cao, xoay một vòng\nCả con phố cùng vui tưng bừng!\nĐội trưởng Bí Ngô — ta thật ngầu!\nCười vang một tiếng, bạn theo mau!\nKhông cần phép thuật, chẳng cần lo\nBạn bè bên nhau — vui hết cỡ!"
+      },
+      {
+        "tag": "[Bridge]",
+        "content": "Nếu thấy hơi lạ, mình cứ nhìn\nĐèn sáng, bạn cười — chẳng có gì\nHít vào thật sâu, đếm một, hai, ba\nRủ nhau cùng nhảy, la la la!"
+      },
+      {
+        "tag": "[Dance Break]",
+        "content": "Dậm chân! (Hey!) Vỗ tay! (Hey!)\nXoay một vòng! (Hey!) Nhảy lên nào!\nDậm chân! Vỗ tay! Xoay thật nhanh!\nĐội bí ngô — đoàn kết, tiến lên!"
+      },
+      {
+        "tag": "[Final Chorus]",
+        "content": "Đội trưởng Bí Ngô — hey! hey! hey!\nDậm chân thật mạnh — hey! hey! hey!\nGiơ tay lên cao, xoay một vòng\nCả con phố cùng vui tưng bừng!\nĐội trưởng Bí Ngô — ta thật ngầu!\nCười vang một tiếng, bạn theo mau!\nKẹo chia cho bạn, tiếng reo hò\nHalloween vui — nhớ thật lâu!"
+      },
+      {
+        "tag": "[Outro]",
+        "content": "Đội bí ngô, chào đêm vui!\nHẹn mùa sau ta lại chơi!\nHey! Hey! Bí ngô lên đèn!"
+      }
+    ],
+    "filePath": "data/songs/doi-truong-bi-ngo.md"
   },
   {
     "id": "song-giot-ca-phe-chieu",
