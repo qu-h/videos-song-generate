@@ -29,13 +29,13 @@ export interface SunoPromptInfo {
   /** Link trực tiếp đến bài hát trên Suno (https://suno.com/song/...) */
   songUrl?: string;
   /** Trạng thái tạo bài trên Suno */
-  taskStatus?: 'submitted' | 'processing' | 'completed' | 'failed';
+  taskStatus?: 'pending' | 'submitted' | 'processing' | 'completed' | 'failed';
   /** Nhạc cụ chính sử dụng */
   instruments?: string[];
   /** Nhịp điệu bài hát (ví dụ: "76 bpm", "120 bpm") */
   tempo?: string;
-  /** Giọng ca: Nam (male), Nữ (female), Song ca (duet), Hợp xướng (choir), Không lời (instrumental) */
-  vocalType?: 'male' | 'female' | 'duet' | 'choir' | 'instrumental';
+  /** Giọng ca: Nam (male), Nữ (female), Song ca (duet), Hợp xướng (choir), Không lời (instrumental); cho phép mô tả tự do như "child + female" */
+  vocalType?: 'male' | 'female' | 'duet' | 'choir' | 'instrumental' | (string & {});
   /** Thẻ gắn liền trong style prompt */
   tags?: string[];
   /** Thẻ loại trừ (Negative tags) nếu có */
