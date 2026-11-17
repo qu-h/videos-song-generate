@@ -15,14 +15,13 @@ suno:
   songUrl: "https://suno.com/song/b2c3d4e5-6789-01bc-def0-2345678901bc"
   taskStatus: "completed"
   tempo: "82 bpm"
-  vocalType: "female"
+  vocalType: "male"
 
 audio:
-  audioUrl: "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3"
-  duration: "03:15"
+  audioUrl: "data/mp3/bay-cung-co-lau.mp3"
+  duration: "02:16"
   durationSeconds: 195
   bitrate: "192kbps"
-  takeVersion: "Take 1 (Smooth & Melancholic)"
 
 youtube:
   videoId: vAfVHFyI3Lg

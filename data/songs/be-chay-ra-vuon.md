@@ -21,9 +21,8 @@ suno:
 
 audio:
   fileName: "dem-thanh-pho-mua.mp3"
-  filePath: "public/audio/dem-thanh-pho-mua.mp3"
-  audioUrl: "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3"
-  duration: "03:15"
+  filePath: "data/mp3/be-chay-ra-vuon.mp3"
+  duration: "01:40"
   durationSeconds: 195
   bitrate: "192kbps"
   takeVersion: "Take 1 (Smooth & Melancholic)"
