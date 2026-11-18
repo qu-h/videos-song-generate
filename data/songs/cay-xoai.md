@@ -18,7 +18,7 @@ suno:
   vocalType: "male"
 
 audio:
-  filePath: "data/mp3/cây xoài.mp3"
+  filePath: "data/mp3/cay-xoai.mp3"
   audioUrl: "https://cdn1.suno.ai/b2c3d4e5-6789-01bc-def0-2345678901bc.mp3"
   duration: "02:50"
   durationSeconds: 195
